@@ -36,13 +36,16 @@ public class HomeCtrl {
 	@RequestMapping("/studentSignupForm")
 	public String studentLSignupForm(Model m) {
 		m.addAttribute("studentPage", "studentSignupForm");
+//		m.addAttribute("msg", "Success");
 		return "student-home";
 	}
 
 	// Student Signup Database
 	@RequestMapping(value = "/signupStudent", method = RequestMethod.POST)
-	public String signupStudent(@ModelAttribute("student") Student stu, Model m) {
+	public String signupStudent(@ModelAttribute Student stu, Model m) {
 		m.addAttribute("studentPage", "studentLoginForm");
+		m.addAttribute("msg", "Success");
+		System.out.println(stu);
 		return "student-home";
 	}
 

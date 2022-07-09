@@ -14,11 +14,14 @@
 	http://www.springframework.org/schema/tx/spring-tx.xsd
 	">
 
+	<context:component-scan
+		base-package="com.library" />
+
 	<!-- View Resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		name="viewResolver">
-		<property name="prefix" value="/WEB-INF/pages" />
+		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
@@ -39,25 +42,29 @@
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
 		name="sessionFactory">
 		<property name="dataSource" ref="ds" />
-		<property name="hibernateProperties"  >
+
+		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+
 		<property name="annotatedClasses">
 			<list>
-				<value>com.entities.Student</value>
-				<value>com.entities.Librarian</value>
-				<value>com.entities.Admin</value>
+				<value>com.library.entities.Student</value>
+				<value>com.library.entities.Librarian</value>
+				<value>com.library.entities.Admin</value>
 			</list>
+
 		</property>
 	</bean>
 
 	<!-- HibernateTemplate -->
-	<bean class="org.springframework.orm.hibernate5.HibernateTemplate" name="hibernateTemplate">
-		<property name="sessionfactory" ref="sessionFactory"/>
+	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
+		name="hibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 

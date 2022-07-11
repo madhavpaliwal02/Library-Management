@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.*;
 import com.library.entities.*;
@@ -160,5 +161,22 @@ public class HomeCtrl {
 		m.addAttribute("student",list);
 		return "view-students";
 	}
+	
+	// Student Delete
+	@RequestMapping("/deleteStudent")
+	public RedirectView deleteStudent(Model m) {
+		RedirectView redView = new RedirectView();
+		return redView;
+	}
+	
+	/** Books -Controller */
+	
+	@RequestMapping("/viewBooks")
+	public String viewBooks() {
+		
+		
+		return "view-books";
+	}
+	
 	
 }

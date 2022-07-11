@@ -21,8 +21,13 @@
 				Students</a> <a class="btn btn-primary"
 				href='<c:url value='/viewBooks'></c:url>' role="button">View
 				Books</a> <a class="btn btn-primary"
-				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View Issued
-				Books</a>
+				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
+				Issued Books</a>
+		</div>
+
+		<div class="container text-center mt-3">
+			<a href="librarianLoginForm" class="btn btn-outline-Danger">Back</a>
+			<a href="home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 	</div>
 </body>

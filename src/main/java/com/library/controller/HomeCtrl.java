@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.dao.StudentDao;
+import com.library.entities.Librarian;
 import com.library.entities.Student;
 
 @Controller
@@ -42,10 +43,10 @@ public class HomeCtrl {
 		m.addAttribute("title", "Admin : DashBoard");
 		return "admin-dashboard";
 	}
-	
+
 	/** Librarian - Controller */
-	
-	// Admin Home Page
+
+	// Librarian Home Page
 	@RequestMapping("/librarian")
 	public String librarianHome(Model m) {
 		m.addAttribute("title", "Librarian : Home Page");
@@ -59,25 +60,32 @@ public class HomeCtrl {
 		m.addAttribute("librarianPage", "librarianLoginForm");
 		return "librarian-home";
 	}
-	
+
 	// Librarian SignUp Form
 	@RequestMapping("/librarianSignupForm")
-	public String addLibrarianForm(Model m) {
+	public String librarianSignupForm(Model m) {
 		m.addAttribute("title", "Librarian : Home Page");
 		m.addAttribute("librarianPage", "librarianSignupForm");
 		return "librarian-home";
 	}
 
-	// Add Librarian
-	@RequestMapping("/addLibrarian")
-	public String addLibrarian(Model m) {
+	// Librarian Signup Added
+	@RequestMapping(value = "/signupLibrarian", method = RequestMethod.POST)
+	public String signupLibrarian(@ModelAttribute Librarian lib, Model m) {
 
 		// librarian Dao
 		m.addAttribute("msg", "Success");
 
-		m.addAttribute("title", "Admin : DashBoard");
-		m.addAttribute("adminPage", "");
-		return "admin-dashboard";
+		m.addAttribute("title", "Librarian : DashBoard");
+		m.addAttribute("librarianPage", "librarianLoginForm");
+		return "librarian-home";
+	}
+
+	// Librarian Login Handling
+	@RequestMapping(value = "/loginLibrarian", method = RequestMethod.POST)
+	public String loginLibrarian(@ModelAttribute Librarian lib, Model m) {
+		m.addAttribute("title", "Student DashBoard");
+		return "librarian-dahsboard";
 	}
 
 	/** Student - Controller */

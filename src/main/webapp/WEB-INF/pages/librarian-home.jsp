@@ -17,13 +17,15 @@
 				href='<c:url value='/librarianLoginForm'></c:url>' role="button">Login
 				Librarian</a> <a class="btn btn-primary"
 				href='<c:url value='/librarianSignupForm'></c:url>' role="button">SignUp
-				Librarian</a> <a class="btn btn-primary"
+				Librarian</a>
+
+			<%-- <a class="btn btn-primary"
 				href='<c:url value='/viewStudents'></c:url>' role="button">View
 				Students</a> <a class="btn btn-primary"
 				href='<c:url value='/viewBooks'></c:url>' role="button">View
 				Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
-				Books</a>
+				Books</a> --%>
 		</div>
 
 		<!-- Condition - success -->
@@ -37,10 +39,9 @@
 		<c:if test="${librarianPage=='librarianLoginForm' }">
 			<div class="container mt-5">
 				<h3 class="text-center">
-					<b>Librarian
-					 Login Form</b>
+					<b>Librarian Login Form</b>
 				</h3>
-				<form action="loginStudent" method="post">
+				<form action="loginLibrarian" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
@@ -54,7 +55,6 @@
 							placeholder="Password" name="student-password" required>
 					</div>
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Danger">Back</a>
 						<button class="btn btn-outline-success">Login</button>
 					</div>
 				</form>
@@ -115,13 +115,15 @@
 					</div>
 
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Danger">Back</a>
 						<button class="btn btn-outline-success">Login</button>
-
 					</div>
 				</form>
 			</div>
 		</c:if>
+
+		<div class="container text-center mt-3">
+			<a href="home" class="btn btn-outline-Danger">HOME</a>
+		</div>
 	</div>
 </body>
 </html>

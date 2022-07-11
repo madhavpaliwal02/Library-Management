@@ -19,6 +19,8 @@ public class HomeCtrl {
 	@Autowired
 	private StudentDao studentDao;
 
+	
+	
 	/** Home Page */
 
 	// Home Page
@@ -28,6 +30,8 @@ public class HomeCtrl {
 		return "home";
 	}
 
+	
+	
 	/** Admin - Controller */
 
 	// Admin Home Page
@@ -44,6 +48,9 @@ public class HomeCtrl {
 		return "admin-dashboard";
 	}
 
+	
+	
+	
 	/** Librarian - Controller */
 
 	// Librarian Home Page
@@ -84,10 +91,14 @@ public class HomeCtrl {
 	// Librarian Login Handling
 	@RequestMapping(value = "/loginLibrarian", method = RequestMethod.POST)
 	public String loginLibrarian(@ModelAttribute Librarian lib, Model m) {
-		m.addAttribute("title", "Student DashBoard");
-		return "librarian-dahsboard";
+		m.addAttribute("title", "Librarian DashBoard");
+		return "librarian-dashboard";
 	}
 
+	// Librarian DashBoard
+	
+	
+	
 	/** Student - Controller */
 
 	// Student Home Page

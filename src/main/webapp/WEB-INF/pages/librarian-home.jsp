@@ -18,14 +18,6 @@
 				Librarian</a> <a class="btn btn-primary"
 				href='<c:url value='/librarianSignupForm'></c:url>' role="button">SignUp
 				Librarian</a>
-
-			<%-- <a class="btn btn-primary"
-				href='<c:url value='/viewStudents'></c:url>' role="button">View
-				Students</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooks'></c:url>' role="button">View
-				Books</a> <a class="btn btn-primary"
-				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
-				Books</a> --%>
 		</div>
 
 		<!-- Condition - success -->

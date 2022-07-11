@@ -14,13 +14,15 @@
 			Welcome To The <b>Student DashBoard</b>
 		</h1>
 
-		<!-- Navigation Button 
+		<!-- Navigation Button -->
 		<div class="text-center mt-2">
-			<a class="btn btn-primary"
-				href='<c:url value='/studentLoginForm'></c:url>' role="button">LogIn</a>
-			<a class="btn btn-primary"
-				href='<c:url value='/studentSignupForm'></c:url>' role="button">SignUp</a>
-		</div> -->
+			<a class="btn btn-primary" href='<c:url value='/viewBooks'> </c:url>'
+				role="button">View Books</a> <a class="btn btn-primary"
+				href='<c:url value='/issueBook'> </c:url>' role="button">Issue
+				Book</a> <a class="btn btn-primary"
+				href='<c:url value='/viewBooks'> </c:url>' role="button">Return
+				Books</a>
+		</div>
 
 
 

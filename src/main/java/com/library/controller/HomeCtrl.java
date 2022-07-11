@@ -46,18 +46,26 @@ public class HomeCtrl {
 	/** Librarian - Controller */
 	
 	// Admin Home Page
-		@RequestMapping("/librarian")
-		public String librarianHome(Model m) {
-			m.addAttribute("title", "Librarian : Home Page");
-			return "admin-home";
-		}
+	@RequestMapping("/librarian")
+	public String librarianHome(Model m) {
+		m.addAttribute("title", "Librarian : Home Page");
+		return "librarian-home";
+	}
 
-	// Add Librarian Form
-	@RequestMapping("/addLibrarianForm")
+	// Librarian Login Form
+	@RequestMapping("/librarianLoginForm")
+	public String librarianLoginForm(Model m) {
+		m.addAttribute("title", "Librarian : Home Page");
+		m.addAttribute("librarianPage", "librarianLoginForm");
+		return "librarian-home";
+	}
+	
+	// Librarian SignUp Form
+	@RequestMapping("/librarianSignupForm")
 	public String addLibrarianForm(Model m) {
-		m.addAttribute("title", "Admin : DashBoard");
-		m.addAttribute("adminPage", "addLibrarianForm");
-		return "admin-dashboard";
+		m.addAttribute("title", "Librarian : Home Page");
+		m.addAttribute("librarianPage", "librarianSignupForm");
+		return "librarian-home";
 	}
 
 	// Add Librarian

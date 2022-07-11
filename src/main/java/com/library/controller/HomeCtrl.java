@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,16 +10,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.library.dao.StudentDao;
-import com.library.entities.Librarian;
-import com.library.entities.Student;
+import com.library.dao.*;
+import com.library.entities.*;
 
 @Controller
 public class HomeCtrl {
 
 	@Autowired
 	private StudentDao studentDao;
-
+	@Autowired
+	private LibrarianDao librarianDao;
+	@Autowired
+	private BookDao bookDao;
 	
 	
 	/** Home Page */
@@ -95,7 +98,15 @@ public class HomeCtrl {
 		return "librarian-dashboard";
 	}
 
-	// Librarian DashBoard
+	// Librarian List
+	@RequestMapping("viewLibrarians")
+	public String viewLibrarians(Model m) {
+		
+		List<Librarian> list = this.librarianDao.getAllLibrarians();
+		m.addAttribute("librarian", list);
+		
+		return "view-librarians";
+	}
 	
 	
 	
@@ -142,4 +153,12 @@ public class HomeCtrl {
 		return "student-dashboard";
 	}
 
+	// Students List
+	@RequestMapping("/viewStudents")
+	public String viewStudents(Model m) {
+		List<Student> list = this.studentDao.getAllStudents();
+		m.addAttribute("student",list);
+		return "view-students";
+	}
+	
 }

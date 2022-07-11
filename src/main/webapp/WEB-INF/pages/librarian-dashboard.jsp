@@ -26,7 +26,7 @@
 		</div>
 
 		<div class="container text-center mt-3">
-			<a href="librarianLoginForm" class="btn btn-outline-Danger">Back</a>
+			<a href="librarianLoginForm" class="btn btn-outline-Danger">Log-Out</a>
 			<a href="home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 	</div>

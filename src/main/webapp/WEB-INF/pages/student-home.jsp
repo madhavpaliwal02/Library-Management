@@ -4,7 +4,7 @@
 <%@include file="./base.jsp"%>
 <%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 
-<title>Home Page</title>
+<title><c:out value="${title }"></c:out></title>
 </head>
 <body>
 
@@ -15,18 +15,27 @@
 		</h1>
 
 		<!-- Navigation Button -->
-		<div class="text-center mt-5">
+		<div class="text-center mt-2">
 			<a class="btn btn-primary"
 				href='<c:url value='/studentLoginForm'></c:url>' role="button">LogIn</a>
 			<a class="btn btn-primary"
 				href='<c:url value='/studentSignupForm'></c:url>' role="button">SignUp</a>
 		</div>
 
+		<!-- Condition - success -->
+		<c:if test="${not empty msg }">
+			<div class="alert alert-success text-center">
+				<c:out value="${msg }"></c:out>
+			</div>
+		</c:if>
 
 		<!-- Log In Page -->
 		<c:if test="${studentPage=='studentLoginForm' }">
 			<div class="container mt-5">
-				<form:form action="" method="post" modelAttribute="student">
+				<h3 class="text-center">
+					<b>Student Login Form</b>
+				</h3>
+				<form action="loginStudent" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
@@ -40,28 +49,32 @@
 							placeholder="Password" name="student-password" required>
 					</div>
 					<div class="container text-center">
+						<a href="home" class="btn btn-outline-Danger">Back</a>
 						<button class="btn btn-outline-success">Login</button>
 					</div>
-				</form:form>
+				</form>
 			</div>
 		</c:if>
 
 		<!-- Sign Up Page -->
 		<c:if test="${studentPage=='studentSignupForm' }">
 			<div class="container mt-5">
+				<h3 class="text-center">
+					<b>Student Signup Form</b>
+				</h3>
 				<form action="signupStudent" method="post">
 
 					<div class="form-row">
 						<!-- Student Name -->
 						<div class="form-group col-md-6">
-							<label for="student-name">Student Name</label> <input
-								type="text" class="form-control" id="student-name"
-								placeholder="Enter Name" name="name">
+							<label for="student-name">Student Name</label> <input type="text"
+								class="form-control" id="student-name" placeholder="Enter Name"
+								name="name">
 						</div>
 						<!-- Roll No -->
 						<div class="form-group col-md-6">
-							<label for="student-rollno">Roll NO</label> <input
-								type="text" class="form-control" id="student-rollno"
+							<label for="student-rollno">Roll NO</label> <input type="text"
+								class="form-control" id="student-rollno"
 								placeholder="Enter Roll No (IT-2KXX-XX)" name="rollno">
 						</div>
 					</div>
@@ -102,7 +115,9 @@
 					</div>
 
 					<div class="container text-center">
+						<a href="home" class="btn btn-outline-Danger">Back</a>
 						<button class="btn btn-outline-success">Login</button>
+
 					</div>
 				</form>
 			</div>

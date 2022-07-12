@@ -50,7 +50,7 @@
 					</div>
 					<div class="container text-center">
 						<a href="home" class="btn btn-outline-Danger">Back</a>
-						<button class="btn btn-outline-success">Login</button>
+						<button class="btn btn-outline-success">Log-In</button>
 					</div>
 				</form>
 			</div>
@@ -116,8 +116,7 @@
 
 					<div class="container text-center">
 						<a href="home" class="btn btn-outline-Danger">Back</a>
-						<button class="btn btn-outline-success">Login</button>
-
+						<button class="btn btn-outline-success">Sign-Up</button>
 					</div>
 				</form>
 			</div>

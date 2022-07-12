@@ -8,8 +8,9 @@
 <body>
 	<!-- View Students -->
 	<div class="container">
+		<h1 class="text-center">Students List</h1>
 
-		<table class="table table-hover">
+		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">Id</th>
@@ -35,6 +36,9 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<div class="container text-center">
+			<a href="home" class="btn btn-outline-Danger">Home</a>
+		</div>
 	</div>
 </body>
 </html>

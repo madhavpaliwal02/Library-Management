@@ -47,7 +47,7 @@
 							placeholder="Password" name="student-password" required>
 					</div>
 					<div class="container text-center">
-						<button class="btn btn-outline-success">Login</button>
+						<button class="btn btn-outline-success">Log-In</button>
 					</div>
 				</form>
 			</div>
@@ -107,7 +107,7 @@
 					</div>
 
 					<div class="container text-center">
-						<button class="btn btn-outline-success">Login</button>
+						<button class="btn btn-outline-success">Sign-Up</button>
 					</div>
 				</form>
 			</div>

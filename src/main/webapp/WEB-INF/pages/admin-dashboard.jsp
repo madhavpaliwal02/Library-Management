@@ -18,18 +18,19 @@
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
 				href='<c:url value='/viewLibrarians'> </c:url>' role="button">View
-				Librarians</a> <a class="btn btn-primary"
+				All Librarians</a> <a class="btn btn-primary"
 				href='<c:url value='/viewStudents'> </c:url>' role="button">View
-				Students</a> <a class="btn btn-primary"
+				All Students</a> <a class="btn btn-primary"
 				href='<c:url value='/viewBooks'> </c:url>' role="button">View
-				Books</a><a class="btn btn-primary"
+				All Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooks'> </c:url>' role="button">View
-				Issued Books</a>
+				All Issued Books</a>
 		</div>
-
-		
-
+		<div class="container text-center mt-5">
+			<a href="admin" class="btn btn-outline-Danger">Log-Out</a>
+			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
+	</div>
 
 
 

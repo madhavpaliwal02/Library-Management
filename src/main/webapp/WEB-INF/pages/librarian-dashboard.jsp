@@ -18,11 +18,11 @@
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
 				href='<c:url value='/viewStudents'></c:url>' role="button">View
-				Students</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooks'></c:url>' role="button">View
+				All Students</a> <a class="btn btn-primary"
+				href='<c:url value='/viewBooks'></c:url>' role="button">View All
 				Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
-				Issued Books</a>
+				All Issued Books</a>
 		</div>
 
 		<div class="container text-center mt-3">

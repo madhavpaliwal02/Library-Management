@@ -100,7 +100,7 @@ public class HomeCtrl {
 	}
 
 	// Librarian List
-	@RequestMapping("viewLibrarians")
+	@RequestMapping("/viewLibrarians")
 	public String viewLibrarians(Model m) {
 		
 		List<Librarian> list = this.librarianDao.getAllLibrarians();

@@ -1,5 +1,7 @@
 package com.library.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,21 +16,25 @@ public class Book {
 	private String name;
 	private String authorName;
 	private String description;
-	private int edition;
+	private String edition;
+	private Date date;
 
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(int id, String name, String authorName, String description, int edition) {
+
+	public Book(int id, String name, String authorName, String description, String edition, Date date) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.authorName = authorName;
 		this.description = description;
 		this.edition = edition;
+		this.date = date;
 	}
+
 
 	public int getId() {
 		return id;
@@ -62,13 +68,24 @@ public class Book {
 		this.description = description;
 	}
 
-	public int getEdition() {
+	public String getEdition() {
 		return edition;
 	}
 
-	public void setEdition(int edition) {
+	public void setEdition(String edition) {
 		this.edition = edition;
 	}
+	
+
+	public Date getDate() {
+		return date;
+	}
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 
 	@Override
 	public String toString() {

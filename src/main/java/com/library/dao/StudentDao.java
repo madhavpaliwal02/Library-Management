@@ -21,10 +21,10 @@ public class StudentDao {
 	public void addStudent(Student stu) {
 		this.hibernateTemplate.save(stu);
 	}
-
+	
 	// Get a student
-	public Student getStudent(String rollno) {
-		return (Student) this.hibernateTemplate.get(Student.class, rollno);
+	public Student getStudent(int sid) {
+		return (Student) this.hibernateTemplate.get(Student.class, sid);
 	}
 
 	// Get all students
@@ -34,7 +34,7 @@ public class StudentDao {
 
 	// delete a student
 	@Transactional
-	public void deleteStudent(String rollno) {
-		this.hibernateTemplate.delete(getStudent(rollno));
+	public void deleteStudent(int sid) {
+		this.hibernateTemplate.delete(getStudent(sid));
 	}
 }

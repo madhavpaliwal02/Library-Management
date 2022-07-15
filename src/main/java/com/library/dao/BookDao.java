@@ -10,26 +10,32 @@ import org.springframework.stereotype.Component;
 
 import com.library.entities.Book;
 
-
 @Component
 public class BookDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
-
-	// Create Book
+	
+	
+	// Add Book
 	@Transactional
 	public void addBook(Book book) {
 		this.hibernateTemplate.save(book);
 	}
-
+	
 	// Get a Book
 	public Book getBook(int bid) {
-		return (Book) this.hibernateTemplate.get(Book.class, bid);
+		return (Book)this.hibernateTemplate.get(Book.class, bid);
 	}
-
-	// Get all Books
+	
+	// Get All Books
 	public List<Book> getAllBooks() {
 		return (List<Book>) this.hibernateTemplate.loadAll(Book.class);
+	}
+	
+	// Delete a Book
+	@Transactional
+	public void deleteBook(int bid) {
+		this.hibernateTemplate.delete(getBook(bid));
 	}
 }

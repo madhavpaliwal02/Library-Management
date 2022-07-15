@@ -108,5 +108,4 @@ public class Student {
 				+ password + ", course=" + course + ", gender=" + gender + ", date=" + date + "]";
 	}
 
-	
 }

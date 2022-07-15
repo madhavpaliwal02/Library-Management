@@ -23,9 +23,10 @@ public class StudentCtrl {
 	/** Student - Controller */
 
 	// Student Home Page
-	@RequestMapping("/student")
+	@RequestMapping("/studentHome")
 	public String studentHome(Model m) {
-		m.addAttribute("title", "Student: Home Page ");
+		m.addAttribute("title", "Student: Home Page");
+		m.addAttribute("studentPage", "studentLoginForm");
 		return "student-home";
 	}
 
@@ -59,6 +60,16 @@ public class StudentCtrl {
 	@RequestMapping(value = "/loginStudent", method = RequestMethod.POST)
 	public String loginStudent(@ModelAttribute Student stu, Model m) {
 
+		// Verification
+//		List<Student> list = this.studentDao.getAllStudents();
+//		if (verification(list, stu)) {
+//			m.addAttribute("student", stu);
+//			
+//		}
+//		m.addAttribute("msg", "failed");
+//		m.addAttribute("title", "Student: Home Page");
+//		return "student-home";
+		
 		m.addAttribute("title", "Student DashBoard");
 		return "student-dashboard";
 	}
@@ -77,4 +88,16 @@ public class StudentCtrl {
 		RedirectView redView = new RedirectView();
 		return redView;
 	}
+
+	public boolean verification(List<Student> list, Student stu) {
+		boolean flag = false;
+
+		for (Student s : list) {
+			if (s.getEmail().equalsIgnoreCase(stu.getEmail()) && s.getPassword().equalsIgnoreCase(stu.getPassword()))
+				flag = true;
+		}
+
+		return flag;
+	}
+
 }

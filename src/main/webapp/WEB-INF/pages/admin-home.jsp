@@ -13,7 +13,7 @@
 		<h3 class="text-center">
 			<b>Admin Login Form</b>
 		</h3>
-		<form action="loginAdmin" method="post">
+		<form action="adminLogin" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"

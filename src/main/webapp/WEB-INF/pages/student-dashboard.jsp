@@ -16,17 +16,29 @@
 
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
-			<a class="btn btn-primary" href='<c:url value='/viewBooks'> </c:url>'
-				role="button">View Books</a> <a class="btn btn-primary"
-				href='<c:url value='/issueBook'> </c:url>' role="button">Issue
-				Book</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooks'> </c:url>' role="button">Return
+			<a class="btn btn-primary"
+				href='<c:url value='/viewBookStu'> </c:url>' role="button">View
+				Books</a> <a class="btn btn-primary"
+				href='<c:url value='/returnBook'> </c:url>' role="button">Return
 				Books</a>
 		</div>
 
+		<div class="row text-center">
+			<div class="col-5">
+				<h3 class="text-center">Personal Details</h3>
+				
+
+			</div>
+			<div class="col-5 offset-2">
+				<h3 class="text-center">Issued Books</h3>
+
+			</div>
+		</div>
+
+
 		<div class="container text-center mt-3">
-			<a href="studentLoginForm" class="btn btn-outline-Danger">Log-Out</a>
-			<a href="home" class="btn btn-outline-Danger">HOME</a>
+			<a href="studentHome" class="btn btn-outline-Danger">Log-Out</a> <a
+				href="home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 
 	</div>

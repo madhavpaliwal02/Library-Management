@@ -35,7 +35,7 @@
 			</tbody>
 		</table>
 		<div class="container text-center">
-			<a href="loginAdmin" class="btn btn-outline-warning">Back</a>
+			<a href="adminLogin" class="btn btn-outline-warning">Back</a>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

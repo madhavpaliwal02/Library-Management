@@ -1,9 +1,11 @@
 package com.library.entities;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class IssuedBook {
 
 	@Id
@@ -17,9 +19,8 @@ public class IssuedBook {
 		// TODO Auto-generated constructor stub
 	}
 
-	public IssuedBook(int id, int sid, int bid) {
+	public IssuedBook(int sid, int bid) {
 		super();
-		this.id = id;
 		this.sid = sid;
 		this.bid = bid;
 	}

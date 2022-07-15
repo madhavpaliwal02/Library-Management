@@ -24,6 +24,11 @@
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
+			<c:if test="${msg=='failed' }">
+				<div class="alert alert-danger text-center">
+					<c:out value="Invalid Credentials"></c:out>
+				</div>
+			</c:if>
 			<div class="alert alert-success text-center">
 				<c:out value="${msg }"></c:out>
 			</div>

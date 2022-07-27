@@ -63,6 +63,12 @@ public class LibrarianCtrl {
 		m.addAttribute("title", "Librarian DashBoard");
 		return "librarian-dashboard";
 	}
+	
+	// Librarian student view back
+	@RequestMapping("/viewStudentsLibrarianBack")
+	public String viewStudentsBack() {
+		return "librarian-dashboard";
+	}
 
 	// Librarian List
 	@RequestMapping("/viewLibrarians")
@@ -73,5 +79,7 @@ public class LibrarianCtrl {
 
 		return "view-librarians";
 	}
+	
+
 
 }

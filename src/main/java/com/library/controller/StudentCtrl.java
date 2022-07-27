@@ -19,6 +19,7 @@ public class StudentCtrl {
 
 	@Autowired
 	private StudentDao studentDao;
+	
 
 	/** Student - Controller */
 
@@ -59,28 +60,29 @@ public class StudentCtrl {
 	// Student Login Handling
 	@RequestMapping(value = "/loginStudent", method = RequestMethod.POST)
 	public String loginStudent(@ModelAttribute Student stu, Model m) {
-
-		// Verification
-//		List<Student> list = this.studentDao.getAllStudents();
-//		if (verification(list, stu)) {
-//			m.addAttribute("student", stu);
-//			
-//		}
-//		m.addAttribute("msg", "failed");
-//		m.addAttribute("title", "Student: Home Page");
-//		return "student-home";
 		
 		m.addAttribute("title", "Student DashBoard");
 		return "student-dashboard";
 	}
 
-	// Students List
-	@RequestMapping("/viewStudents")
-	public String viewStudents(Model m) {
-		List<Student> list = this.studentDao.getAllStudents();
-		m.addAttribute("student", list);
+	
+	// Admin View Students
+	@RequestMapping("/viewStudentsAdmin")
+	public String viewStudentsAdmin(Model m) {
+		m.addAttribute("user", "admin");
+		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}
+	
+	// Librarian View Students
+	@RequestMapping("/viewStudentsLibrarian")
+	public String viewStudentsLibrarian(Model m) {
+		m.addAttribute("user", "librarian");
+		m.addAttribute("value", "viewStudentsLibrarianBack");
+		m.addAttribute("student", this.studentDao.getAllStudents());
+		return "view-students";
+	}
+
 
 	// Student Delete
 	@RequestMapping("/deleteStudent")

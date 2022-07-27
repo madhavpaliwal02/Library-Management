@@ -20,9 +20,9 @@
 				All Librarians</a> <a class="btn btn-primary"
 				href='<c:url value='/viewStudentsAdmin'> </c:url>' role="button">View
 				All Students</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooks'> </c:url>' role="button">View
+				href='<c:url value='/viewBooksAdmin'> </c:url>' role="button">View
 				All Books</a> <a class="btn btn-primary"
-				href='<c:url value='/viewIssuedBooks'> </c:url>' role="button">View
+				href='<c:url value='/viewIssuedBooksAdmin'> </c:url>' role="button">View
 				All Issued Books</a>
 		</div>
 		<div class="container text-center mt-5">
@@ -31,10 +31,5 @@
 		</div>
 	</div>
 
-
-
-
-
-	</div>
 </body>
 </html>

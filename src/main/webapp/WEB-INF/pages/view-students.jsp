@@ -37,6 +37,13 @@
 			</tbody>
 		</table>
 		<div class="container text-center">
+
+			<c:if test="${user=='admin' }">
+				<a href="${pageContext.request.contextPath }/adminLogin" class="btn btn-outline-warning">Back</a>
+			</c:if>
+			<c:if test="${user=='librarian' }">
+				<a href="${pageContext.request.contextPath }/${value }" class="btn btn-outline-warning">Back</a>
+			</c:if>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

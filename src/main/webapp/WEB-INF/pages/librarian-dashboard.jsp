@@ -16,7 +16,7 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='/viewStudents'></c:url>' role="button">View
+				href='<c:url value='/viewStudentsLibrarian'></c:url>' role="button">View
 				All Students</a> <a class="btn btn-primary"
 				href='<c:url value='/addBookForm'></c:url>' role="button">Add
 				Book</a> <a class="btn btn-primary"

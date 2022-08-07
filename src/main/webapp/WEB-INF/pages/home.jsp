@@ -24,10 +24,10 @@
 			</div>
 
 			<div class="card text-center" style="width: 12rem;">
-				<a href="librarianHome" class="mt-3"><i
+				<a href="librarianLogin" class="mt-3"><i
 					class="fa-solid fa-5x fa-user-graduate"></i></a>
 				<div class="card-body">
-					<a href="librarianHome" class="card-text">Librarian</a>
+					<a href="librarianLogin" class="card-text">Librarian</a>
 				</div>
 			</div>
 

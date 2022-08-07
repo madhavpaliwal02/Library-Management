@@ -26,7 +26,7 @@
 				All Issued Books</a>
 		</div>
 
-		<!-- Condition - success -->
+		<!-- Condition - Success Book -->
 		<c:if test="${not empty msg }">
 			<div class="alert alert-success text-center mt-3">
 				<c:out value="${msg }"></c:out>
@@ -79,7 +79,7 @@
 		</c:if>
 
 		<div class="container text-center mt-3">
-			<a href="librarianLoginForm" class="btn btn-outline-Danger">Log-Out</a>
+			<a href="librarianLogin" class="btn btn-outline-Warning">Log-Out</a>
 			<a href="home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 	</div>

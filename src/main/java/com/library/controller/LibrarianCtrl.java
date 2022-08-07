@@ -21,45 +21,41 @@ public class LibrarianCtrl {
 	private LibrarianDao librarianDao;
 
 	/** Librarian - Controller */
-
-	// Librarian Home Page
-	@RequestMapping("/librarianHome")
-	public String librarianHome(Model m) {
+	
+	@ModelAttribute
+	public void commonModel(Model m) {
 		m.addAttribute("title", "Librarian : Home Page");
-		m.addAttribute("librarianPage", "librarianLoginForm");
-		return "librarian-home";
 	}
 
+
+	// Librarian Home Page
 	// Librarian Login Form
-	@RequestMapping("/librarianLoginForm")
-	public String librarianLoginForm(Model m) {
-		m.addAttribute("title", "Librarian : Home Page");
-		m.addAttribute("librarianPage", "librarianLoginForm");
-		return "librarian-home";
+	@RequestMapping("/librarianLogin")
+	public String librarianLogin(Model m) {
+		m.addAttribute("librarianPage", "librarianLogin");
+		return "librarian-login";
 	}
 
 	// Librarian SignUp Form
 	@RequestMapping("/librarianSignupForm")
 	public String librarianSignupForm(Model m) {
-		m.addAttribute("title", "Librarian : Home Page");
 		m.addAttribute("librarianPage", "librarianSignupForm");
-		return "librarian-home";
+		return "librarian-login";
 	}
-
+	
 	// Librarian Signup Added
-	@RequestMapping(value = "/signupLibrarian", method = RequestMethod.POST)
-	public String signupLibrarian(@ModelAttribute Librarian lib, Model m) {
+	@RequestMapping(value = "/librarianSignup", method = RequestMethod.POST)
+	public String librarianSignup(@ModelAttribute Librarian lib, Model m) {
 		lib.setDate(new Date());
 		this.librarianDao.addLibrarian(lib);
 		m.addAttribute("msg", "Success");
-		m.addAttribute("title", "Librarian : DashBoard");
 		m.addAttribute("librarianPage", "librarianLoginForm");
 		return "librarian-home";
 	}
 
 	// Librarian Login Handling
-	@RequestMapping(value = "/loginLibrarian", method = RequestMethod.POST)
-	public String loginLibrarian(@ModelAttribute Librarian lib, Model m) {
+	@RequestMapping(value = "/librarianDashboard", method = RequestMethod.POST)
+	public String librarianDashboard(@ModelAttribute Librarian lib, Model m) {
 		m.addAttribute("title", "Librarian DashBoard");
 		return "librarian-dashboard";
 	}
@@ -73,7 +69,6 @@ public class LibrarianCtrl {
 	// Librarian List
 	@RequestMapping("/viewLibrarians")
 	public String viewLibrarians(Model m) {
-
 		List<Librarian> list = this.librarianDao.getAllLibrarians();
 		m.addAttribute("librarian", list);
 

@@ -14,7 +14,7 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='/librarianLoginForm'></c:url>' role="button">Login
+				href='<c:url value='/librarianLogin'></c:url>' role="button">Login
 				Librarian</a> <a class="btn btn-primary"
 				href='<c:url value='/librarianSignupForm'></c:url>' role="button">SignUp
 				Librarian</a>
@@ -28,12 +28,12 @@
 		</c:if>
 
 		<!-- Log In Page -->
-		<c:if test="${librarianPage=='librarianLoginForm' }">
+		<c:if test="${librarianPage=='librarianLogin' }">
 			<div class="container mt-5">
 				<h3 class="text-center">
 					<b>Librarian Login Form</b>
 				</h3>
-				<form action="loginLibrarian" method="post">
+				<form action="librarianDashboard" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
@@ -59,7 +59,7 @@
 				<h3 class="text-center">
 					<b>Librarian Signup Form</b>
 				</h3>
-				<form action="signupLibrarian" method="post">
+				<form action="librarianSignup" method="post">
 
 					<div class="form-row">
 						<!-- Librarian Name -->
@@ -114,7 +114,7 @@
 		</c:if>
 
 		<div class="container text-center mt-3">
-			<a href="home" class="btn btn-outline-Danger">HOME</a>
+			<a href="home" class="btn btn-outline-Warning">Back</a>
 		</div>
 	</div>
 </body>

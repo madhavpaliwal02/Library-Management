@@ -26,7 +26,7 @@
 				All Issued Books</a>
 		</div>
 		<div class="container text-center mt-5">
-			<a href="adminHome" class="btn btn-outline-Danger">Log-Out</a>
+			<a href="adminLogin" class="btn btn-outline-Danger">Log-Out</a>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

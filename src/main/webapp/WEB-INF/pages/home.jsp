@@ -16,10 +16,10 @@
 
 		<div class="row md-6 offset-3 mt-5">
 			<div class="card text-center" style="width: 12rem;">
-				<a href="adminHome" class="mt-3"><i
+				<a href="adminLogin" class="mt-3"><i
 					class="fa-solid fa-5x fa-user-graduate"></i></a>
 				<div class="card-body">
-					<a href="adminHome" class="card-text">Admin</a>
+					<a href="adminLogin" class="card-text">Admin</a>
 				</div>
 			</div>
 

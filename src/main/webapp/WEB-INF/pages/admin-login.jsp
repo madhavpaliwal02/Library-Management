@@ -13,18 +13,19 @@
 		<h3 class="text-center">
 			<b>Admin Login Form</b>
 		</h3>
-		<form action="adminLogin" method="post">
+		<form action="adminDashboard" method="post">
+		<p class="text-center alert alert-danger">${msg }</p>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"
-					placeholder="Enter email" name="admin-email" required> <small
+					placeholder="Enter email" name="email" required> <small
 					id="emailHelp" class="form-text text-muted">We'll never
 					share your email with anyone else.</small>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label> <input
 					type="password" class="form-control" id="exampleInputPassword1"
-					placeholder="Password" name="admin-password" required>
+					placeholder="Password" name="password" required>
 			</div>
 			<div class="container text-center">
 				<a href="home" class="btn btn-outline-Danger">Back</a>

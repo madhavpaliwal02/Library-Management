@@ -19,6 +19,7 @@
 					<th scope="col">Department</th>
 					<th scope="col">Gender</th>
 					<th scope="col">Date</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,12 +31,18 @@
 						<td>${lib.department }</td>
 						<td>${lib.gender }</td>
 						<td>${lib.date }</td>
+						<td><a href="deleteLibrarian/${lib.id }"> <i
+								class="fas fa-trash-can text-danger" style="font-size: 25px">
+							</i>
+						</a> <a href="updateLibrarian/${lib.id }"> <i class="fas fa-pen"
+								style="font-size: 25px"> </i>
+						</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container text-center">
-			<a href="adminLogin" class="btn btn-outline-warning">Back</a>
+			<a href="adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

@@ -14,7 +14,7 @@
 			<b>Admin Login Form</b>
 		</h3>
 		<form action="adminDashboard" method="post">
-		<p class="text-center alert alert-danger">${msg }</p>
+		<c:if test="${msg!='' }"><p class="text-center alert alert-danger">${msg }</p></c:if>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"

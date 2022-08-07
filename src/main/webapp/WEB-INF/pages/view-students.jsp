@@ -20,6 +20,7 @@
 					<th scope="col">Course</th>
 					<th scope="col">Gender</th>
 					<th scope="col">Date</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,6 +33,12 @@
 						<td>${stu.course }</td>
 						<td>${stu.gender }</td>
 						<td>${stu.date }</td>
+						<td><a href="deleteStudent/${stu.id }"> <i
+								class="fas fa-trash-can text-danger" style="font-size: 25px">
+							</i>
+						</a> <a href="updateStudent/${stu.id }"> <i class="fas fa-pen"
+								style="font-size: 25px"> </i>
+						</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -39,10 +46,12 @@
 		<div class="container text-center">
 
 			<c:if test="${user=='admin' }">
-				<a href="${pageContext.request.contextPath }/adminLogin" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/adminDashboardBack"
+					class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian' }">
-				<a href="${pageContext.request.contextPath }/${value }" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/${value }"
+					class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>

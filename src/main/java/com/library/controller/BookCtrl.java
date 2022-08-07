@@ -76,7 +76,7 @@ public class BookCtrl {
 		m.addAttribute("book", list);
 		m.addAttribute("StudentId", studentId);
 		m.addAttribute("viewBook", "viewBookStudent");
-		m.addAttribute("back", "librarian-dashboard");
+		m.addAttribute("back", "student-dashboard");
 		return "view-books";
 	}
 }

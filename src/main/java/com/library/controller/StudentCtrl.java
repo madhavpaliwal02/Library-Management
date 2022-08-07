@@ -1,7 +1,6 @@
 package com.library.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +59,7 @@ public class StudentCtrl {
 	// Student Login Handling
 	@RequestMapping(value = "/loginStudent", method = RequestMethod.POST)
 	public String loginStudent(@ModelAttribute Student stu, Model m) {
+		// Verification 
 		
 		m.addAttribute("title", "Student DashBoard");
 		return "student-dashboard";
@@ -78,10 +78,16 @@ public class StudentCtrl {
 	@RequestMapping("/viewStudentsLibrarian")
 	public String viewStudentsLibrarian(Model m) {
 		m.addAttribute("user", "librarian");
-		m.addAttribute("value", "viewLibrarianBack");
+		m.addAttribute("value", "librarianDashboardBack");
 		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}
+	
+	// Student Login Handling
+		@RequestMapping("/studentDashboardBack")
+		public String studentDashboardBack() {
+			return "student-dashboard";
+		}
 
 
 	// Student Delete
@@ -90,16 +96,6 @@ public class StudentCtrl {
 		RedirectView redView = new RedirectView();
 		return redView;
 	}
-
-	public boolean verification(List<Student> list, Student stu) {
-		boolean flag = false;
-
-		for (Student s : list) {
-			if (s.getEmail().equalsIgnoreCase(stu.getEmail()) && s.getPassword().equalsIgnoreCase(stu.getPassword()))
-				flag = true;
-		}
-
-		return flag;
-	}
+	
 
 }

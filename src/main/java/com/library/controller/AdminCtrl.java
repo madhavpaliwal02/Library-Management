@@ -18,6 +18,7 @@ public class AdminCtrl {
 	@RequestMapping("/adminLogin")
 	public String adminLogin(Model m) {
 		m.addAttribute("title", "Admin : Login Page");
+		m.addAttribute("msg", "");
 		return "admin-login";
 	}
 
@@ -25,15 +26,18 @@ public class AdminCtrl {
 	@RequestMapping(value = "/adminDashboard", method = RequestMethod.POST)
 	public String adminDashboard(@ModelAttribute User u, Model m) {
 		// Verification 
-		if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
-			m.addAttribute("msg", "Invalid Credentials");
-			return "admin-login";
-		}
+//		if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
+//			m.addAttribute("msg", "Invalid Credentials");
+//			return "admin-login";
+//		}
 		m.addAttribute("title", "Admin : DashBoard");
 		return "admin-dashboard";
-		
 	}
 	
+	@RequestMapping("/adminDashboardBack")
+	public String adminDashboardBack() {
+		return "admin-dashboard";
+	}
 	
 	
 }

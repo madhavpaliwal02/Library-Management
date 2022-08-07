@@ -78,7 +78,7 @@ public class StudentCtrl {
 	@RequestMapping("/viewStudentsLibrarian")
 	public String viewStudentsLibrarian(Model m) {
 		m.addAttribute("user", "librarian");
-		m.addAttribute("value", "viewStudentsLibrarianBack");
+		m.addAttribute("value", "viewLibrarianBack");
 		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}

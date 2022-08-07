@@ -22,7 +22,9 @@ public class BookCtrl {
 
 	@Autowired
 	private BookDao bookDao;
-	
+
+	List<Book> list = null;
+
 	// Add Book Form
 	@RequestMapping("/addBookForm")
 	public String addBookForm(Model m) {
@@ -49,20 +51,32 @@ public class BookCtrl {
 
 	// Update Book
 
-	// Display Books
-	@RequestMapping("/viewBooks")
-	public String viewBooks(Model m) {
-		List<Book> list = this.bookDao.getAllBooks();
+	// Display Books Admin
+	@RequestMapping("/viewBooksAdmin")
+	public String viewBooksAdmin(Model m) {
+		list = this.bookDao.getAllBooks();
 		m.addAttribute("book", list);
+		m.addAttribute("back", "admin-dashboard");
 		return "view-books";
-	} 
-	
-	// Display Books Students
-	@RequestMapping("/viewBookStu")
-	public String viewBooksStudent(Model m) {
-		List<Book> list = this.bookDao.getAllBooks();
+	}
+
+	// Display Books Librarian
+	@RequestMapping("/viewBooksLibrarian")
+	public String viewBooksLibrarian(Model m) {
+		list = this.bookDao.getAllBooks();
 		m.addAttribute("book", list);
+		m.addAttribute("back", "librarian-dashboard");
+		return "view-books";
+	}
+
+	// Display Books Students
+	@RequestMapping("/viewBooksStudent/{studentId}")
+	public String viewBooksStudent(@PathVariable int studentId , Model m) {
+		list = this.bookDao.getAllBooks();
+		m.addAttribute("book", list);
+		m.addAttribute("StudentId", studentId);
 		m.addAttribute("viewBook", "viewBookStudent");
+		m.addAttribute("back", "librarian-dashboard");
 		return "view-books";
 	}
 }

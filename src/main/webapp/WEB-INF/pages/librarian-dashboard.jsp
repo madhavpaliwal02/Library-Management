@@ -20,7 +20,7 @@
 				All Students</a> <a class="btn btn-primary"
 				href='<c:url value='/addBookForm'></c:url>' role="button">Add
 				Book</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooks'></c:url>' role="button">View All
+				href='<c:url value='/viewBooksLibrarian'></c:url>' role="button">View All
 				Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
 				All Issued Books</a>

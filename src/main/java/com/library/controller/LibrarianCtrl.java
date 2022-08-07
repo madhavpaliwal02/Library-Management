@@ -64,8 +64,8 @@ public class LibrarianCtrl {
 		return "librarian-dashboard";
 	}
 	
-	// Librarian student view back
-	@RequestMapping("/viewStudentsLibrarianBack")
+	// Librarian student view back - used in BookCtrl
+	@RequestMapping("/viewLibrarianBack")
 	public String viewStudentsBack() {
 		return "librarian-dashboard";
 	}

@@ -38,19 +38,39 @@
 						<td>${book.edition}</td>
 						<td>${book.description }</td>
 						<td>${book.date }</td>
-						<c:if test="${viewBook!= 'viewBookStudent' }">
-							<td><a href="deleteBook/${book.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
-								</i>
-							</a> <a href="updateBook/${book.id }"> <i class="fas fa-pen"
-									style="font-size: 25px"> </i>
-							</a></td>
-						</c:if>
+						<c:choose>
+							<c:when test="${viewBook!= 'viewBooksStudent' }">
+								<td><a href="deleteBook/${book.id }"> <i
+										class="fas fa-trash-can text-danger" style="font-size: 25px">
+									</i>
+								</a> <a href="updateBook/${book.id }"> <i class="fas fa-pen"
+										style="font-size: 25px"> </i>
+								</a></td>
+							</c:when>
+							<c:otherwise>
+								<td><a href="issueBook/${StudentId }/${book.id }"> <i
+										class="fas fa-trash-can" style="font-size: 25px">
+									</i>
+								</a> </td>
+							</c:otherwise>
+							
+
+						</c:choose>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container text-center">
+			<c:if test="${back == 'admin-dashboard'  }">
+				<a href="adminLogin" class="btn btn-outline-warning">Back</a>
+			</c:if>
+			<c:if test="${back == 'librarian-dashboard'  }">
+				<a href="viewLibrarianBack" class="btn btn-outline-warning">Back</a>
+			</c:if>
+			<c:if test="${back == 'student-dashboard'  }">
+				<a href="loginStudent" class="btn btn-outline-warning">Back</a>
+			</c:if>
+
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

@@ -80,13 +80,5 @@ public class BookCtrl {
 		return "view-books";
 	}
 	
-	// Issue Book by Student
-	@RequestMapping("/issuedBook/{studentId}/{bookId}")
-	public void issuedBook() {
-		
-	}
-	
-	
-	
 	
 }

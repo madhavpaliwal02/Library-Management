@@ -1,5 +1,7 @@
 package com.library.entities;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +11,11 @@ import javax.persistence.Id;
 public class IssuedBook {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.AUTO)
 	private int id;
 	private int sid;
 	private int bid;
+	private Date date;
 
 	public IssuedBook() {
 		super();
@@ -49,9 +52,19 @@ public class IssuedBook {
 		this.bid = bid;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Override
 	public String toString() {
-		return "IssuedBook [id=" + id + ", sid=" + sid + ", bid=" + bid + "]";
+		return "IssuedBook [id=" + id + ", sid=" + sid + ", bid=" + bid + ", date=" + date + "]";
 	}
+
+	
 
 }

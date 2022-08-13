@@ -74,9 +74,19 @@ public class BookCtrl {
 	public String viewBooksStudent(@PathVariable int studentId , Model m) {
 		list = this.bookDao.getAllBooks();
 		m.addAttribute("book", list);
-		m.addAttribute("StudentId", studentId);
+		m.addAttribute("studentId", studentId);
 		m.addAttribute("viewBook", "viewBookStudent");
 		m.addAttribute("back", "student-dashboard");
 		return "view-books";
 	}
+	
+	// Issue Book by Student
+	@RequestMapping("/issuedBook/{studentId}/{bookId}")
+	public void issuedBook() {
+		
+	}
+	
+	
+	
+	
 }

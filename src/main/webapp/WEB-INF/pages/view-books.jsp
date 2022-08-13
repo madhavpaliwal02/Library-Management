@@ -48,7 +48,7 @@
 								</a></td>
 							</c:when>
 							<c:otherwise>
-								<td><a href="issueBook/${stu.id }/${book.id }"> <i
+								<td><a href="issuedBook/${studentId }/${book.id }"> <i
 										class="fas fa-trash-can" style="font-size: 25px">
 									</i>
 								</a> </td>

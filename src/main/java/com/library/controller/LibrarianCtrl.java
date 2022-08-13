@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.dao.LibrarianDao;
 import com.library.entities.Librarian;
+import com.library.entities.User;
 
 @Controller
 public class LibrarianCtrl {
@@ -22,6 +23,7 @@ public class LibrarianCtrl {
 
 	/** Librarian - Controller */
 	
+	// Common Model Attribute
 	@ModelAttribute
 	public void commonModel(Model m) {
 		m.addAttribute("title", "Librarian : Home Page");
@@ -55,7 +57,16 @@ public class LibrarianCtrl {
 
 	// Librarian Login Handling
 	@RequestMapping(value = "/librarianDashboard", method = RequestMethod.POST)
-	public String librarianDashboard(@ModelAttribute Librarian lib, Model m) {
+	public String librarianDashboard(@ModelAttribute User u, Model m) {
+		// Verification 
+//		List<Librarian> lib = this.librarianDao.getAllLibrarians();
+//		for(Librarian l : lib) {
+//			if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
+//				m.addAttribute("msg", "Invalid Credentials");
+//				return "admin-login";
+//			}
+//		}
+		
 		m.addAttribute("title", "Librarian DashBoard");
 		return "librarian-dashboard";
 	}

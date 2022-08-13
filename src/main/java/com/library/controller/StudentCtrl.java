@@ -1,6 +1,7 @@
 package com.library.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.StudentDao;
+import com.library.entities.Librarian;
 import com.library.entities.Student;
+import com.library.entities.User;
 
 @Controller
 public class StudentCtrl {
@@ -21,47 +24,54 @@ public class StudentCtrl {
 	
 
 	/** Student - Controller */
-
-	// Student Home Page
-	@RequestMapping("/studentHome")
-	public String studentHome(Model m) {
+	
+	// Common Model Attribute
+	@ModelAttribute
+	public void commonModel(Model m) {
 		m.addAttribute("title", "Student: Home Page");
-		m.addAttribute("studentPage", "studentLoginForm");
-		return "student-home";
 	}
 
+	// Student Home Page
 	// Student Login Form
-	@RequestMapping("/studentLoginForm")
-	public String studentLoginForm(Model m) {
+	@RequestMapping("/studentLogin")
+	public String studentLogin(Model m) {
 		m.addAttribute("studentPage", "studentLoginForm");
-		return "student-home";
+		return "student-login";
 	}
 
 	// Student SignUp Form
 	@RequestMapping("/studentSignupForm")
-	public String studentLSignupForm(Model m) {
+	public String studentSignupForm(Model m) {
 		m.addAttribute("studentPage", "studentSignupForm");
-		return "student-home";
+		return "student-login";
 	}
 
 	// Student Signup Added
-	@RequestMapping(value = "/signupStudent", method = RequestMethod.POST)
-	public String signupStudent(@ModelAttribute Student stu, Model m) {
+	@RequestMapping(value = "/studentSignup", method = RequestMethod.POST)
+	public String studentSignup(@ModelAttribute Student stu, Model m) {
 		stu.setDate(new Date());
 		this.studentDao.addStudent(stu);
 		System.out.println(stu);
 		m.addAttribute("studentPage", "studentLoginForm");
 		m.addAttribute("msg", "Success");
 
-		return "student-home";
+		return "student-login";
 	}
 
 	// Student Login Handling
-	@RequestMapping(value = "/loginStudent", method = RequestMethod.POST)
-	public String loginStudent(@ModelAttribute Student stu, Model m) {
+	@RequestMapping(value = "/studentDashboard", method = RequestMethod.POST)
+	public String studentDashboard(@ModelAttribute User user, Model m) {
 		// Verification 
+//		List<Student> stu = this.studentDao.getAllStudents();
+//		for(Student s : stu) {
+//			if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
+//				m.addAttribute("msg", "Invalid Credentials");
+//				return "admin-login";
+//			}
+//		}
 		
 		m.addAttribute("title", "Student DashBoard");
+//		m.addAttribute("stu", user);	// name has been set in dashboard
 		return "student-dashboard";
 	}
 

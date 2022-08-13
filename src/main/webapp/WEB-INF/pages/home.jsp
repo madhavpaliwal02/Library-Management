@@ -32,10 +32,10 @@
 			</div>
 
 			<div class="card text-center" style="width: 12rem;">
-				<a href="studentHome" class="mt-3"><i
+				<a href="studentLogin" class="mt-3"><i
 					class="fa-solid fa-5x fa-user-graduate"></i></a>
 				<div class="card-body">
-					<a href="studentHome" class="card-text">Student</a>
+					<a href="studentLogin" class="card-text">Student</a>
 				</div>
 			</div>
 		</div>

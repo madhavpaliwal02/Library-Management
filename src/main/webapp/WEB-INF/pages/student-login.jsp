@@ -17,7 +17,7 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
 			<a class="btn btn-primary"
-				href='<c:url value='/studentLoginForm'></c:url>' role="button">LogIn</a>
+				href='<c:url value='/studentLogin'></c:url>' role="button">LogIn</a>
 			<a class="btn btn-primary"
 				href='<c:url value='/studentSignupForm'></c:url>' role="button">SignUp</a>
 		</div>
@@ -40,18 +40,18 @@
 				<h3 class="text-center">
 					<b>Student Login Form</b>
 				</h3>
-				<form action="loginStudent" method="post">
+				<form action="studentDashboard" method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
-							placeholder="Enter email" name="student-email" required>
+							placeholder="Enter email" name="email" required>
 						<small id="emailHelp" class="form-text text-muted">We'll
 							never share your email with anyone else.</small>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label> <input
 							type="password" class="form-control" id="exampleInputPassword1"
-							placeholder="Password" name="student-password" required>
+							placeholder="Password" name="password" required>
 					</div>
 					<div class="container text-center">
 						<a href="home" class="btn btn-outline-Danger">Back</a>
@@ -67,7 +67,7 @@
 				<h3 class="text-center">
 					<b>Student Signup Form</b>
 				</h3>
-				<form action="signupStudent" method="post">
+				<form action="studentSignup" method="post">
 
 					<div class="form-row">
 						<!-- Student Name -->
@@ -126,7 +126,6 @@
 				</form>
 			</div>
 		</c:if>
-
 
 	</div>
 </body>

@@ -28,7 +28,7 @@
 			<c:if test="${not empty msg }">
 				<c:if test="${msg == 'failed' }">
 					<div class="alert alert-danger text-center">
-						<c:out value="Invalid Credentials" />
+						<c:out value="Invalid Credentials ! Please Try Again" />
 					</div>
 				</c:if>
 				<c:if test="${msg != 'failed' }">

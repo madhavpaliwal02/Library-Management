@@ -47,7 +47,7 @@ public class StudentCtrl {
 		return "student-login";
 	}
 
-	// Student Signup Added
+	// Student Signup - Registering
 	@RequestMapping(value = "/studentSignup", method = RequestMethod.POST)
 	public String studentSignup(@ModelAttribute Student stu, Model m) {
 		student = this.studentDao.getAllStudents();
@@ -75,7 +75,7 @@ public class StudentCtrl {
 	public String studentDashboard(@ModelAttribute User u, Model m) {
 		// Verification
 		student = this.studentDao.getAllStudents();
-		
+
 		// If user is existing student
 		for (Student s : student) {
 			if (u.getEmail().equals(s.getEmail()) && u.getPassword().equals(s.getPassword())) {
@@ -84,7 +84,7 @@ public class StudentCtrl {
 				return "student-dashboard";
 			}
 		}
-		
+
 		// If student not exists
 		m.addAttribute("msg", "failed");
 		m.addAttribute("studentPage", "studentLoginForm");

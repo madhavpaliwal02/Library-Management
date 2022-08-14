@@ -17,16 +17,17 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
 			<a class="btn btn-primary"
-				href='<c:url value='/viewBooksStudent/24'> </c:url>' role="button">View
+				href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>' role="button">View
 				Books</a> <a class="btn btn-primary"
 				href='<c:url value='/returnBook'> </c:url>' role="button">Return
 				Books</a>
 		</div>
 
-		<div class="row text-center">
+		<div class="row text-center mt-4">
+			<!-- Personal Details -->
 			<div class="col-5">
 				<h3 class="text-center">Personal Details</h3>
-				<table class="table table-hover text-center">
+				<table class="table table-hover">
 					<tr>
 						<td>Id:</td>
 						<td>${stu.id }</td>
@@ -59,6 +60,8 @@
 
 
 			</div>
+			
+			<!-- Issued Books -->
 			<div class="col-5 offset-2">
 				<h3 class="text-center">Issued Books</h3>
 				<div class="container">
@@ -88,7 +91,7 @@
 
 
 		<div class="container text-center mt-3">
-			<a href="studentHome" class="btn btn-outline-Danger">Log-Out</a> <a
+			<a href="studentLogin" class="btn btn-outline-Danger">Log-Out</a> <a
 				href="home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 

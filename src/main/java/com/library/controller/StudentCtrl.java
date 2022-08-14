@@ -21,10 +21,11 @@ public class StudentCtrl {
 
 	@Autowired
 	private StudentDao studentDao;
-	
+
+	private List<Student> student = null;
 
 	/** Student - Controller */
-	
+
 	// Common Model Attribute
 	@ModelAttribute
 	public void commonModel(Model m) {
@@ -49,33 +50,47 @@ public class StudentCtrl {
 	// Student Signup Added
 	@RequestMapping(value = "/studentSignup", method = RequestMethod.POST)
 	public String studentSignup(@ModelAttribute Student stu, Model m) {
+		student = this.studentDao.getAllStudents();
+
+		// If the user is an existing student
+		for (Student s : student) {
+			if (stu.getEmail().equals(s.getEmail()) && stu.getName().equals(s.getName())) {
+				m.addAttribute("msg", "failed");
+				m.addAttribute("studentPage", "studentSignupForm");
+				return "student-login";
+			}
+		}
+
+		// If the user is new student
 		stu.setDate(new Date());
 		this.studentDao.addStudent(stu);
-		System.out.println(stu);
+//		System.out.println(stu);
 		m.addAttribute("studentPage", "studentLoginForm");
 		m.addAttribute("msg", "Success");
-
 		return "student-login";
 	}
 
 	// Student Login Handling
 	@RequestMapping(value = "/studentDashboard", method = RequestMethod.POST)
-	public String studentDashboard(@ModelAttribute User user, Model m) {
-		// Verification 
-//		List<Student> stu = this.studentDao.getAllStudents();
-//		for(Student s : stu) {
-//			if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
-//				m.addAttribute("msg", "Invalid Credentials");
-//				return "admin-login";
-//			}
-//		}
+	public String studentDashboard(@ModelAttribute User u, Model m) {
+		// Verification
+		student = this.studentDao.getAllStudents();
 		
-		m.addAttribute("title", "Student DashBoard");
-//		m.addAttribute("stu", user);	// name has been set in dashboard
-		return "student-dashboard";
+		// If user is existing student
+		for (Student s : student) {
+			if (u.getEmail().equals(s.getEmail()) && u.getPassword().equals(s.getPassword())) {
+				m.addAttribute("stu", s); // name has been set in dashboard
+				m.addAttribute("title", "Student DashBoard");
+				return "student-dashboard";
+			}
+		}
+		
+		// If student not exists
+		m.addAttribute("msg", "failed");
+		m.addAttribute("studentPage", "studentLoginForm");
+		return "student-login";
 	}
 
-	
 	// Admin View Students
 	@RequestMapping("/viewStudentsAdmin")
 	public String viewStudentsAdmin(Model m) {
@@ -83,7 +98,7 @@ public class StudentCtrl {
 		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}
-	
+
 	// Librarian View Students
 	@RequestMapping("/viewStudentsLibrarian")
 	public String viewStudentsLibrarian(Model m) {
@@ -92,13 +107,12 @@ public class StudentCtrl {
 		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}
-	
-	// Student Login Handling
-		@RequestMapping("/studentDashboardBack")
-		public String studentDashboardBack() {
-			return "student-dashboard";
-		}
 
+	// Student Login Handling
+	@RequestMapping("/studentDashboardBack")
+	public String studentDashboardBack() {
+		return "student-dashboard";
+	}
 
 	// Student Delete
 	@RequestMapping("/deleteStudent")
@@ -106,6 +120,5 @@ public class StudentCtrl {
 		RedirectView redView = new RedirectView();
 		return redView;
 	}
-	
 
 }

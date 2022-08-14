@@ -10,6 +10,7 @@
 
 	<div class="container mt-3">
 
+		<!-- Heading -->
 		<h1 class="text-center">
 			Welcome To The <b>Student Page</b>
 		</h1>
@@ -23,16 +24,20 @@
 		</div>
 
 		<!-- Condition - success -->
-		<c:if test="${not empty msg }">
-			<c:if test="${msg=='failed' }">
-				<div class="alert alert-danger text-center">
-					<c:out value="Invalid Credentials"></c:out>
-				</div>
+		<div class="container mt-2">
+			<c:if test="${not empty msg }">
+				<c:if test="${msg == 'failed' }">
+					<div class="alert alert-danger text-center">
+						<c:out value="Invalid Credentials" />
+					</div>
+				</c:if>
+				<c:if test="${msg != 'failed' }">
+					<div class="alert alert-success text-center">
+						<c:out value="${msg }" />
+					</div>
+				</c:if>
 			</c:if>
-			<div class="alert alert-success text-center">
-				<c:out value="${msg }"></c:out>
-			</div>
-		</c:if>
+		</div>
 
 		<!-- Log In Page -->
 		<c:if test="${studentPage=='studentLoginForm' }">
@@ -44,9 +49,9 @@
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
-							placeholder="Enter email" name="email" required>
-						<small id="emailHelp" class="form-text text-muted">We'll
-							never share your email with anyone else.</small>
+							placeholder="Enter email" name="email" required> <small
+							id="emailHelp" class="form-text text-muted">We'll never
+							share your email with anyone else.</small>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label> <input

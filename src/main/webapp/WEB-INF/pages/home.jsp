@@ -11,7 +11,7 @@
 	<div class="container mt-3">
 
 		<h1 class="text-center">
-			Welcome To The <b><u>Hospital Management</u></b> System
+			Welcome To The <b>Library Management</b> System
 		</h1>
 
 		<div class="row md-6 offset-3 mt-5">

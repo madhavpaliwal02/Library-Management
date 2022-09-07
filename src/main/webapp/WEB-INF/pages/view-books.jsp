@@ -66,7 +66,7 @@
 				<a href="librarianDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${back == 'student-dashboard'  }">
-				<a href="${pageContext.request.contextPath }/studentDashboardBack"
+				<a href="${pageContext.request.contextPath }/studentDashboardBack/${studentId }"
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
 

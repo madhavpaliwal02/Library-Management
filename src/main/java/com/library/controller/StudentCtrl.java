@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
@@ -109,8 +110,9 @@ public class StudentCtrl {
 	}
 
 	// Student Login Handling
-	@RequestMapping("/studentDashboardBack")
-	public String studentDashboardBack() {
+	@RequestMapping("/studentDashboardBack/{stuId}")
+	public String studentDashboardBack(@PathVariable int stuId, Model m) {
+		m.addAttribute("stu", studentDao.getStudent(stuId));
 		return "student-dashboard";
 	}
 

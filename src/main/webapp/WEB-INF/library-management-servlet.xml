@@ -28,7 +28,7 @@
 	</bean>
 
 	<!-- Data source - local -->
-	<!-- <bean
+	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="ds">
 		<property name="driverClassName"
@@ -37,10 +37,10 @@
 			value="jdbc:mysql://:3306/librarymanagement" />
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
-	</bean> -->
+	</bean>
 	
 	<!-- Data source - server -->
-	<bean
+	<!-- <bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="ds">
 		<property name="driverClassName"
@@ -49,7 +49,7 @@
 			value="jdbc:mysql://library-management.cbtgefyqr2wr.us-west-2.rds.amazonaws.com:3306/librarymanagement" />
 		<property name="username" value="admin" />
 		<property name="password" value="admin123" />
-	</bean>  
+	</bean> -->  
 
 	<!-- LocalSessionFactoryBean -->
 	<bean
@@ -60,9 +60,9 @@
 		<property name="hibernateProperties">
 			<props>
 				<!-- local -->
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop> -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
 				<!-- server -->
-				 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop> 
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop> --> 
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>

@@ -75,7 +75,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${ibook }" var="book">
+							<c:forEach items="${iBook }" var="book">
 								<tr>
 									<th scope="row">${book.id }</th>
 									<td>${book.name }</td>
@@ -92,7 +92,7 @@
 
 		<div class="container text-center mt-3">
 			<a href="studentLogin" class="btn btn-outline-Danger">Log-Out</a> <a
-				href="home" class="btn btn-outline-Danger">HOME</a>
+				href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">HOME</a>
 		</div>
 
 	</div>

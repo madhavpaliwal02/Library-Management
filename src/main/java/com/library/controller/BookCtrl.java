@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.BookDao;
 import com.library.entities.Book;
+import com.library.entities.IssuedBook;
 
 @Controller
 public class BookCtrl {
@@ -80,5 +81,17 @@ public class BookCtrl {
 		return "view-books";
 	}
 	
+	// Get Books from IssuedBooks for a student
+	public List<Book> getIssuedBooks(int sid){
+		IssuedBookCtrl ibCtrl = new IssuedBookCtrl();
+		
+		List<IssuedBook> ib = ibCtrl.getIssuedBooks(sid);
+		
+		for(IssuedBook b : ib) {
+			list.add(bookDao.getBook(b.getBid()));
+		}
+		
+		return list;
+	}
 	
 }

@@ -50,7 +50,7 @@
 							<c:otherwise>
 								<td><a
 									href="${pageContext.request.contextPath }/issuedBook/${studentId }/${book.id }">
-										<i class="fas fa-trash-can" style="font-size: 25px"> </i>
+										<i class="fas fa-book" style="font-size: 25px"> </i>
 								</a></td>
 							</c:otherwise>
 						</c:choose>

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.StudentDao;
-import com.library.entities.Librarian;
 import com.library.entities.Student;
 import com.library.entities.User;
 
@@ -24,6 +23,8 @@ public class StudentCtrl {
 	private StudentDao studentDao;
 
 	private List<Student> student = null;
+	
+	BookCtrl bCtrl = new BookCtrl();
 
 	/** Student - Controller */
 
@@ -79,9 +80,14 @@ public class StudentCtrl {
 
 		// If user is existing student
 		for (Student s : student) {
+			// After Verifying Credentials
 			if (u.getEmail().equals(s.getEmail()) && u.getPassword().equals(s.getPassword())) {
-				m.addAttribute("stu", s); // name has been set in dashboard
+				// Adding Student as attribute
+				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
+				// Adding IssuedBook
+				m.addAttribute("iBook" , bCtrl.getIssuedBooks(s.getId()));
+				
 				return "student-dashboard";
 			}
 		}

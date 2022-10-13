@@ -88,10 +88,14 @@ public class BookCtrl {
 		List<IssuedBook> ib = ibCtrl.getIssuedBooks(sid);
 		
 		for(IssuedBook b : ib) {
-			list.add(bookDao.getBook(b.getBid()));
+//			list.add(bookDao.getBook(b.getBid()));
 		}
-		
 		return list;
+	}
+	
+	// Get A Book from Book Id
+	public Book getBookById(int bid) {
+		return bookDao.getBook(bid);
 	}
 	
 }

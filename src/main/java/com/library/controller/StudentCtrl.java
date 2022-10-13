@@ -86,7 +86,7 @@ public class StudentCtrl {
 				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
 				// Adding IssuedBook
-				m.addAttribute("iBook" , bCtrl.getIssuedBooks(s.getId()));
+//				m.addAttribute("iBook" , bCtrl.getIssuedBooks(s.getId()));
 				
 				return "student-dashboard";
 			}
@@ -127,6 +127,11 @@ public class StudentCtrl {
 	public RedirectView deleteStudent(Model m) {
 		RedirectView redView = new RedirectView();
 		return redView;
+	}
+	
+	// Get Student By Id
+	public Student getStudentById(int sid) {
+		return studentDao.getStudent(sid);
 	}
 
 }

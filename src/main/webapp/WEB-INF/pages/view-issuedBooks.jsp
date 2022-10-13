@@ -30,13 +30,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${book }" var="book">
+				<c:forEach items="${ibook }" var="book">
 					<tr>
 						<th scope="row">${book.id }</th>
-						<td>${book.name }</td>
-						<td>${book.authorName }</td>
-						<td>${book.edition}</td>
-						<td>${book.description }</td>
+						<td>${book.bName }</td>
+						<td>${book.bAuthName }</td>
+						<td>${book.sName}</td>
+						<td>${book.rollNo }</td>
+						<td>${book.sEmail }</td>
 						<td>${book.date }</td>
 						<%-- <c:choose>
 							<c:when test="${viewBook!= 'viewBookStudent' }">

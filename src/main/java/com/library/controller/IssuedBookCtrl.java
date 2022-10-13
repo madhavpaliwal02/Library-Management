@@ -13,32 +13,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.IssuedBookDao;
+import com.library.entities.Book;
 import com.library.entities.IssuedBook;
+import com.library.entities.Student;
 
 @Controller
 public class IssuedBookCtrl {
 
 	@Autowired
 	private IssuedBookDao issuedBookDao;
-	List<IssuedBook> ibook = null;
 
-//	private IssuedBook issuedBook;
+	List<IssuedBook> list = null;
 
 	// Issue Book by Student
-	@RequestMapping("/issuedBook/{studentId}/{bookId}")
-	public RedirectView issuedBook(@PathVariable int studentId, @PathVariable int bookId, HttpServletRequest request) {
-		IssuedBook ibook = new IssuedBook(studentId, bookId);
+	@RequestMapping("/issuedBook/{sid}/{bid}")
+	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
+		IssuedBook ibook = new IssuedBook();
+
+		BookCtrl bCtrl = new BookCtrl();
+		StudentCtrl sCtrl = new StudentCtrl();
+
+		Student s = sCtrl.getStudentById(sid);
+		Book b = bCtrl.getBookById(bid);
+
+//		ibook = new IssuedBook(b.getName(), b.getAuthorName(), s.getName(), s.getEmail(), s.getRollno(), new Date());
+		
+		ibook.setbName(b.getName());
+		ibook.setbAuthName(b.getAuthorName());
+		ibook.setsName(s.getName());
+		ibook.setsEmail(s.getEmail());
+		ibook.setRollNo(s.getRollno());
 		ibook.setDate(new Date());
+
 		this.issuedBookDao.addIssuedBook(ibook);
 
-		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{studentId}");
+		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{sid}");
 		return rd;
 	}
 
 	// Display all issue book
 	@RequestMapping("/viewIssuedBooks")
 	public String getAllIssuedBooks(Model m) {
-		List<IssuedBook> list = this.issuedBookDao.getAllIssuedBook();
+		list = this.issuedBookDao.getAllIssuedBook();
+
 		m.addAttribute("ibook", list);
 		return "view-issuedBooks";
 	}
@@ -50,10 +67,10 @@ public class IssuedBookCtrl {
 
 		// Filtering Records for a student
 		for (IssuedBook ib : temp) {
-			if (ib.getSid() == sid)
-				ibook.add(ib);
+//			if (ib.getSid() == sid)
+//				list.add(ib);
 		}
 		// Returning all records
-		return ibook;
+		return list;
 	}
 }

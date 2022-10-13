@@ -79,8 +79,8 @@
 		</c:if>
 
 		<div class="container text-center mt-3">
-			<a href="librarianLogin" class="btn btn-outline-Warning">Log-Out</a>
-			<a href="home" class="btn btn-outline-Danger">HOME</a>
+			<a href="librarianLogin" class="btn btn-outline-Danger">Log-Out</a>
+			<a href="home" class="btn btn-outline-Warning">HOME</a>
 		</div>
 	</div>
 </body>

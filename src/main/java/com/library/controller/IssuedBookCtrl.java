@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.library.dao.BookDao;
 import com.library.dao.IssuedBookDao;
+import com.library.dao.StudentDao;
 import com.library.entities.Book;
 import com.library.entities.IssuedBook;
 import com.library.entities.Student;
@@ -22,6 +24,10 @@ public class IssuedBookCtrl {
 
 	@Autowired
 	private IssuedBookDao issuedBookDao;
+	@Autowired
+	private BookDao bookDao;
+	@Autowired
+	private StudentDao studentDao;
 
 	List<IssuedBook> list = null;
 
@@ -29,12 +35,9 @@ public class IssuedBookCtrl {
 	@RequestMapping("/issuedBook/{sid}/{bid}")
 	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
 		IssuedBook ibook = new IssuedBook();
-
-		BookCtrl bCtrl = new BookCtrl();
-		StudentCtrl sCtrl = new StudentCtrl();
-
-		Student s = sCtrl.getStudentById(sid);
-		Book b = bCtrl.getBookById(bid);
+		
+		Book b = bookDao.getBook(bid);
+		Student s = studentDao.getStudent(sid);		
 
 //		ibook = new IssuedBook(b.getName(), b.getAuthorName(), s.getName(), s.getEmail(), s.getRollno(), new Date());
 		
@@ -46,6 +49,8 @@ public class IssuedBookCtrl {
 		ibook.setDate(new Date());
 
 		this.issuedBookDao.addIssuedBook(ibook);
+		
+		System.out.println(s + " " + b);
 
 		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{sid}");
 		return rd;

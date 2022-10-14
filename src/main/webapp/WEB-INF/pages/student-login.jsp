@@ -18,9 +18,9 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
 			<a class="btn btn-primary"
-				href='<c:url value='/studentLogin'></c:url>' role="button">LogIn</a>
+				href='<c:url value='/studentLogin'></c:url>' role="button">Student LogIn</a>
 			<a class="btn btn-primary"
-				href='<c:url value='/studentSignupForm'></c:url>' role="button">SignUp</a>
+				href='<c:url value='/studentSignupForm'></c:url>' role="button">Student SignUp</a>
 		</div>
 
 		<!-- Condition - success -->

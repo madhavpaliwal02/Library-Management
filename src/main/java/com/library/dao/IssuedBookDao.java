@@ -1,5 +1,6 @@
 package com.library.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -30,5 +31,19 @@ public class IssuedBookDao {
 	// Get all Issued Book
 	public List<IssuedBook> getAllIssuedBook() {
 		return (List<IssuedBook>) this.hibernateTemplate.loadAll(IssuedBook.class);
+	}
+	
+	// Get issued book By Roll No
+	public List<IssuedBook> getIssuedBookByRollNo(String rollNo){
+		List<IssuedBook> ibook = this.hibernateTemplate.loadAll(IssuedBook.class);
+		List<IssuedBook> ib2 = new ArrayList<IssuedBook>();
+		
+		for(IssuedBook ib : ibook) 
+			if(rollNo.equals(ib.getRollNo())) {
+				ib2.add(ib);
+				System.out.println(ib);
+			}
+				
+		return ib2;
 	}
 }

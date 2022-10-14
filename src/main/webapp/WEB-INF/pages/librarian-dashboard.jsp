@@ -22,7 +22,7 @@
 				Book</a> <a class="btn btn-primary"
 				href='<c:url value='/viewBooksLibrarian'></c:url>' role="button">View All
 				Books</a> <a class="btn btn-primary"
-				href='<c:url value='/viewIssuedBooks'></c:url>' role="button">View
+				href='<c:url value='/viewIssuedBooksLibrarian'></c:url>' role="button">View
 				All Issued Books</a>
 		</div>
 

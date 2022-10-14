@@ -49,31 +49,40 @@ public class IssuedBookCtrl {
 		ibook.setDate(new Date());
 
 		this.issuedBookDao.addIssuedBook(ibook);
-		
-		System.out.println(s + " " + b);
 
 		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{sid}");
 		return rd;
 	}
 
-	// Display all issue book
-	@RequestMapping("/viewIssuedBooks")
-	public String getAllIssuedBooks(Model m) {
+	// Display all issue book - Admin
+	@RequestMapping("/viewIssuedBooksAdmin")
+	public String getAllIssuedBooksAdmin(Model m) {
 		list = this.issuedBookDao.getAllIssuedBook();
 
 		m.addAttribute("ibook", list);
+		m.addAttribute("back", "admin-dashboard");
+		return "view-issuedBooks";
+	}
+	
+	// Display all issue book -Librarian
+	@RequestMapping("/viewIssuedBooksLibrarian")
+	public String getAllIssuedBooksLibrarian(Model m) {
+		list = this.issuedBookDao.getAllIssuedBook();
+		
+		m.addAttribute("ibook", list);
+		m.addAttribute("back", "librarian-dashboard");
 		return "view-issuedBooks";
 	}
 
 	// Get a students Issued Book
-	public List<IssuedBook> getIssuedBooks(int sid) {
+	public List<IssuedBook> getIssuedBooks(String rollno) {
 		// Getting all records of IssuedBook
 		List<IssuedBook> temp = issuedBookDao.getAllIssuedBook();
 
 		// Filtering Records for a student
 		for (IssuedBook ib : temp) {
-//			if (ib.getSid() == sid)
-//				list.add(ib);
+			if (ib.getRollNo().equals(rollno))
+				list.add(ib);
 		}
 		// Returning all records
 		return list;

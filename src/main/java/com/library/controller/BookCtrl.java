@@ -82,20 +82,17 @@ public class BookCtrl {
 	}
 	
 	// Get Books from IssuedBooks for a student
-	public List<Book> getIssuedBooks(int sid){
-		IssuedBookCtrl ibCtrl = new IssuedBookCtrl();
-		
-		List<IssuedBook> ib = ibCtrl.getIssuedBooks(sid);
-		
-		for(IssuedBook b : ib) {
-//			list.add(bookDao.getBook(b.getBid()));
-		}
-		return list;
-	}
+//	public List<Book> getIssuedBooks(int sid){
+//		IssuedBookCtrl ibCtrl = new IssuedBookCtrl();
+//		
+//		List<IssuedBook> ib = ibCtrl.getIssuedBooks(sid);
+//		
+//		for(IssuedBook b : ib) {
+////			list.add(bookDao.getBook(b.getBid()));
+//		}
+//		return list;
+//	}
 	
-	// Get A Book from Book Id
-	public Book getBookById(int bid) {
-		return bookDao.getBook(bid);
-	}
+
 	
 }

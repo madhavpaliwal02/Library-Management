@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.library.dao.IssuedBookDao;
 import com.library.dao.StudentDao;
+import com.library.entities.IssuedBook;
 import com.library.entities.Student;
 import com.library.entities.User;
 
@@ -23,8 +25,8 @@ public class StudentCtrl {
 	private StudentDao studentDao;
 
 	private List<Student> student = null;
-	
-	BookCtrl bCtrl = new BookCtrl();
+	@Autowired
+	IssuedBookDao ibDao = new IssuedBookDao();
 
 	/** Student - Controller */
 
@@ -86,8 +88,8 @@ public class StudentCtrl {
 				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
 				// Adding IssuedBook
-//				m.addAttribute("iBook" , bCtrl.getIssuedBooks(s.getId()));
-				
+				m.addAttribute("iBook" , ibDao.getIssuedBookByRollNo(s.getRollno()));
+				System.out.println(s.getRollno());
 				return "student-dashboard";
 			}
 		}
@@ -119,6 +121,8 @@ public class StudentCtrl {
 	@RequestMapping("/studentDashboardBack/{stuId}")
 	public String studentDashboardBack(@PathVariable int stuId, Model m) {
 		m.addAttribute("stu", studentDao.getStudent(stuId));
+		// Adding IssuedBook
+		m.addAttribute("iBook" , ibDao.getIssuedBookByRollNo(studentDao.getStudent(stuId).getRollno()));
 		return "student-dashboard";
 	}
 
@@ -129,9 +133,9 @@ public class StudentCtrl {
 		return redView;
 	}
 	
-	// Get Student By Id
-	public Student getStudentById(int sid) {
-		return studentDao.getStudent(sid);
-	}
+//	public List<IssuedBook> getIssuedBookByRollNo(String Rollno){
+//		
+//	}
+
 
 }

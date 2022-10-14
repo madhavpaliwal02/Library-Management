@@ -8,7 +8,7 @@
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center">Books Available</h1>
+		<h1 class="text-center">Books Issued by Students</h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
@@ -60,13 +60,13 @@
 			</tbody>
 		</table>
 		<div class="container text-center">
-			<%-- <c:if test="${back == 'admin-dashboard'  }">
+			<c:if test="${back == 'admin-dashboard'  }">
 				<a href="adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${back == 'librarian-dashboard'  }">
 				<a href="librarianDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<c:if test="${back == 'student-dashboard'  }">
+			<%-- <c:if test="${back == 'student-dashboard'  }">
 				<a href="${pageContext.request.contextPath }/studentDashboardBack"
 					class="btn btn-outline-warning">Back</a>
 			</c:if> --%>

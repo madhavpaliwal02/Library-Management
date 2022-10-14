@@ -71,16 +71,14 @@
 								<th scope="col">Id</th>
 								<th scope="col">Name</th>
 								<th scope="col">Author's Name</th>
-								<th scope="col">Edition</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${iBook }" var="book">
 								<tr>
 									<th scope="row">${book.id }</th>
-									<td>${book.name }</td>
-									<td>${book.authorName }</td>
-									<td>${book.edition}</td>
+									<td>${book.bName }</td>
+									<td>${book.bAuthName }</td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -27,6 +27,7 @@
 					<th scope="col">Student's Roll No</th>
 					<th scope="col">Student's Email</th>
 					<th scope="col">Issuing Date</th>
+					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,37 +40,32 @@
 						<td>${book.rollNo }</td>
 						<td>${book.sEmail }</td>
 						<td>${book.date }</td>
-						<c:choose>
-							<c:when test="${viewBook!= 'viewBookStudent' }">
-								<td><a href="deleteBook/${book.id }"> <i
-										class="fas fa-trash-can text-danger" style="font-size: 25px">
-									</i>
-								</a></td>
-							</c:when>
-							<c:otherwise>
-								<td><a
-									href="${pageContext.request.contextPath }/issuedBook/${studentId }/${book.id }">
-										<i class="fas fa-trash-can" style="font-size: 25px"> </i>
-								</a></td>
-							</c:otherwise>
-						</c:choose>
+						<c:if test="${user=='admin' }">
+							<td><a href="${pageContext.request.contextPath }/deleteIssueBookAdmin/${book.id }"> <i
+									class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+						<c:if test="${user=='librarian' }">
+							<td><a href="${pageContext.request.contextPath }/deleteIssueBookLibrarian/${book.id }"> <i
+									class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container text-center">
-			<c:if test="${back == 'admin-dashboard'  }">
-				<a href="adminDashboardBack" class="btn btn-outline-warning">Back</a>
+			<c:if test="${user=='admin'  }">
+				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<c:if test="${back == 'librarian-dashboard'  }">
-				<a href="librarianDashboardBack" class="btn btn-outline-warning">Back</a>
+			<c:if test="${user=='librarian'  }">
+				<a href="${pageContext.request.contextPath }/librarianDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<%-- <c:if test="${back == 'student-dashboard'  }">
-				<a href="${pageContext.request.contextPath }/studentDashboardBack"
-					class="btn btn-outline-warning">Back</a>
-			</c:if> --%>
 
-			<a href="home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 </body>

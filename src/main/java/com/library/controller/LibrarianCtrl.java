@@ -102,10 +102,7 @@ public class LibrarianCtrl {
 	@RequestMapping("/deleteLibrarian/{libId}")
 	public String deleteLibrarian(@PathVariable int libId, Model m) {
 		librarianDao.deleteLibrarian(libId);
-		
-		list = this.librarianDao.getAllLibrarians();
-		m.addAttribute("librarian", list);
-		return "view-librarians";
+		return viewLibrarians(m);
 	}
 
 }

@@ -46,4 +46,10 @@ public class IssuedBookDao {
 				
 		return ib2;
 	}
+
+	// Delete Issued Book
+	@Transactional
+	public void deleteIssuedBook(int id) {
+		this.hibernateTemplate.delete(getIssuedBook(id));
+	}
 }

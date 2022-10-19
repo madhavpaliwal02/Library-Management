@@ -68,7 +68,6 @@ public class StudentCtrl {
 		// If the user is new student
 		stu.setDate(new Date());
 		this.studentDao.addStudent(stu);
-//		System.out.println(stu);
 		m.addAttribute("studentPage", "studentLoginForm");
 		m.addAttribute("msg", "Success");
 		return "student-login";
@@ -126,16 +125,28 @@ public class StudentCtrl {
 		return "student-dashboard";
 	}
 
-	// Student Delete
-	@RequestMapping("/deleteStudent")
-	public RedirectView deleteStudent(Model m) {
-		RedirectView redView = new RedirectView();
-		return redView;
+	// Student Delete Admin
+	@RequestMapping("/deleteStudentAdmin/{sid}")
+	public String deleteStudentAdmin(@PathVariable int sid ,Model m) {
+		studentDao.deleteStudent(sid);
+		
+		m.addAttribute("user", "admin");
+		m.addAttribute("student", this.studentDao.getAllStudents());
+		return "view-students";
 	}
 	
-//	public List<IssuedBook> getIssuedBookByRollNo(String Rollno){
-//		
-//	}
+	// Student Delete Librarian
+	@RequestMapping("/deleteStudentLibrarian/{sid}")
+	public String deleteStudentLibrarian(@PathVariable int sid ,Model m) {
+		studentDao.deleteStudent(sid);
+		
+		m.addAttribute("user", "librarian");
+		m.addAttribute("value", "librarianDashboardBack");
+		m.addAttribute("student", this.studentDao.getAllStudents());
+		return "view-students";
+	}
+	
+	// 
 
 
 }

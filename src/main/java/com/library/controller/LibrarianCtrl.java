@@ -3,11 +3,11 @@ package com.library.controller;
 import java.util.Date;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,15 +20,16 @@ public class LibrarianCtrl {
 
 	@Autowired
 	private LibrarianDao librarianDao;
+	
+	private List<Librarian> list;
 
 	/** Librarian - Controller */
-	
+
 	// Common Model Attribute
 	@ModelAttribute
 	public void commonModel(Model m) {
 		m.addAttribute("title", "Librarian : Home Page");
 	}
-
 
 	// Librarian Home Page
 	// Librarian Login Form
@@ -44,7 +45,7 @@ public class LibrarianCtrl {
 		m.addAttribute("librarianPage", "librarianSignupForm");
 		return "librarian-login";
 	}
-	
+
 	// Librarian Signup Added
 	@RequestMapping(value = "/librarianSignup", method = RequestMethod.POST)
 	public String librarianSignup(@ModelAttribute Librarian lib, Model m) {
@@ -52,25 +53,28 @@ public class LibrarianCtrl {
 		this.librarianDao.addLibrarian(lib);
 		m.addAttribute("msg", "Success");
 		m.addAttribute("librarianPage", "librarianLoginForm");
-		return "librarian-home";
+		return "librarian-login";
 	}
 
 	// Librarian Login Handling
 	@RequestMapping(value = "/librarianDashboard", method = RequestMethod.POST)
 	public String librarianDashboard(@ModelAttribute User u, Model m) {
-		// Verification 
+		// Verification
 //		List<Librarian> lib = this.librarianDao.getAllLibrarians();
 //		for(Librarian l : lib) {
-//			if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
-//				m.addAttribute("msg", "Invalid Credentials");
-//				return "admin-login";
+//			if((u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
+//				m.addAttribute("lib",l);
+//				m.addAttribute("title", "Librarian DashBoard");
+//				return "librarian-dashboard";
 //			}
 //		}
-		
-		m.addAttribute("title", "Librarian DashBoard");
-		return "librarian-dashboard";
+
+		m.addAttribute("msg", "Invalid Credentials");
+		m.addAttribute("librarianPage", "librarianLoginForm");
+		return "librarian-login";
+
 	}
-	
+
 	// Librarian student view back - used in BookCtrl
 	@RequestMapping("/librarianDashboardBack")
 	public String librarianDashboardBack() {
@@ -80,12 +84,28 @@ public class LibrarianCtrl {
 	// Librarian List
 	@RequestMapping("/viewLibrarians")
 	public String viewLibrarians(Model m) {
-		List<Librarian> list = this.librarianDao.getAllLibrarians();
+		list = this.librarianDao.getAllLibrarians();
 		m.addAttribute("librarian", list);
 
 		return "view-librarians";
 	}
-	
 
+	// Librarian Update Form
+	@RequestMapping("/updateLibrarian/{libId}")
+	public String updateLibrarian(@PathVariable int libId, Model m) {
+		Librarian lib = librarianDao.getLibrarian(libId);
+		m.addAttribute("librarian", lib);
+		return "update-librarian";
+	}
+
+	// Delete Librarian
+	@RequestMapping("/deleteLibrarian/{libId}")
+	public String deleteLibrarian(@PathVariable int libId, Model m) {
+		librarianDao.deleteLibrarian(libId);
+		
+		list = this.librarianDao.getAllLibrarians();
+		m.addAttribute("librarian", list);
+		return "view-librarians";
+	}
 
 }

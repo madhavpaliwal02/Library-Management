@@ -19,7 +19,7 @@ public class LibrarianDao {
 	// Create Librarian
 	@Transactional
 	public void addLibrarian(Librarian lib) {
-		this.hibernateTemplate.save(lib);
+		this.hibernateTemplate.saveOrUpdate(lib);
 	}
 	
 	// Get a Librarian
@@ -30,6 +30,12 @@ public class LibrarianDao {
 	// Get all Librarians
 	public List<Librarian> getAllLibrarians(){
 		return (List<Librarian>)this.hibernateTemplate.loadAll(Librarian.class);
+	}
+	
+	// Delete a Librarian
+	@Transactional
+	public void deleteLibrarian(int lid) {
+		this.hibernateTemplate.delete(getLibrarian(lid));
 	}
 	
 }

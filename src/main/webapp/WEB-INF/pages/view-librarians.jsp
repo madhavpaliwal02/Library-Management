@@ -34,15 +34,16 @@
 						<td><a href="deleteLibrarian/${lib.id }"> <i
 								class="fas fa-trash-can text-danger" style="font-size: 25px">
 							</i>
-						</a> <a href="updateLibrarian/${lib.id }"> <i class="fas fa-pen"
-								style="font-size: 25px"> </i>
 						</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+
+
+
 		<div class="container text-center">
-			<a href="adminDashboardBack" class="btn btn-outline-warning">Back</a>
+			<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			<a href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

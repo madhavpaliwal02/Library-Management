@@ -33,12 +33,20 @@
 						<td>${stu.course }</td>
 						<td>${stu.gender }</td>
 						<td>${stu.date }</td>
-						<td><a href="deleteStudent/${stu.id }"> <i
-								class="fas fa-trash-can text-danger" style="font-size: 25px">
-							</i>
-						</a> <a href="updateStudent/${stu.id }"> <i class="fas fa-pen"
-								style="font-size: 25px"> </i>
-						</a></td>
+
+						<c:if test="${user=='admin' }">
+							<td><a href="deleteStudentAdmin/${stu.id }"> <i
+									class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+						<c:if test="${user=='librarian' }">
+							<td><a href="deleteStudentLibrarian/${stu.id }"> <i
+									class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+
 					</tr>
 				</c:forEach>
 			</tbody>

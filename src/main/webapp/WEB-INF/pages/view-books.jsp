@@ -38,34 +38,36 @@
 						<td>${book.edition}</td>
 						<td>${book.description }</td>
 						<td>${book.date }</td>
-						<c:choose>
-							<c:when test="${viewBook!= 'viewBookStudent' }">
-								<td><a href="deleteBook/${book.id }"> <i
+							<c:if test="${user=='admin' }">
+								<td><a href="${pageContext.request.contextPath }/deleteBookAdmin/${book.id }"> <i
 										class="fas fa-trash-can text-danger" style="font-size: 25px">
 									</i>
-								</a> <a href="updateBook/${book.id }"> <i class="fas fa-pen"
-										style="font-size: 25px"> </i>
 								</a></td>
-							</c:when>
-							<c:otherwise>
+							</c:if>
+							<c:if test="${user=='librarian' }">
+								<td><a href="${pageContext.request.contextPath }/deleteBookLibrarian/${book.id }"> <i
+										class="fas fa-trash-can text-danger" style="font-size: 25px">
+									</i>
+								</a></td>
+							</c:if>
+							<c:if test="${user=='student' }">
 								<td><a
 									href="${pageContext.request.contextPath }/issuedBook/${studentId }/${book.id }">
 										<i class="fas fa-book" style="font-size: 25px"> </i>
 								</a></td>
-							</c:otherwise>
-						</c:choose>
+							</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container text-center">
-			<c:if test="${back == 'admin-dashboard'  }">
-				<a href="adminDashboardBack" class="btn btn-outline-warning">Back</a>
+			<c:if test="${user=='admin' }">
+				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<c:if test="${back == 'librarian-dashboard'  }">
-				<a href="librarianDashboardBack" class="btn btn-outline-warning">Back</a>
+			<c:if test="${user=='librarian' }">
+				<a href="${pageContext.request.contextPath }/librarianDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<c:if test="${back == 'student-dashboard'  }">
+			<c:if test="${user=='student' }">
 				<a href="${pageContext.request.contextPath }/studentDashboardBack/${studentId }"
 					class="btn btn-outline-warning">Back</a>
 			</c:if>

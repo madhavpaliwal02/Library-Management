@@ -129,21 +129,14 @@ public class StudentCtrl {
 	@RequestMapping("/deleteStudentAdmin/{sid}")
 	public String deleteStudentAdmin(@PathVariable int sid ,Model m) {
 		studentDao.deleteStudent(sid);
-		
-		m.addAttribute("user", "admin");
-		m.addAttribute("student", this.studentDao.getAllStudents());
-		return "view-students";
+		return viewStudentsAdmin(m);
 	}
 	
 	// Student Delete Librarian
 	@RequestMapping("/deleteStudentLibrarian/{sid}")
 	public String deleteStudentLibrarian(@PathVariable int sid ,Model m) {
 		studentDao.deleteStudent(sid);
-		
-		m.addAttribute("user", "librarian");
-		m.addAttribute("value", "librarianDashboardBack");
-		m.addAttribute("student", this.studentDao.getAllStudents());
-		return "view-students";
+		return viewStudentsLibrarian(m);
 	}
 	
 	// 

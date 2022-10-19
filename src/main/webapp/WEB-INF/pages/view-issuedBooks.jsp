@@ -39,13 +39,11 @@
 						<td>${book.rollNo }</td>
 						<td>${book.sEmail }</td>
 						<td>${book.date }</td>
-						<%-- <c:choose>
+						<c:choose>
 							<c:when test="${viewBook!= 'viewBookStudent' }">
 								<td><a href="deleteBook/${book.id }"> <i
 										class="fas fa-trash-can text-danger" style="font-size: 25px">
 									</i>
-								</a> <a href="updateBook/${book.id }"> <i class="fas fa-pen"
-										style="font-size: 25px"> </i>
 								</a></td>
 							</c:when>
 							<c:otherwise>
@@ -54,7 +52,7 @@
 										<i class="fas fa-trash-can" style="font-size: 25px"> </i>
 								</a></td>
 							</c:otherwise>
-						</c:choose> --%>
+						</c:choose>
 					</tr>
 				</c:forEach>
 			</tbody>

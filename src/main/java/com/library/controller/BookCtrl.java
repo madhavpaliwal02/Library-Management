@@ -56,8 +56,8 @@ public class BookCtrl {
 	@RequestMapping("/viewBooksAdmin")
 	public String viewBooksAdmin(Model m) {
 		list = this.bookDao.getAllBooks();
+		m.addAttribute("user", "admin");
 		m.addAttribute("book", list);
-		m.addAttribute("back", "admin-dashboard");
 		return "view-books";
 	}
 
@@ -65,8 +65,8 @@ public class BookCtrl {
 	@RequestMapping("/viewBooksLibrarian")
 	public String viewBooksLibrarian(Model m) {
 		list = this.bookDao.getAllBooks();
+		m.addAttribute("user", "librarian");
 		m.addAttribute("book", list);
-		m.addAttribute("back", "librarian-dashboard");
 		return "view-books";
 	}
 
@@ -76,22 +76,23 @@ public class BookCtrl {
 		list = this.bookDao.getAllBooks();
 		m.addAttribute("book", list);
 		m.addAttribute("studentId", studentId);
-		m.addAttribute("viewBook", "viewBookStudent");
-		m.addAttribute("back", "student-dashboard");
+		m.addAttribute("user", "student");
 		return "view-books";
 	}
 	
-	// Get Books from IssuedBooks for a student
-//	public List<Book> getIssuedBooks(int sid){
-//		IssuedBookCtrl ibCtrl = new IssuedBookCtrl();
-//		
-//		List<IssuedBook> ib = ibCtrl.getIssuedBooks(sid);
-//		
-//		for(IssuedBook b : ib) {
-////			list.add(bookDao.getBook(b.getBid()));
-//		}
-//		return list;
-//	}
+	// Delete Book Admin
+	@RequestMapping("/deleteBookAdmin/{bid}")
+	public String deleteBookAdmin(@PathVariable int bid, Model m) {
+		bookDao.deleteBook(bid);
+		return viewBooksAdmin(m);
+	}
+	
+	// Delete Book Librarian
+	@RequestMapping("/deleteBookLibrarian/{bid}")
+	public String deleteBookLibrarian(@PathVariable int bid, Model m) {
+		bookDao.deleteBook(bid);
+		return viewBooksLibrarian(m);
+	}
 	
 
 	

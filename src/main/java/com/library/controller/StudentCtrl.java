@@ -58,17 +58,16 @@ public class StudentCtrl {
 		for (Student s : student) {
 			if (stu.getEmail().equals(s.getEmail()) && stu.getName().equals(s.getName())) {
 				m.addAttribute("msg", "failed");
-				m.addAttribute("studentPage", "studentSignupForm");
-				return "student-login";
+				m.addAttribute("message", "User Already Exists ! Please try with new credentials");
+				return studentSignupForm(m);
 			}
 		}
 
 		// If the user is new student
 		stu.setDate(new Date());
 		this.studentDao.addStudent(stu);
-		m.addAttribute("studentPage", "studentLoginForm");
-		m.addAttribute("msg", "Success");
-		return "student-login";
+		m.addAttribute("msg", "Success Added !!!");
+		return studentLogin(m);
 	}
 
 	// Student Login Handling
@@ -93,8 +92,8 @@ public class StudentCtrl {
 
 		// If student not exists
 		m.addAttribute("msg", "failed");
-		m.addAttribute("studentPage", "studentLoginForm");
-		return "student-login";
+		m.addAttribute("message", "Invalid Credentials ! Please Try Again");
+		return studentLogin(m);
 	}
 
 	// Admin View Students

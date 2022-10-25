@@ -55,12 +55,13 @@ public class LibrarianCtrl {
 		for (Librarian l : librarian) {
 			if (l.getEmail().equals(lib.getEmail()) && l.getName().equals(lib.getName())) {
 				m.addAttribute("msg", "failed");
+				m.addAttribute("message", "User Already Exists ! Please try with new credentials");
 				return librarianSignupForm(m);
 			}
 		}
 		lib.setDate(new Date());
 		this.librarianDao.addLibrarian(lib);
-		m.addAttribute("msg", "Success");
+		m.addAttribute("msg", "Success Added !!!");
 		return librarianLogin(m);
 	}
 
@@ -69,6 +70,8 @@ public class LibrarianCtrl {
 	public String librarianDashboard(@ModelAttribute User u, Model m) {
 		// Verification
 		librarian = this.librarianDao.getAllLibrarians();
+		
+		// If user is existing Librarian
 		for (Librarian l : librarian) {
 			// For True Condition
 			if (u.getEmail().equals(l.getEmail()) && u.getPassword().equals(l.getPassword())) {
@@ -78,8 +81,9 @@ public class LibrarianCtrl {
 				return "librarian-dashboard";
 			}
 		}
-
+		// If librarian not exist
 		m.addAttribute("msg", "failed");
+		m.addAttribute("message", "Invalid Credentials ! Please Try Again");
 		return librarianLogin(m);
 	}
 

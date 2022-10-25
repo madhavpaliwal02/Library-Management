@@ -78,7 +78,7 @@
 				<h3 class="text-center">
 					<b>Add Book Form</b>
 				</h3>
-				<form action="addBook" method="post">
+				<form action="${pageContext.request.contextPath }/addBook/${lid }" method="post">
 
 					<div class="form-row">
 						<!-- Book Name -->

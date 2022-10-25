@@ -45,7 +45,7 @@
 								</a></td>
 							</c:if>
 							<c:if test="${user=='librarian' }">
-								<td><a href="${pageContext.request.contextPath }/deleteBookLibrarian/${book.id }"> <i
+								<td><a href="${pageContext.request.contextPath }/deleteBookLibrarian/${lid }/${book.id }"> <i
 										class="fas fa-trash-can text-danger" style="font-size: 25px">
 									</i>
 								</a></td>
@@ -72,7 +72,7 @@
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
 
-			<a href="home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 </body>

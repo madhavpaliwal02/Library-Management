@@ -3,7 +3,6 @@ package com.library.controller;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.BookDao;
+import com.library.dao.LibrarianDao;
 import com.library.entities.Book;
 
 @Controller
@@ -22,28 +21,23 @@ public class BookCtrl {
 
 	@Autowired
 	private BookDao bookDao;
+	
+	@Autowired
+	private LibrarianDao librarianDao;
 
 	List<Book> list = null;
 
 
 	// Add Book
-	@RequestMapping(value = "/addBook", method = RequestMethod.POST)
-	public String addBook(@ModelAttribute Book book, Model m) {
+	@RequestMapping(value = "/addBook/{lid}", method = RequestMethod.POST)
+	public String addBook(@ModelAttribute Book book,@PathVariable int lid, Model m) {
 		book.setDate(new Date());
 		this.bookDao.addBook(book);
+		m.addAttribute("lib", librarianDao.getLibrarian(lid));
 		return "librarian-dashboard";
 	}
 
-	// Delete Book
-	@RequestMapping("/deleteBook/{bookId}")
-	public RedirectView deleteBook(@PathVariable("bookId") int id, Model m, HttpServletRequest request) {
-		this.bookDao.deleteBook(id);
-		RedirectView redirectView = new RedirectView();
-		redirectView.setUrl(request.getContextPath() + "/viewBooks");
-		return redirectView;
-	}
-
-	// Update Book
+	
 
 	// Display Books Admin
 	@RequestMapping("/viewBooksAdmin")
@@ -74,6 +68,8 @@ public class BookCtrl {
 		return "view-books";
 	}
 	
+	// Update Book - Only Librarian
+	
 	// Delete Book Admin
 	@RequestMapping("/deleteBookAdmin/{bid}")
 	public String deleteBookAdmin(@PathVariable int bid, Model m) {
@@ -82,11 +78,10 @@ public class BookCtrl {
 	}
 	
 	// Delete Book Librarian
-	@RequestMapping("/deleteBookLibrarian/{bid}")
-	public String deleteBookLibrarian(@PathVariable int bid, Model m) {
+	@RequestMapping("/deleteBookLibrarian/{lid}/{bid}")
+	public String deleteBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
 		bookDao.deleteBook(bid);
-//		return viewBooksLibrarian(m);
-		return "";
+		return viewBooksLibrarian(lid, m);
 	}
 	
 

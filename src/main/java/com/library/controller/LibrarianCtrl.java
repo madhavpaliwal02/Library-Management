@@ -21,7 +21,7 @@ public class LibrarianCtrl {
 	@Autowired
 	private LibrarianDao librarianDao;
 
-	private List<Librarian> list;
+	private List<Librarian> librarian;
 
 	/** Librarian - Controller */
 
@@ -49,19 +49,27 @@ public class LibrarianCtrl {
 	// Librarian Signup Added
 	@RequestMapping(value = "/librarianSignup", method = RequestMethod.POST)
 	public String librarianSignup(@ModelAttribute Librarian lib, Model m) {
+		librarian = librarianDao.getAllLibrarians();
+
+		// If the user is an existing librarian
+		for (Librarian l : librarian) {
+			if (l.getEmail().equals(lib.getEmail()) && l.getName().equals(lib.getName())) {
+				m.addAttribute("msg", "failed");
+				return librarianSignupForm(m);
+			}
+		}
 		lib.setDate(new Date());
 		this.librarianDao.addLibrarian(lib);
 		m.addAttribute("msg", "Success");
-		m.addAttribute("librarianPage", "librarianLoginForm");
-		return "librarian-login";
+		return librarianLogin(m);
 	}
 
 	// Librarian Login Handling
 	@RequestMapping(value = "/librarianDashboard", method = RequestMethod.POST)
 	public String librarianDashboard(@ModelAttribute User u, Model m) {
 		// Verification
-		List<Librarian> lib = this.librarianDao.getAllLibrarians();
-		for (Librarian l : lib) {
+		librarian = this.librarianDao.getAllLibrarians();
+		for (Librarian l : librarian) {
 			// For True Condition
 			if (u.getEmail().equals(l.getEmail()) && u.getPassword().equals(l.getPassword())) {
 				// Adding Librarian as Attribute
@@ -69,12 +77,10 @@ public class LibrarianCtrl {
 				m.addAttribute("title", "Librarian DashBoard");
 				return "librarian-dashboard";
 			}
-
 		}
 
-		m.addAttribute("msg", "Invalid Credentials");
-		m.addAttribute("librarianPage", "librarianLoginForm");
-		return "librarian-login";
+		m.addAttribute("msg", "failed");
+		return librarianLogin(m);
 	}
 
 	// Librarian Dashboard back - for all
@@ -87,19 +93,18 @@ public class LibrarianCtrl {
 	// Librarian List
 	@RequestMapping("/viewLibrarians")
 	public String viewLibrarians(Model m) {
-		list = this.librarianDao.getAllLibrarians();
-		m.addAttribute("librarian", list);
+		librarian = this.librarianDao.getAllLibrarians();
+		m.addAttribute("librarian", librarian);
 
 		return "view-librarians";
 	}
 
 	// Librarian Update Form
-	@RequestMapping("/updateLibrarian/{libId}")
-	public String updateLibrarian(@PathVariable int libId, Model m) {
-		Librarian lib = librarianDao.getLibrarian(libId);
-		m.addAttribute("librarian", lib);
-		return "update-librarian";
-	}
+	/* @RequestMapping("/updateLibrarian/{libId}") public String
+	 * updateLibrarian(@PathVariable int libId, Model m) { Librarian lib =
+	 * librarianDao.getLibrarian(libId); m.addAttribute("librarian", lib); return
+	 * "update-librarian"; }
+	 */
 
 	// Delete Librarian
 	@RequestMapping("/deleteLibrarian/{libId}")

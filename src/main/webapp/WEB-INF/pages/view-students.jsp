@@ -35,14 +35,16 @@
 						<td>${stu.date }</td>
 
 						<c:if test="${user=='admin' }">
-							<td><a href="deleteStudentAdmin/${stu.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
+							<td><a
+								href="${pageContext.request.contextPath }/deleteStudentAdmin/${stu.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
 						<c:if test="${user=='librarian' }">
-							<td><a href="deleteStudentLibrarian/${stu.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
+							<td><a
+								href="${pageContext.request.contextPath }/deleteStudentLibrarian/${lid }/${stu.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
@@ -61,7 +63,8 @@
 				<a href="${pageContext.request.contextPath }/${value }/${lid }"
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
-			<a href="home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home"
+				class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 </body>

@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.IssuedBookDao;
 import com.library.dao.StudentDao;
-import com.library.entities.IssuedBook;
 import com.library.entities.Student;
 import com.library.entities.User;
 
@@ -134,13 +132,10 @@ public class StudentCtrl {
 	}
 
 	// Student Delete Librarian
-	@RequestMapping("/deleteStudentLibrarian/{sid}")
-	public String deleteStudentLibrarian(@PathVariable int sid, Model m) {
+	@RequestMapping("/deleteStudentLibrarian/{lid}/{sid}")
+	public String deleteStudentLibrarian(@PathVariable int lid, @PathVariable int sid, Model m) {
 		studentDao.deleteStudent(sid);
-//		return viewStudentsLibrarian(m);
-		return "";
+		return viewStudentsLibrarian(lid, m);
 	}
-
-	//
 
 }

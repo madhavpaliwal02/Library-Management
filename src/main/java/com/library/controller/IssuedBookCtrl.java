@@ -96,10 +96,9 @@ public class IssuedBookCtrl {
 	}
 
 	// Delete Issued Book Librarian
-	@RequestMapping("/deleteIssueBookLibrarian/{bid}")
-	public String deleteIssuedBookLibrarian(@PathVariable int bid, Model m) {
+	@RequestMapping("/deleteIssueBookLibrarian/{lid}/{bid}")
+	public String deleteIssuedBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
 		issuedBookDao.deleteIssuedBook(bid);
-//		return viewIssuedBooksLibrarian(m);
-		return "";
+		return viewIssuedBooksLibrarian(lid, m);
 	}
 }

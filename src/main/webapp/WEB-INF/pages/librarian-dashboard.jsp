@@ -16,14 +16,12 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='/viewStudentsLibrarian'></c:url>' role="button">View
-				All Students</a> <a class="btn btn-primary"
-				href='<c:url value='/addBookForm'></c:url>' role="button">Add
-				Book</a> <a class="btn btn-primary"
-				href='<c:url value='/viewBooksLibrarian'></c:url>' role="button">View All
-				Books</a> <a class="btn btn-primary"
-				href='<c:url value='/viewIssuedBooksLibrarian'></c:url>' role="button">View
-				All Issued Books</a>
+				href='<c:url value='/viewStudentsLibrarian/${lib.id }'></c:url>'
+				role="button">View All Students</a> <a class="btn btn-primary"
+				href='<c:url value='/viewBooksLibrarian/${lib.id }'></c:url>'
+				role="button">View All Books</a> <a class="btn btn-primary"
+				href='<c:url value='/viewIssuedBooksLibrarian/${lib.id }'></c:url>'
+				role="button">View All Issued Books</a>
 		</div>
 
 		<!-- Condition - Success Book -->
@@ -34,9 +32,49 @@
 		</c:if>
 
 
-		<!-- Add Book Page -->
-		<c:if test="${librarianPage=='addBookForm' }">
-			<div class="container mt-2">
+		<div class="row text-center mt-4">
+
+			<!-- //////////////////// Personal Details //////////////////// -->
+			<div class="col-5">
+				<h3 class="text-center">Personal Details</h3>
+				<table class="table table-hover">
+					<tr>
+						<td>Id:</td>
+						<td>${lib.id }</td>
+					</tr>
+					<tr>
+						<td>Name:</td>
+						<td>${lib.name }</td>
+					</tr>
+					<tr>
+						<td>E-mail:</td>
+						<td>${lib.email }</td>
+					</tr>
+					<tr>
+						<td>Department:</td>
+						<td>${lib.department }</td>
+					</tr>
+					<tr>
+						<td>Gender:</td>
+						<td>${lib.gender }</td>
+					</tr>
+
+					<tr>
+						<td>Date of Joining:</td>
+						<td>${lib.date }</td>
+					</tr>
+				</table>
+				<div class="container text-center mt-3">
+					<a href="${pageContext.request.contextPath }/librarianLogin"
+						class="btn btn-outline-Danger">Log-Out</a> <a
+						href="${pageContext.request.contextPath }/home"
+						class="btn btn-outline-Warning">HOME</a>
+				</div>
+			</div>
+
+			<!-- //////////////////////// Add Book Page //////////////////////// -->
+			<!-- Add Book Form -->
+			<div class="col-5 offset-1">
 				<h3 class="text-center">
 					<b>Add Book Form</b>
 				</h3>
@@ -68,7 +106,7 @@
 					<div class="form-group">
 						<label for="description">Description</label>
 						<textarea class="form-control" id="description"
-							placeholder="Enter Description" name="description" rows="5" ></textarea>
+							placeholder="Enter Description" name="description" rows="5"></textarea>
 					</div>
 
 					<div class="container text-center">
@@ -76,12 +114,10 @@
 					</div>
 				</form>
 			</div>
-		</c:if>
 
-		<div class="container text-center mt-3">
-			<a href="librarianLogin" class="btn btn-outline-Danger">Log-Out</a>
-			<a href="home" class="btn btn-outline-Warning">HOME</a>
 		</div>
+
+
 	</div>
 </body>
 </html>

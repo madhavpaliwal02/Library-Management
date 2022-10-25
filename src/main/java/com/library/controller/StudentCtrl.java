@@ -87,7 +87,7 @@ public class StudentCtrl {
 				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
 				// Adding IssuedBook
-				m.addAttribute("iBook" , ibDao.getIssuedBookByRollNo(s.getRollno()));
+				m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(s.getRollno()));
 				System.out.println(s.getRollno());
 				return "student-dashboard";
 			}
@@ -108,38 +108,39 @@ public class StudentCtrl {
 	}
 
 	// Librarian View Students
-	@RequestMapping("/viewStudentsLibrarian")
-	public String viewStudentsLibrarian(Model m) {
+	@RequestMapping("/viewStudentsLibrarian/{lid}")
+	public String viewStudentsLibrarian(@PathVariable int lid ,Model m) {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("value", "librarianDashboardBack");
 		m.addAttribute("student", this.studentDao.getAllStudents());
+		m.addAttribute("lid", lid);
 		return "view-students";
 	}
 
-	// Student Login Handling
+	// Student DashBoard Back - for all
 	@RequestMapping("/studentDashboardBack/{stuId}")
 	public String studentDashboardBack(@PathVariable int stuId, Model m) {
 		m.addAttribute("stu", studentDao.getStudent(stuId));
 		// Adding IssuedBook
-		m.addAttribute("iBook" , ibDao.getIssuedBookByRollNo(studentDao.getStudent(stuId).getRollno()));
+		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(stuId).getRollno()));
 		return "student-dashboard";
 	}
 
 	// Student Delete Admin
 	@RequestMapping("/deleteStudentAdmin/{sid}")
-	public String deleteStudentAdmin(@PathVariable int sid ,Model m) {
+	public String deleteStudentAdmin(@PathVariable int sid, Model m) {
 		studentDao.deleteStudent(sid);
 		return viewStudentsAdmin(m);
 	}
-	
+
 	// Student Delete Librarian
 	@RequestMapping("/deleteStudentLibrarian/{sid}")
-	public String deleteStudentLibrarian(@PathVariable int sid ,Model m) {
+	public String deleteStudentLibrarian(@PathVariable int sid, Model m) {
 		studentDao.deleteStudent(sid);
-		return viewStudentsLibrarian(m);
+//		return viewStudentsLibrarian(m);
+		return "";
 	}
-	
-	// 
 
+	//
 
 }

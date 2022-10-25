@@ -26,12 +26,6 @@ public class BookCtrl {
 
 	List<Book> list = null;
 
-	// Add Book Form
-	@RequestMapping("/addBookForm")
-	public String addBookForm(Model m) {
-		m.addAttribute("librarianPage", "addBookForm");
-		return "librarian-dashboard";
-	}
 
 	// Add Book
 	@RequestMapping(value = "/addBook", method = RequestMethod.POST)

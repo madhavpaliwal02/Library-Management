@@ -58,7 +58,7 @@
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian' }">
-				<a href="${pageContext.request.contextPath }/${value }"
+				<a href="${pageContext.request.contextPath }/${value }/${lid }"
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<a href="home" class="btn btn-outline-Danger">Home</a>

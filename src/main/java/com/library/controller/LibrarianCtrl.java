@@ -20,7 +20,7 @@ public class LibrarianCtrl {
 
 	@Autowired
 	private LibrarianDao librarianDao;
-	
+
 	private List<Librarian> list;
 
 	/** Librarian - Controller */
@@ -35,7 +35,7 @@ public class LibrarianCtrl {
 	// Librarian Login Form
 	@RequestMapping("/librarianLogin")
 	public String librarianLogin(Model m) {
-		m.addAttribute("librarianPage", "librarianLogin");
+		m.addAttribute("librarianPage", "librarianLoginForm");
 		return "librarian-login";
 	}
 
@@ -60,24 +60,27 @@ public class LibrarianCtrl {
 	@RequestMapping(value = "/librarianDashboard", method = RequestMethod.POST)
 	public String librarianDashboard(@ModelAttribute User u, Model m) {
 		// Verification
-//		List<Librarian> lib = this.librarianDao.getAllLibrarians();
-//		for(Librarian l : lib) {
-//			if((u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
-//				m.addAttribute("lib",l);
-//				m.addAttribute("title", "Librarian DashBoard");
-//				return "librarian-dashboard";
-//			}
-//		}
+		List<Librarian> lib = this.librarianDao.getAllLibrarians();
+		for (Librarian l : lib) {
+			// For True Condition
+			if (u.getEmail().equals(l.getEmail()) && u.getPassword().equals(l.getPassword())) {
+				// Adding Librarian as Attribute
+				m.addAttribute("lib", l);
+				m.addAttribute("title", "Librarian DashBoard");
+				return "librarian-dashboard";
+			}
+
+		}
 
 		m.addAttribute("msg", "Invalid Credentials");
 		m.addAttribute("librarianPage", "librarianLoginForm");
 		return "librarian-login";
-
 	}
 
-	// Librarian student view back - used in BookCtrl
-	@RequestMapping("/librarianDashboardBack")
-	public String librarianDashboardBack() {
+	// Librarian Dashboard back - for all
+	@RequestMapping("/librarianDashboardBack/{lid}")
+	public String librarianDashboardBack(@PathVariable int lid, Model m) {
+		m.addAttribute("lib", librarianDao.getLibrarian(lid));
 		return "librarian-dashboard";
 	}
 

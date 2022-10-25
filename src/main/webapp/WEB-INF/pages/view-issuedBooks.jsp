@@ -62,7 +62,7 @@
 				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian'  }">
-				<a href="${pageContext.request.contextPath }/librarianDashboardBack" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-outline-warning">Back</a>
 			</c:if>
 
 			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>

@@ -65,10 +65,10 @@ public class IssuedBookCtrl {
 	}
 
 	// Display all issue book -Librarian
-	@RequestMapping("/viewIssuedBooksLibrarian")
-	public String viewIssuedBooksLibrarian(Model m) {
+	@RequestMapping("/viewIssuedBooksLibrarian/{lid}")
+	public String viewIssuedBooksLibrarian(@PathVariable int lid, Model m) {
 		list = this.issuedBookDao.getAllIssuedBook();
-
+		m.addAttribute("lid", lid);
 		m.addAttribute("ibook", list);
 		m.addAttribute("user", "librarian");
 		return "view-issuedBooks";
@@ -99,6 +99,7 @@ public class IssuedBookCtrl {
 	@RequestMapping("/deleteIssueBookLibrarian/{bid}")
 	public String deleteIssuedBookLibrarian(@PathVariable int bid, Model m) {
 		issuedBookDao.deleteIssuedBook(bid);
-		return viewIssuedBooksLibrarian(m);
+//		return viewIssuedBooksLibrarian(m);
+		return "";
 	}
 }

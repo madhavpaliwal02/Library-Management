@@ -16,7 +16,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.BookDao;
 import com.library.entities.Book;
-import com.library.entities.IssuedBook;
 
 @Controller
 public class BookCtrl {
@@ -56,10 +55,11 @@ public class BookCtrl {
 	}
 
 	// Display Books Librarian
-	@RequestMapping("/viewBooksLibrarian")
-	public String viewBooksLibrarian(Model m) {
+	@RequestMapping("/viewBooksLibrarian/{lid}")
+	public String viewBooksLibrarian(@PathVariable int lid, Model m) {
 		list = this.bookDao.getAllBooks();
 		m.addAttribute("user", "librarian");
+		m.addAttribute("lid", lid);
 		m.addAttribute("book", list);
 		return "view-books";
 	}
@@ -85,7 +85,8 @@ public class BookCtrl {
 	@RequestMapping("/deleteBookLibrarian/{bid}")
 	public String deleteBookLibrarian(@PathVariable int bid, Model m) {
 		bookDao.deleteBook(bid);
-		return viewBooksLibrarian(m);
+//		return viewBooksLibrarian(m);
+		return "";
 	}
 	
 

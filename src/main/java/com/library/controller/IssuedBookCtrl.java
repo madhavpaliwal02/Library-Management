@@ -33,7 +33,8 @@ public class IssuedBookCtrl {
 
 	private List<IssuedBook> ibook = null;
 
-	private List<DisplayBook> dBook = new ArrayList<DisplayBook>();
+	private List<DisplayBook> dBook;
+
 
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
@@ -54,35 +55,36 @@ public class IssuedBookCtrl {
 		ibook = this.issuedBookDao.getAllIssuedBook();
 		Student s = null;
 		Book b = null;
-		
+
 		// Assigning to DisplayBook
-		for(IssuedBook ib : ibook) {
+		for (IssuedBook ib : ibook) {
 			// Fetching Student & Book
 			s = studentDao.getStudent(ib.getSid());
 			b = bookDao.getBook(ib.getBid());
-			
+
+			dBook = new ArrayList<DisplayBook>();
 			DisplayBook db = new DisplayBook();
-			
+
 			// Assigning Student Data
 			db.setsName(s.getName());
 			db.setRollNo(s.getRollno());
 			db.setCourse(s.getCourse());
 			db.setGender(s.getGender());
-			
+
 			// Assigning Student Data
 			db.setbName(b.getName());
 			db.setAuthor(b.getAuthorName());
 			db.setEdition(b.getEdition());
-			
+
 			db.setDate(new Date());
-			
+
 			System.out.println(db);
-			
+
 			// Adding to the list
 			dBook.add(db);
 		}
 		System.out.println(dBook);
-		
+
 		m.addAttribute("ibook", dBook);
 		return "view-issuedBooks";
 	}
@@ -102,16 +104,6 @@ public class IssuedBookCtrl {
 		return viewBooks(m);
 	}
 
-	// Get a students Issued Book
-	/*
-	 * public List<IssuedBook> getIssuedBooks(String rollno) { // Getting all
-	 * records of IssuedBook List<IssuedBook> temp =
-	 * issuedBookDao.getAllIssuedBook();
-	 * 
-	 * // Filtering Records for a student for (IssuedBook ib : temp) { if
-	 * (ib.getRollNo().equals(rollno)) ibook.add(ib); } // Returning all records
-	 * return ibook; }
-	 */
 
 	// Delete Issued Book Admin
 	@RequestMapping("/issuedBookDeleteAdmin/{bid}")

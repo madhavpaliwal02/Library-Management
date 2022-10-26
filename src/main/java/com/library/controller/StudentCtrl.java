@@ -1,5 +1,6 @@
 package com.library.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.library.dao.BookDao;
 import com.library.dao.IssuedBookDao;
 import com.library.dao.StudentDao;
+import com.library.entities.Book;
 import com.library.entities.Student;
 import com.library.entities.User;
 
@@ -23,8 +26,12 @@ public class StudentCtrl {
 	private StudentDao studentDao;
 	@Autowired
 	private IssuedBookDao ibDao;
-	
+	@Autowired
+	private BookDao bDao;
+
 	private List<Student> student = null;
+
+	private List<Book> book = null;
 
 	/** Student - Controller */
 
@@ -70,6 +77,19 @@ public class StudentCtrl {
 		return studentLogin(m);
 	}
 
+	// Get Issued Book for a student
+	// Issued Book by Sid
+	public List<Book> getIssuedBooksBySid(int sid) {
+		// Getting all BookId from IssuedBook for a Student
+		List<Integer> temp = ibDao.getIssuedBookBySid(sid);
+		book = new ArrayList<Book>();
+		// Filtering Records for a student
+		for (int i : temp)
+			book.add(bDao.getBook(i));
+
+		return book;
+	}
+
 	// Student Login Handling
 	@RequestMapping(value = "/studentDashboard", method = RequestMethod.POST)
 	public String studentDashboard(@ModelAttribute User u, Model m) {
@@ -84,7 +104,8 @@ public class StudentCtrl {
 				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
 				// Adding IssuedBook
-//				m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(s.getRollno()));
+				book = getIssuedBooksBySid(s.getId());
+				m.addAttribute("iBook", book);
 				System.out.println(s.getRollno());
 				return "student-dashboard";
 			}
@@ -96,22 +117,26 @@ public class StudentCtrl {
 		return studentLogin(m);
 	}
 
-	// Admin View Students
-	@RequestMapping("/viewStudentsAdmin")
-	public String viewStudentsAdmin(Model m) {
-		m.addAttribute("user", "admin");
+	// View Students - Generic
+	public String viewStudents(Model m) {
 		m.addAttribute("student", this.studentDao.getAllStudents());
 		return "view-students";
 	}
 
+	// Admin View Students
+	@RequestMapping("/viewStudentsAdmin")
+	public String viewStudentsAdmin(Model m) {
+		m.addAttribute("user", "admin");
+		return viewStudents(m);
+	}
+
 	// Librarian View Students
 	@RequestMapping("/viewStudentsLibrarian/{lid}")
-	public String viewStudentsLibrarian(@PathVariable int lid ,Model m) {
+	public String viewStudentsLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("value", "librarianDashboardBack");
-		m.addAttribute("student", this.studentDao.getAllStudents());
 		m.addAttribute("lid", lid);
-		return "view-students";
+		return viewStudents(m);
 	}
 
 	// Student DashBoard Back - for all
@@ -119,7 +144,7 @@ public class StudentCtrl {
 	public String studentDashboardBack(@PathVariable int sid, Model m) {
 		m.addAttribute("stu", studentDao.getStudent(sid));
 		// Adding IssuedBook
-//		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(sid).getRollno()));
+		m.addAttribute("iBook", getIssuedBooksBySid(sid));
 		return "student-dashboard";
 	}
 

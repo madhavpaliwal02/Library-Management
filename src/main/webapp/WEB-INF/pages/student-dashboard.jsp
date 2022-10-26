@@ -25,7 +25,7 @@
 
 		<div class="row text-center mt-4">
 			<!-- Personal Details -->
-			<div class="col-5">
+			<div class="col-4">
 				<h3 class="text-center">Personal Details</h3>
 				<table class="table table-hover">
 					<tr>
@@ -62,15 +62,16 @@
 			</div>
 
 			<!-- Issued Books -->
-			<div class="col-5 offset-2">
+			<div class="col-7 offset-1">
 				<h3 class="text-center">Issued Books</h3>
 				<div class="container">
 					<table class="table table-hover text-center mt-3">
 						<thead class="thead-dark">
 							<tr>
 								<th scope="col">Id</th>
-								<th scope="col">Name</th>
+								<th scope="col">Book's Name</th>
 								<th scope="col">Author's Name</th>
+								<th scope="col">Book's Edition</th>
 								<th scope="col">Return Book</th>
 							</tr>
 						</thead>
@@ -78,11 +79,12 @@
 							<c:forEach items="${iBook }" var="book">
 								<tr>
 									<th scope="row">${book.id }</th>
-									<td>${book.bName }</td>
-									<td>${book.bAuthName }</td>
+									<td>${book.name }</td>
+									<td>${book.authorName }</td>
+									<td>${book.edition }</td>
 									<td><a
 										href="${pageContext.request.contextPath }/returnIssuedBook/${stu.id }">
-											<i class="fas fa-trash-book text-danger"
+											<i class="fas fa-trash-can text-danger"
 											style="font-size: 25px"> </i>
 									</a></td>
 								</tr>

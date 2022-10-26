@@ -29,6 +29,13 @@ public class IssuedBook {
 		this.bid = bid;
 		this.date = date;
 	}
+	
+	public IssuedBook(int sid, int bid, Date date) {
+		super();
+		this.sid = sid;
+		this.bid = bid;
+		this.date = date;
+	}
 
 	public int getId() {
 		return id;

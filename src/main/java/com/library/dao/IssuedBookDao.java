@@ -34,18 +34,16 @@ public class IssuedBookDao {
 	}
 	
 	// Get issued book By Roll No
-	public List<IssuedBook> getIssuedBookByRollNo(String rollNo){
-		List<IssuedBook> ibook = this.hibernateTemplate.loadAll(IssuedBook.class);
-		List<IssuedBook> ib2 = new ArrayList<IssuedBook>();
-		
-		for(IssuedBook ib : ibook) 
-			if(rollNo.equals(ib.getRollNo())) {
-				ib2.add(ib);
-				System.out.println(ib);
-			}
-				
-		return ib2;
-	}
+	/*
+	 * public List<IssuedBook> getIssuedBookByRollNo(String rollNo){
+	 * List<IssuedBook> ibook = this.hibernateTemplate.loadAll(IssuedBook.class);
+	 * List<IssuedBook> ib2 = new ArrayList<IssuedBook>();
+	 * 
+	 * for(IssuedBook ib : ibook) if(rollNo.equals(ib.getRollNo())) { ib2.add(ib);
+	 * System.out.println(ib); }
+	 * 
+	 * return ib2; }
+	 */
 
 	// Delete Issued Book
 	@Transactional

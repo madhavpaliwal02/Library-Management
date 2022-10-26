@@ -23,9 +23,11 @@
 					<th scope="col">Id</th>
 					<th scope="col">Book's Name</th>
 					<th scope="col">Author's Name</th>
+					<th scope="col">Book's Edition</th>
 					<th scope="col">Student's Name</th>
 					<th scope="col">Student's Roll No</th>
-					<th scope="col">Student's Email</th>
+					<th scope="col">Student's Course</th>
+					<th scope="col">Student's Gender</th>
 					<th scope="col">Issuing Date</th>
 					<th scope="col">Action</th>
 				</tr>
@@ -35,10 +37,12 @@
 					<tr>
 						<th scope="row">${book.id }</th>
 						<td>${book.bName }</td>
-						<td>${book.bAuthName }</td>
+						<td>${book.author }</td>
+						<td>${book.edition }</td>
 						<td>${book.sName}</td>
 						<td>${book.rollNo }</td>
-						<td>${book.sEmail }</td>
+						<td>${book.course }</td>
+						<td>${book.gender }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
 							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.id }"> <i

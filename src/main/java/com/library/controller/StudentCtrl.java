@@ -84,7 +84,7 @@ public class StudentCtrl {
 				m.addAttribute("stu", s); // name has been set in Dashboard
 				m.addAttribute("title", "Student DashBoard");
 				// Adding IssuedBook
-				m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(s.getRollno()));
+//				m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(s.getRollno()));
 				System.out.println(s.getRollno());
 				return "student-dashboard";
 			}
@@ -119,7 +119,7 @@ public class StudentCtrl {
 	public String studentDashboardBack(@PathVariable int sid, Model m) {
 		m.addAttribute("stu", studentDao.getStudent(sid));
 		// Adding IssuedBook
-		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(sid).getRollno()));
+//		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(sid).getRollno()));
 		return "student-dashboard";
 	}
 

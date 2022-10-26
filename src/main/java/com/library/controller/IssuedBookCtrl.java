@@ -1,5 +1,6 @@
 package com.library.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.library.dao.BookDao;
 import com.library.dao.IssuedBookDao;
 import com.library.dao.StudentDao;
 import com.library.entities.Book;
+import com.library.entities.DisplayBook;
 import com.library.entities.IssuedBook;
 import com.library.entities.Student;
 
@@ -29,24 +31,16 @@ public class IssuedBookCtrl {
 	@Autowired
 	private StudentDao studentDao;
 
-	List<IssuedBook> ibook = null;
+	private List<IssuedBook> ibook = null;
+
+	private List<DisplayBook> dBook = new ArrayList<DisplayBook>();
 
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
 	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
 		IssuedBook ib = new IssuedBook();
 
-		Book b = bookDao.getBook(bid);
-		Student s = studentDao.getStudent(sid);
-
-//		ib = new IssuedBook(b.getName(), b.getAuthorName(), s.getName(), s.getEmail(), s.getRollno(), new Date());
-
-		ib.setbName(b.getName());
-		ib.setbAuthName(b.getAuthorName());
-		ib.setsName(s.getName());
-		ib.setsEmail(s.getEmail());
-		ib.setRollNo(s.getRollno());
-		ib.setDate(new Date());
+		ib = new IssuedBook(sid, bid, new Date());
 
 		this.issuedBookDao.addIssuedBook(ib);
 
@@ -56,8 +50,40 @@ public class IssuedBookCtrl {
 
 	// Display IssuedBooks - Generic
 	public String viewBooks(Model m) {
+		// Fetching Issued Book Records
 		ibook = this.issuedBookDao.getAllIssuedBook();
-		m.addAttribute("ibook", ibook);
+		Student s = null;
+		Book b = null;
+		
+		// Assigning to DisplayBook
+		for(IssuedBook ib : ibook) {
+			// Fetching Student & Book
+			s = studentDao.getStudent(ib.getSid());
+			b = bookDao.getBook(ib.getBid());
+			
+			DisplayBook db = new DisplayBook();
+			
+			// Assigning Student Data
+			db.setsName(s.getName());
+			db.setRollNo(s.getRollno());
+			db.setCourse(s.getCourse());
+			db.setGender(s.getGender());
+			
+			// Assigning Student Data
+			db.setbName(b.getName());
+			db.setAuthor(b.getAuthorName());
+			db.setEdition(b.getEdition());
+			
+			db.setDate(new Date());
+			
+			System.out.println(db);
+			
+			// Adding to the list
+			dBook.add(db);
+		}
+		System.out.println(dBook);
+		
+		m.addAttribute("ibook", dBook);
 		return "view-issuedBooks";
 	}
 
@@ -77,18 +103,15 @@ public class IssuedBookCtrl {
 	}
 
 	// Get a students Issued Book
-	public List<IssuedBook> getIssuedBooks(String rollno) {
-		// Getting all records of IssuedBook
-		List<IssuedBook> temp = issuedBookDao.getAllIssuedBook();
-
-		// Filtering Records for a student
-		for (IssuedBook ib : temp) {
-			if (ib.getRollNo().equals(rollno))
-				ibook.add(ib);
-		}
-		// Returning all records
-		return ibook;
-	}
+	/*
+	 * public List<IssuedBook> getIssuedBooks(String rollno) { // Getting all
+	 * records of IssuedBook List<IssuedBook> temp =
+	 * issuedBookDao.getAllIssuedBook();
+	 * 
+	 * // Filtering Records for a student for (IssuedBook ib : temp) { if
+	 * (ib.getRollNo().equals(rollno)) ibook.add(ib); } // Returning all records
+	 * return ibook; }
+	 */
 
 	// Delete Issued Book Admin
 	@RequestMapping("/issuedBookDeleteAdmin/{bid}")

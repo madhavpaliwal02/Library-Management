@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class IssuedBook {
+public class ReturnBook {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,12 +17,12 @@ public class IssuedBook {
 	private int bid;
 	private Date date;
 
-	public IssuedBook() {
+	public ReturnBook() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public IssuedBook(int id, int sid, int bid, Date date) {
+	public ReturnBook(int id, int sid, int bid, Date date) {
 		super();
 		this.id = id;
 		this.sid = sid;

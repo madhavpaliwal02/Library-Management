@@ -24,15 +24,23 @@
 				role="button">View All Issued Books</a>
 		</div>
 
-		<!-- Condition - Success Book -->
-		<c:if test="${not empty msg }">
-			<div class="alert alert-success text-center mt-3">
-				<c:out value="${msg }"></c:out>
-			</div>
-		</c:if>
+		<!-- Condition - success -->
+		<div class="container mt-2">
+			<c:if test="${not empty msg }">
+				<c:if test="${msg == 'failed' }">
+					<div class="alert alert-danger text-center">
+						<c:out value="${message }" />
+					</div>
+				</c:if>
+				<c:if test="${msg != 'failed' }">
+					<div class="alert alert-success text-center">
+						<c:out value="${msg }" />
+					</div>
+				</c:if>
+			</c:if>
+		</div>
 
-
-		<div class="row text-center mt-4">
+		<div class="row  mt-4">
 
 			<!-- //////////////////// Personal Details //////////////////// -->
 			<div class="col-5">
@@ -78,7 +86,8 @@
 				<h3 class="text-center">
 					<b>Add Book Form</b>
 				</h3>
-				<form action="${pageContext.request.contextPath }/addBook/${lid }" method="post">
+				<form action="${pageContext.request.contextPath }/addBook/${lid }"
+					method="post">
 
 					<div class="form-row">
 						<!-- Book Name -->
@@ -95,11 +104,19 @@
 						</div>
 					</div>
 
-					<!-- Edition -->
-					<div class="form-group">
-						<label for="book's-edition">Edition</label> <input type="text"
-							class="form-control" id="book's-edition"
-							placeholder="Enter Edition" name="edition" required>
+					<div class="form-row">
+						<!-- Edition -->
+						<div class="form-group col-md-6">
+							<label for="book's-edition">Edition</label> <input type="text"
+								class="form-control" id="book's-edition"
+								placeholder="Enter Edition" name="edition" required>
+						</div>
+						<!-- Count -->
+						<div class="form-group col-md-6">
+							<label for="book's-count">Count</label> <input type="text"
+								class="form-control" id="book's-count" placeholder="Enter Count"
+								name="count" required>
+						</div>
 					</div>
 
 					<!-- Description -->

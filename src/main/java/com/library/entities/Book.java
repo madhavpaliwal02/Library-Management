@@ -13,6 +13,7 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private int count;
 	private String name;
 	private String authorName;
 	private String description;
@@ -24,10 +25,9 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public Book(int id, String name, String authorName, String description, String edition, Date date) {
+	public Book(int count, String name, String authorName, String description, String edition, Date date) {
 		super();
-		this.id = id;
+		this.count = count;
 		this.name = name;
 		this.authorName = authorName;
 		this.description = description;
@@ -35,6 +35,16 @@ public class Book {
 		this.date = date;
 	}
 
+	public Book(int id, int count, String name, String authorName, String description, String edition, Date date) {
+		super();
+		this.id = id;
+		this.count = count;
+		this.name = name;
+		this.authorName = authorName;
+		this.description = description;
+		this.edition = edition;
+		this.date = date;
+	}
 
 	public int getId() {
 		return id;
@@ -75,22 +85,27 @@ public class Book {
 	public void setEdition(String edition) {
 		this.edition = edition;
 	}
-	
 
 	public Date getDate() {
 		return date;
 	}
 
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", authorName=" + authorName + ", description=" + description
-				+ ", edition=" + edition + "]";
+		return "Book [id=" + id + ", count=" + count + ", name=" + name + ", authorName=" + authorName
+				+ ", description=" + description + ", edition=" + edition + ", date=" + date + "]";
 	}
 
 }

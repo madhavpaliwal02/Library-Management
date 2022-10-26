@@ -25,6 +25,7 @@
 					<th scope="col">Author's Name</th>
 					<th scope="col">Edition</th>
 					<th scope="col">Description</th>
+					<th scope="col">Count</th>
 					<th scope="col">Date</th>
 					<th scope="col">Action</th>
 				</tr>
@@ -37,6 +38,7 @@
 						<td>${book.authorName }</td>
 						<td>${book.edition}</td>
 						<td>${book.description }</td>
+						<td>${book.count }</td>
 						<td>${book.date }</td>
 							<c:if test="${user=='admin' }">
 								<td><a href="${pageContext.request.contextPath }/bookDeleteAdmin/${book.id }"> <i

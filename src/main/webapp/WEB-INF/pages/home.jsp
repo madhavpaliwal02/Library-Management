@@ -10,9 +10,12 @@
 
 	<div class="container mt-3">
 
-		<h1 class="text-center">
-			Welcome To The <b>Vinayak Management</b> System
-		</h1>
+		<div class="text-center">
+			<h1>
+				Welcome To The <b>LIMSY</b>
+			</h1>
+			<h4>A Library Management System</h4>
+		</div>
 
 		<div class="row md-6 offset-3 mt-5">
 			<div class="card text-center" style="width: 12rem;">

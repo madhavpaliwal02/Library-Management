@@ -36,14 +36,14 @@
 
 						<c:if test="${user=='admin' }">
 							<td><a
-								href="${pageContext.request.contextPath }/deleteStudentAdmin/${stu.id }">
+								href="${pageContext.request.contextPath }/studentDeleteAdmin/${stu.id }">
 									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
 						<c:if test="${user=='librarian' }">
 							<td><a
-								href="${pageContext.request.contextPath }/deleteStudentLibrarian/${lid }/${stu.id }">
+								href="${pageContext.request.contextPath }/studentDeleteLibrarian/${lid }/${stu.id }">
 									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>

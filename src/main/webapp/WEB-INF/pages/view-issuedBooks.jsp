@@ -41,13 +41,13 @@
 						<td>${book.sEmail }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
-							<td><a href="${pageContext.request.contextPath }/deleteIssueBookAdmin/${book.id }"> <i
+							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.id }"> <i
 									class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
 						<c:if test="${user=='librarian' }">
-							<td><a href="${pageContext.request.contextPath }/deleteIssueBookLibrarian/${lid }/${book.id }"> <i
+							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteLibrarian/${lid }/${book.id }"> <i
 									class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>

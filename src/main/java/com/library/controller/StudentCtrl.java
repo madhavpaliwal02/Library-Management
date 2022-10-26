@@ -21,10 +21,10 @@ public class StudentCtrl {
 
 	@Autowired
 	private StudentDao studentDao;
-
-	private List<Student> student = null;
 	@Autowired
-	IssuedBookDao ibDao = new IssuedBookDao();
+	private IssuedBookDao ibDao;
+	
+	private List<Student> student = null;
 
 	/** Student - Controller */
 
@@ -115,23 +115,23 @@ public class StudentCtrl {
 	}
 
 	// Student DashBoard Back - for all
-	@RequestMapping("/studentDashboardBack/{stuId}")
-	public String studentDashboardBack(@PathVariable int stuId, Model m) {
-		m.addAttribute("stu", studentDao.getStudent(stuId));
+	@RequestMapping("/studentDashboardBack/{sid}")
+	public String studentDashboardBack(@PathVariable int sid, Model m) {
+		m.addAttribute("stu", studentDao.getStudent(sid));
 		// Adding IssuedBook
-		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(stuId).getRollno()));
+		m.addAttribute("iBook", ibDao.getIssuedBookByRollNo(studentDao.getStudent(sid).getRollno()));
 		return "student-dashboard";
 	}
 
 	// Student Delete Admin
-	@RequestMapping("/deleteStudentAdmin/{sid}")
+	@RequestMapping("/studentDeleteAdmin/{sid}")
 	public String deleteStudentAdmin(@PathVariable int sid, Model m) {
 		studentDao.deleteStudent(sid);
 		return viewStudentsAdmin(m);
 	}
 
 	// Student Delete Librarian
-	@RequestMapping("/deleteStudentLibrarian/{lid}/{sid}")
+	@RequestMapping("/studentDeleteLibrarian/{lid}/{sid}")
 	public String deleteStudentLibrarian(@PathVariable int lid, @PathVariable int sid, Model m) {
 		studentDao.deleteStudent(sid);
 		return viewStudentsLibrarian(lid, m);

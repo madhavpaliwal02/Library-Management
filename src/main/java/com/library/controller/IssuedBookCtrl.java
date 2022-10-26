@@ -29,49 +29,51 @@ public class IssuedBookCtrl {
 	@Autowired
 	private StudentDao studentDao;
 
-	List<IssuedBook> list = null;
+	List<IssuedBook> ibook = null;
 
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
 	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
-		IssuedBook ibook = new IssuedBook();
+		IssuedBook ib = new IssuedBook();
 
 		Book b = bookDao.getBook(bid);
 		Student s = studentDao.getStudent(sid);
 
-//		ibook = new IssuedBook(b.getName(), b.getAuthorName(), s.getName(), s.getEmail(), s.getRollno(), new Date());
+//		ib = new IssuedBook(b.getName(), b.getAuthorName(), s.getName(), s.getEmail(), s.getRollno(), new Date());
 
-		ibook.setbName(b.getName());
-		ibook.setbAuthName(b.getAuthorName());
-		ibook.setsName(s.getName());
-		ibook.setsEmail(s.getEmail());
-		ibook.setRollNo(s.getRollno());
-		ibook.setDate(new Date());
+		ib.setbName(b.getName());
+		ib.setbAuthName(b.getAuthorName());
+		ib.setsName(s.getName());
+		ib.setsEmail(s.getEmail());
+		ib.setRollNo(s.getRollno());
+		ib.setDate(new Date());
 
-		this.issuedBookDao.addIssuedBook(ibook);
+		this.issuedBookDao.addIssuedBook(ib);
 
 		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{sid}");
 		return rd;
 	}
 
+	// Display IssuedBooks - Generic
+	public String viewBooks(Model m) {
+		ibook = this.issuedBookDao.getAllIssuedBook();
+		m.addAttribute("ibook", ibook);
+		return "view-issuedBooks";
+	}
+
 	// Display all issue book - Admin
 	@RequestMapping("/viewIssuedBooksAdmin")
 	public String viewIssuedBooksAdmin(Model m) {
-		list = this.issuedBookDao.getAllIssuedBook();
-
-		m.addAttribute("ibook", list);
 		m.addAttribute("user", "admin");
-		return "view-issuedBooks";
+		return viewBooks(m);
 	}
 
 	// Display all issue book -Librarian
 	@RequestMapping("/viewIssuedBooksLibrarian/{lid}")
 	public String viewIssuedBooksLibrarian(@PathVariable int lid, Model m) {
-		list = this.issuedBookDao.getAllIssuedBook();
 		m.addAttribute("lid", lid);
-		m.addAttribute("ibook", list);
 		m.addAttribute("user", "librarian");
-		return "view-issuedBooks";
+		return viewBooks(m);
 	}
 
 	// Get a students Issued Book
@@ -82,23 +84,30 @@ public class IssuedBookCtrl {
 		// Filtering Records for a student
 		for (IssuedBook ib : temp) {
 			if (ib.getRollNo().equals(rollno))
-				list.add(ib);
+				ibook.add(ib);
 		}
 		// Returning all records
-		return list;
+		return ibook;
 	}
 
 	// Delete Issued Book Admin
-	@RequestMapping("/deleteIssueBookAdmin/{bid}")
+	@RequestMapping("/issuedBookDeleteAdmin/{bid}")
 	public String deleteIssuedBookAdmin(@PathVariable int bid, Model m) {
 		issuedBookDao.deleteIssuedBook(bid);
 		return viewIssuedBooksAdmin(m);
 	}
 
 	// Delete Issued Book Librarian
-	@RequestMapping("/deleteIssueBookLibrarian/{lid}/{bid}")
+	@RequestMapping("/issuedBookDeleteLibrarian/{lid}/{bid}")
 	public String deleteIssuedBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
 		issuedBookDao.deleteIssuedBook(bid);
 		return viewIssuedBooksLibrarian(lid, m);
+	}
+
+	// Return Issued Book
+	@RequestMapping("/issuedBookReturn/{sid}")
+	public RedirectView returnIssuedBook(@PathVariable int sid, HttpServletRequest request) {
+		RedirectView view = new RedirectView(request.getContextPath() + "/studentDashboardBack/{" + sid + "}");
+		return view;
 	}
 }

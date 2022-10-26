@@ -17,8 +17,8 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
 			<a class="btn btn-primary"
-				href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>' role="button">View
-				Books</a> <a class="btn btn-primary"
+				href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>'
+				role="button">View Books</a> <a class="btn btn-primary"
 				href='<c:url value='/returnBook'> </c:url>' role="button">Return
 				Books</a>
 		</div>
@@ -60,7 +60,7 @@
 
 
 			</div>
-			
+
 			<!-- Issued Books -->
 			<div class="col-5 offset-2">
 				<h3 class="text-center">Issued Books</h3>
@@ -71,6 +71,7 @@
 								<th scope="col">Id</th>
 								<th scope="col">Name</th>
 								<th scope="col">Author's Name</th>
+								<th scope="col">Return Book</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -79,6 +80,11 @@
 									<th scope="row">${book.id }</th>
 									<td>${book.bName }</td>
 									<td>${book.bAuthName }</td>
+									<td><a
+										href="${pageContext.request.contextPath }/returnIssuedBook/${stu.id }">
+											<i class="fas fa-trash-book text-danger"
+											style="font-size: 25px"> </i>
+									</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -89,8 +95,10 @@
 
 
 		<div class="container text-center mt-3">
-			<a href="${pageContext.request.contextPath }/studentLogin" class="btn btn-outline-Danger">Log-Out</a> <a
-				href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">HOME</a>
+			<a href="${pageContext.request.contextPath }/studentLogin"
+				class="btn btn-outline-Danger">Log-Out</a> <a
+				href="${pageContext.request.contextPath }/home"
+				class="btn btn-outline-Danger">HOME</a>
 		</div>
 
 	</div>

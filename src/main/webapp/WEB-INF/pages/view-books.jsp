@@ -39,13 +39,13 @@
 						<td>${book.description }</td>
 						<td>${book.date }</td>
 							<c:if test="${user=='admin' }">
-								<td><a href="${pageContext.request.contextPath }/deleteBookAdmin/${book.id }"> <i
+								<td><a href="${pageContext.request.contextPath }/bookDeleteAdmin/${book.id }"> <i
 										class="fas fa-trash-can text-danger" style="font-size: 25px">
 									</i>
 								</a></td>
 							</c:if>
 							<c:if test="${user=='librarian' }">
-								<td><a href="${pageContext.request.contextPath }/deleteBookLibrarian/${lid }/${book.id }"> <i
+								<td><a href="${pageContext.request.contextPath }/bookDeleteLibrarian/${lid }/${book.id }"> <i
 										class="fas fa-trash-can text-danger" style="font-size: 25px">
 									</i>
 								</a></td>
@@ -68,7 +68,7 @@
 				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='student' }">
-				<a href="${pageContext.request.contextPath }/studentDashboardBack/${studentId }"
+				<a href="${pageContext.request.contextPath }/studentDashboardBack/${sid }"
 					class="btn btn-outline-warning">Back</a>
 			</c:if>
 

@@ -35,13 +35,16 @@ public class IssuedBookCtrl {
 
 	private List<DisplayBook> dBook;
 
-
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
 	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
 		IssuedBook ib = new IssuedBook();
 
 		ib = new IssuedBook(sid, bid, new Date());
+
+		Book b = bookDao.getBook(bid);
+		int count = b.getCount() - 1;
+		b.setCount(count);
 
 		this.issuedBookDao.addIssuedBook(ib);
 
@@ -104,7 +107,6 @@ public class IssuedBookCtrl {
 		return viewBooks(m);
 	}
 
-
 	// Delete Issued Book Admin
 	@RequestMapping("/issuedBookDeleteAdmin/{bid}")
 	public String deleteIssuedBookAdmin(@PathVariable int bid, Model m) {
@@ -121,8 +123,9 @@ public class IssuedBookCtrl {
 
 	// Return Issued Book
 	@RequestMapping("/issuedBookReturn/{sid}")
-	public RedirectView returnIssuedBook(@PathVariable int sid, HttpServletRequest request) {
-		RedirectView view = new RedirectView(request.getContextPath() + "/studentDashboardBack/{" + sid + "}");
-		return view;
+	public String returnIssuedBook(@PathVariable int sid, HttpServletRequest request) {
+		
+
+		return "";
 	}
 }

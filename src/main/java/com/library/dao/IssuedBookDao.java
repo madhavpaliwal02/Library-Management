@@ -52,4 +52,6 @@ public class IssuedBookDao {
 	public void deleteIssuedBook(int id) {
 		this.hibernateTemplate.delete(getIssuedBook(id));
 	}
+	
+	
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.BookDao;
 import com.library.dao.LibrarianDao;
@@ -34,8 +33,6 @@ public class BookCtrl {
 	public String addBook(@ModelAttribute Book book, @PathVariable int lid, Model m, HttpServletRequest request) {
 		this.book = bookDao.getAllBooks();
 		m.addAttribute("lib", libDao.getLibrarian(lid));
-
-//		RedirectView view = new RedirectView(request.getContextPath() + "/librarianDashboardBack/{lid}");
 
 		// If the book exists
 		if (this.book != null) {

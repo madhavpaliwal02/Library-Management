@@ -106,7 +106,6 @@ public class StudentCtrl {
 				// Adding IssuedBook
 				book = getIssuedBooksBySid(s.getId());
 				m.addAttribute("iBook", book);
-				System.out.println(s.getRollno());
 				return "student-dashboard";
 			}
 		}

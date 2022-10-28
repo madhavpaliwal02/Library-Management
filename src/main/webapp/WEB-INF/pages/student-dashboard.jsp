@@ -14,14 +14,7 @@
 			Welcome To The <b>Student DashBoard</b>
 		</h1>
 
-		<!-- Navigation Button -->
-		<div class="text-center mt-2">
-			<a class="btn btn-primary"
-				href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>'
-				role="button">View Books</a> <a class="btn btn-primary"
-				href='<c:url value='/returnBook'> </c:url>' role="button">Return
-				Books</a>
-		</div>
+
 
 		<div class="row text-center mt-4">
 			<!-- Personal Details -->
@@ -58,6 +51,13 @@
 					</tr>
 				</table>
 
+				<!-- Navigation Button -->
+				<div class="text-center mt-2">
+					<a class="btn btn-primary"
+						href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>'
+						role="button">View Books</a>
+				</div>
+
 
 			</div>
 
@@ -83,7 +83,7 @@
 									<td>${book.authorName }</td>
 									<td>${book.edition }</td>
 									<td><a
-										href="${pageContext.request.contextPath }/returnIssuedBook/${stu.id }">
+										href="${pageContext.request.contextPath }/returnBook/${stu.id }/${book.id }">
 											<i class="fas fa-trash-can text-danger"
 											style="font-size: 25px"> </i>
 									</a></td>

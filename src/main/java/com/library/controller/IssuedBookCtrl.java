@@ -42,9 +42,12 @@ public class IssuedBookCtrl {
 
 		ib = new IssuedBook(sid, bid, new Date());
 
-		Book b = bookDao.getBook(bid);
-		int count = b.getCount() - 1;
-		b.setCount(count);
+		int count = bookDao.getBook(bid).getCount() - 1;
+		System.out.println(bookDao.getBook(bid));
+		System.out.println(bookDao.getBook(bid).getCount());
+		bookDao.getBook(bid).setCount(count);
+		System.out.println(count);
+		System.out.println(bookDao.getBook(bid).getCount());
 
 		this.issuedBookDao.addIssuedBook(ib);
 
@@ -53,11 +56,15 @@ public class IssuedBookCtrl {
 	}
 
 	// Display IssuedBooks - Generic
+
 	public String viewBooks(Model m) {
 		// Fetching Issued Book Records
 		ibook = this.issuedBookDao.getAllIssuedBook();
+		dBook = new ArrayList<DisplayBook>();
+//		System.out.println(ibook);
 		Student s = null;
 		Book b = null;
+		int i = 1;
 
 		// Assigning to DisplayBook
 		for (IssuedBook ib : ibook) {
@@ -65,8 +72,11 @@ public class IssuedBookCtrl {
 			s = studentDao.getStudent(ib.getSid());
 			b = bookDao.getBook(ib.getBid());
 
-			dBook = new ArrayList<DisplayBook>();
+			// Creating a new object
 			DisplayBook db = new DisplayBook();
+
+			// Setting id
+			db.setId(i++);
 
 			// Assigning Student Data
 			db.setsName(s.getName());
@@ -79,9 +89,8 @@ public class IssuedBookCtrl {
 			db.setAuthor(b.getAuthorName());
 			db.setEdition(b.getEdition());
 
-			db.setDate(new Date());
-
-			System.out.println(db);
+			// Assigning Issued Book Date
+			db.setDate(ib.getDate());
 
 			// Adding to the list
 			dBook.add(db);
@@ -121,11 +130,4 @@ public class IssuedBookCtrl {
 		return viewIssuedBooksLibrarian(lid, m);
 	}
 
-	// Return Issued Book
-	@RequestMapping("/issuedBookReturn/{sid}")
-	public String returnIssuedBook(@PathVariable int sid, HttpServletRequest request) {
-		
-
-		return "";
-	}
 }

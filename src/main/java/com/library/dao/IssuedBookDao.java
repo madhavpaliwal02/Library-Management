@@ -36,7 +36,7 @@ public class IssuedBookDao {
 	// Get Issued Book By Sid
 	public List<Integer> getIssuedBookBySid(int sid) {
 		// Fetching all Issued Book
-		List<IssuedBook> ibook = this.hibernateTemplate.loadAll(IssuedBook.class);
+		List<IssuedBook> ibook = getAllIssuedBook();
 		List<Integer> ib2 = new ArrayList<Integer>();
 
 		// Filtering for a Student
@@ -52,6 +52,19 @@ public class IssuedBookDao {
 	public void deleteIssuedBook(int id) {
 		this.hibernateTemplate.delete(getIssuedBook(id));
 	}
-	
-	
+
+	// Delete Issued Book by Bid
+	@Transactional
+	public void deleteIssuedBookByBid(int bid) {
+		// Fetching all Issued Book
+		List<IssuedBook> ibook = getAllIssuedBook();
+
+		// Filtering for a Student
+		for (IssuedBook ib : ibook)
+			if (ib.getBid() == bid) { // Verifying the sid
+				deleteIssuedBook(ib.getId()); // Deleting the record
+				break;
+			}
+	}
+
 }

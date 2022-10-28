@@ -22,6 +22,13 @@ public class ReturnBook {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ReturnBook(int sid, int bid, Date date) {
+		super();
+		this.sid = sid;
+		this.bid = bid;
+		this.date = date;
+	}
+
 	public ReturnBook(int id, int sid, int bid, Date date) {
 		super();
 		this.id = id;

@@ -8,7 +8,7 @@
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center">Books Issued by Students</h1>
+		<h1 class="text-center">Books Returned by Students</h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
@@ -20,7 +20,7 @@
 		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">S.No</th>
+					<th scope="col">Id</th>
 					<th scope="col">Book's Name</th>
 					<th scope="col">Author's Name</th>
 					<th scope="col">Book's Edition</th>
@@ -28,12 +28,12 @@
 					<th scope="col">Student's Roll No</th>
 					<th scope="col">Student's Course</th>
 					<th scope="col">Student's Gender</th>
-					<th scope="col">Issuing Date</th>
+					<th scope="col">Returned Date</th>
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ibook }" var="book">
+				<c:forEach items="${rbook }" var="book">
 					<tr>
 						<th scope="row">${book.id }</th>
 						<td>${book.bName }</td>
@@ -45,14 +45,16 @@
 						<td>${book.gender }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
-							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
+							<td><a
+								href="${pageContext.request.contextPath }/returnBookDeleteAdmin/${book.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
 						<c:if test="${user=='librarian' }">
-							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteLibrarian/${lid }/${book.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
+							<td><a
+								href="${pageContext.request.contextPath }/returnBookDeleteLibrarian/${lid }/${book.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
 						</c:if>
@@ -63,13 +65,17 @@
 		</table>
 		<div class="container text-center">
 			<c:if test="${user=='admin'  }">
-				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/adminDashboardBack"
+					class="btn btn-outline-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian'  }">
-				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-outline-warning">Back</a>
+				<a
+					href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }"
+					class="btn btn-outline-warning">Back</a>
 			</c:if>
 
-			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home"
+				class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 </body>

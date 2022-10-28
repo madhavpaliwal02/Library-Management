@@ -21,7 +21,10 @@
 				href='<c:url value='/viewBooksLibrarian/${lib.id }'></c:url>'
 				role="button">View All Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooksLibrarian/${lib.id }'></c:url>'
-				role="button">View All Issued Books</a>
+				role="button">View All Issued Books</a> <a class="btn btn-primary"
+				href='<c:url value='/viewReturnBooksLibrarian/${lib.id }'></c:url>'
+				role="button">View All Returned Books</a>
+
 		</div>
 
 		<!-- Condition - success -->

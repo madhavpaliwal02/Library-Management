@@ -74,6 +74,7 @@
 				<value>com.library.entities.Librarian</value>
 				<value>com.library.entities.Book</value>
 				<value>com.library.entities.IssuedBook</value>
+				<value>com.library.entities.ReturnBook</value>
 				<value>com.library.entities.User</value>
 			</list>
 

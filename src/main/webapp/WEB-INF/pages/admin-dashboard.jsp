@@ -23,11 +23,13 @@
 				href='<c:url value='/viewBooksAdmin'> </c:url>' role="button">View
 				All Books</a> <a class="btn btn-primary"
 				href='<c:url value='/viewIssuedBooksAdmin'> </c:url>' role="button">View
-				All Issued Books</a>
+				All Issued Books</a> <a class="btn btn-primary"
+				href='<c:url value='/viewReturnBooksAdmin'> </c:url>' role="button">View
+				All Returned Books</a>
 		</div>
 		<div class="container text-center mt-5">
-			<a href="adminLogin" class="btn btn-outline-Danger">Log-Out</a>
-			<a href="home" class="btn btn-outline-Danger">Home</a>
+			<a href="adminLogin" class="btn btn-outline-Danger">Log-Out</a> <a
+				href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 

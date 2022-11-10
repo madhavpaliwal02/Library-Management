@@ -76,7 +76,9 @@
 					</tr>
 				</table>
 				<div class="container text-center mt-3">
-					<a href="${pageContext.request.contextPath }/librarianLogin"
+					<a href="${pageContext.request.contextPath }/updateLibrarianForm/${lib.id }"
+						class="btn btn-outline-Warning">Update</a> <a
+						href="${pageContext.request.contextPath }/librarianLogin"
 						class="btn btn-outline-Warning">Log-Out</a> <a
 						href="${pageContext.request.contextPath }/home"
 						class="btn btn-outline-Danger">HOME</a>

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.dao.BookDao;
+import com.library.dao.IssuedBookDao;
 import com.library.dao.LibrarianDao;
+import com.library.dao.ReturnBookDao;
 import com.library.entities.Book;
 
 @Controller
@@ -25,6 +27,10 @@ public class BookCtrl {
 	private BookDao bookDao;
 	@Autowired
 	private LibrarianDao libDao;
+	@Autowired
+	private IssuedBookDao ibDao;
+	@Autowired
+	private ReturnBookDao rbDao;
 
 	List<Book> book = null;
 
@@ -93,17 +99,28 @@ public class BookCtrl {
 
 	// Update Book - Only Librarian
 
+	
+	// Delete Book Librarian
+	public void deleteBook(int bid) {
+		// Deleting Issued Book 
+		ibDao.deleteIssuedBookByBid(bid);
+		// Deleting Return Book
+		rbDao.deleteReturnBookByBid(bid);
+		// Deleting Book
+		bookDao.deleteBook(bid);
+	}
+	
 	// Delete Book Admin
 	@RequestMapping("/bookDeleteAdmin/{bid}")
 	public String deleteBookAdmin(@PathVariable int bid, Model m) {
-		bookDao.deleteBook(bid);
+		deleteBook(bid);
 		return viewBooksAdmin(m);
 	}
 
 	// Delete Book Librarian
 	@RequestMapping("/bookDeleteLibrarian/{lid}/{bid}")
 	public String deleteBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
-		bookDao.deleteBook(bid);
+		deleteBook(bid);
 		return viewBooksLibrarian(lid, m);
 	}
 

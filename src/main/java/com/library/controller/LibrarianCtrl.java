@@ -70,7 +70,7 @@ public class LibrarianCtrl {
 	public String librarianDashboard(@ModelAttribute User u, Model m) {
 		// Verification
 		librarian = this.librarianDao.getAllLibrarians();
-		
+
 		// If user is existing Librarian
 		for (Librarian l : librarian) {
 			// For True Condition
@@ -104,11 +104,22 @@ public class LibrarianCtrl {
 	}
 
 	// Librarian Update Form
-	/* @RequestMapping("/updateLibrarian/{libId}") public String
-	 * updateLibrarian(@PathVariable int libId, Model m) { Librarian lib =
-	 * librarianDao.getLibrarian(libId); m.addAttribute("librarian", lib); return
-	 * "update-librarian"; }
-	 */
+	@RequestMapping("/updateLibrarianForm/{lid}")
+	public String updateLibrarianForm(@PathVariable int lid, Model m) {
+		Librarian lib = librarianDao.getLibrarian(lid);
+		m.addAttribute("librarian", lib);
+		m.addAttribute("date", lib.getDate());
+		return "update-librarian";
+	}
+
+	// Update Librarian
+	@RequestMapping(value = "/updateLibrarian", method = RequestMethod.POST)
+	public String updateLibrarian(@ModelAttribute Librarian lib, Model m) {
+		librarianDao.addLibrarian(lib);
+		m.addAttribute("lib", lib);
+		m.addAttribute("title", "Librarian DashBoard");
+		return "librarian-dashboard";
+	}
 
 	// Delete Librarian
 	@RequestMapping("/deleteLibrarian/{lid}")

@@ -13,8 +13,10 @@
 			<h3 class="text-center">
 				<b>Librarian Update Form</b>
 			</h3>
-			<form action="librarianSignup" method="post">
-
+			<form action="${pageContext.request.contextPath }/updateLibrarian"
+				method="post">
+				<input type="text" name="id" value="${librarian.id }" hidden>
+				<%-- <input type="datetime-local" name="date" value="${librarian.date }" hidden> --%>
 				<div class="form-row">
 					<!-- Librarian Name -->
 					<div class="form-group col-md-6">
@@ -61,7 +63,9 @@
 				</div>
 
 				<div class="container text-center">
-					<a href="/" class="btn btn-outline-Warning">Back</a>
+					<a
+						href="${pageContext.request.contextPath }/librarianDashboardBack/${librarian.id }"
+						class="btn btn-outline-Warning">Back</a>
 					<button class="btn btn-outline-success">Update</button>
 				</div>
 			</form>

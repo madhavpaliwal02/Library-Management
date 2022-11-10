@@ -98,7 +98,7 @@
 
 		<div class="container text-center mt-3">
 			<a href="${pageContext.request.contextPath }/studentLogin"
-				class="btn btn-outline-Danger">Log-Out</a> <a
+				class="btn btn-outline-Warning">Log-Out</a> <a
 				href="${pageContext.request.contextPath }/home"
 				class="btn btn-outline-Danger">HOME</a>
 		</div>

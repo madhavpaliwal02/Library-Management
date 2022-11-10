@@ -28,7 +28,7 @@
 					placeholder="Password" name="password" required>
 			</div>
 			<div class="container text-center">
-				<a href="home" class="btn btn-outline-Danger">Back</a>
+				<a href="home" class="btn btn-outline-Warning">Back</a>
 				<button class="btn btn-outline-success">Login</button>
 			</div>
 		</form>

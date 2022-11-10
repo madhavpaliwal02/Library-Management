@@ -28,7 +28,7 @@
 				All Returned Books</a>
 		</div>
 		<div class="container text-center mt-5">
-			<a href="adminLogin" class="btn btn-outline-Danger">Log-Out</a> <a
+			<a href="adminLogin" class="btn btn-outline-Warning">Log-Out</a> <a
 				href="home" class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>

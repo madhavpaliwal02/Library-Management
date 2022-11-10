@@ -43,8 +43,10 @@
 
 
 		<div class="container text-center">
-			<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
-			<a href="home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/adminDashboardBack"
+				class="btn btn-outline-warning">Back</a> <a
+				href="${pageContext.request.contextPath }/home"
+				class="btn btn-outline-Danger">Home</a>
 		</div>
 	</div>
 </body>

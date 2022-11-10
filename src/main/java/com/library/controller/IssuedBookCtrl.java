@@ -56,7 +56,6 @@ public class IssuedBookCtrl {
 	}
 
 	// Display IssuedBooks - Generic
-
 	public String viewBooks(Model m) {
 		// Fetching Issued Book Records
 		ibook = this.issuedBookDao.getAllIssuedBook();
@@ -123,11 +122,5 @@ public class IssuedBookCtrl {
 		return viewIssuedBooksAdmin(m);
 	}
 
-	// Delete Issued Book Librarian
-	@RequestMapping("/issuedBookDeleteLibrarian/{lid}/{bid}")
-	public String deleteIssuedBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
-		issuedBookDao.deleteIssuedBook(bid);
-		return viewIssuedBooksLibrarian(lid, m);
-	}
 
 }

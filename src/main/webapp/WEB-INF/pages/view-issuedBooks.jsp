@@ -50,12 +50,6 @@
 								</i>
 							</a></td>
 						</c:if>
-						<c:if test="${user=='librarian' }">
-							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteLibrarian/${lid }/${book.id }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
-								</i>
-							</a></td>
-						</c:if>
 
 					</tr>
 				</c:forEach>

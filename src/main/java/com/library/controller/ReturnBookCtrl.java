@@ -129,11 +129,5 @@ public class ReturnBookCtrl {
 		return viewReturnBooksAdmin(m);
 	}
 
-	// Delete Return Book Librarian
-	@RequestMapping("/returnBookDeleteLibrarian/{lid}/{bid}")
-	public String deleteReturnBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
-		returnBookDao.deleteReturnBook(bid);
-		return viewReturnBooksLibrarian(lid, m);
-	}
 
 }

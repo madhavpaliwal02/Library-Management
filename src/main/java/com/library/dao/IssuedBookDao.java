@@ -14,6 +14,8 @@ import com.library.entities.IssuedBook;
 @Component
 public class IssuedBookDao {
 
+	List<IssuedBook> ibook = null;
+
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
@@ -36,7 +38,7 @@ public class IssuedBookDao {
 	// Get Issued Book By Sid
 	public List<Integer> getIssuedBookBySid(int sid) {
 		// Fetching all Issued Book
-		List<IssuedBook> ibook = getAllIssuedBook();
+		ibook = getAllIssuedBook();
 		List<Integer> ib2 = new ArrayList<Integer>();
 
 		// Filtering for a Student
@@ -57,14 +59,25 @@ public class IssuedBookDao {
 	@Transactional
 	public void deleteIssuedBookByBid(int bid) {
 		// Fetching all Issued Book
-		List<IssuedBook> ibook = getAllIssuedBook();
+		ibook = getAllIssuedBook();
 
 		// Filtering for a Student
 		for (IssuedBook ib : ibook)
 			if (ib.getBid() == bid) { // Verifying the sid
 				deleteIssuedBook(ib.getId()); // Deleting the record
-				break;
 			}
 	}
 
+	// Delete Issued Book by Sid
+	@Transactional
+	public void deleteIssuedBookBySid(int sid) {
+		// Fetching all Issued Book
+		ibook = getAllIssuedBook();
+
+		// Filtering for a Student
+		for (IssuedBook ib : ibook)
+			if (ib.getSid() == sid) { // Verifying the sid
+				deleteIssuedBook(ib.getId()); // Deleting the record
+			}
+	}
 }

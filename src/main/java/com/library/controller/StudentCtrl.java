@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.library.dao.BookDao;
 import com.library.dao.IssuedBookDao;
+import com.library.dao.ReturnBookDao;
 import com.library.dao.StudentDao;
 import com.library.entities.Book;
 import com.library.entities.Student;
@@ -26,6 +27,8 @@ public class StudentCtrl {
 	private StudentDao studentDao;
 	@Autowired
 	private IssuedBookDao ibDao;
+	@Autowired
+	private ReturnBookDao rbDao;
 	@Autowired
 	private BookDao bDao;
 
@@ -146,18 +149,30 @@ public class StudentCtrl {
 		m.addAttribute("iBook", getIssuedBooksBySid(sid));
 		return "student-dashboard";
 	}
+	
+	// Delete Student Generic
+	public void deleteStudent(int sid) {
+		// Deleting All IssuedBook
+		ibDao.deleteIssuedBookBySid(sid);
+				
+		// Deleting All ReturnBook
+		rbDao.deleteReturnBookBySid(sid);
+		
+		// Deleting Student
+		studentDao.deleteStudent(sid);
+	}
 
 	// Student Delete Admin
 	@RequestMapping("/studentDeleteAdmin/{sid}")
 	public String deleteStudentAdmin(@PathVariable int sid, Model m) {
-		studentDao.deleteStudent(sid);
+		deleteStudent(sid);
 		return viewStudentsAdmin(m);
 	}
 
 	// Student Delete Librarian
 	@RequestMapping("/studentDeleteLibrarian/{lid}/{sid}")
 	public String deleteStudentLibrarian(@PathVariable int lid, @PathVariable int sid, Model m) {
-		studentDao.deleteStudent(sid);
+		deleteStudent(sid);
 		return viewStudentsLibrarian(lid, m);
 	}
 

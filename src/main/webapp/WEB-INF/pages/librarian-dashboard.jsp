@@ -91,7 +91,7 @@
 				<h3 class="text-center">
 					<b>Add Book Form</b>
 				</h3>
-				<form action="${pageContext.request.contextPath }/addBook/${lid }"
+				<form action="${pageContext.request.contextPath }/addBook/${lib.id }"
 					method="post">
 
 					<div class="form-row">

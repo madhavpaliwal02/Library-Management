@@ -12,6 +12,7 @@
 		</h3>
 		<form action="${pageContext.request.contextPath }/updateStudent" method="post">
 
+			<input type="text" name="id" value="${stu.id }" hidden>
 			<div class="form-row">
 				<!-- Student Name -->
 				<div class="form-group col-md-6">

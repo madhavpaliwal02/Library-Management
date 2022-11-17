@@ -167,6 +167,8 @@ public class StudentCtrl {
 		studentDao.addStudent(stu);
 		m.addAttribute("stu", stu);
 		m.addAttribute("title", "Student DashBoard");
+		// Adding IssuedBook
+		m.addAttribute("iBook", getIssuedBooksBySid(stu.getId()));
 		return "student-dashboard";
 	}
 

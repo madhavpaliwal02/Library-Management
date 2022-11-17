@@ -1,5 +1,6 @@
 package com.library.controller;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class LibrarianCtrl {
 	private LibrarianDao librarianDao;
 
 	private List<Librarian> librarian;
+	
+	private Date datetemp;
 
 	/** Librarian - Controller */
 
@@ -108,13 +111,14 @@ public class LibrarianCtrl {
 	public String updateLibrarianForm(@PathVariable int lid, Model m) {
 		Librarian lib = librarianDao.getLibrarian(lid);
 		m.addAttribute("librarian", lib);
-		m.addAttribute("date", lib.getDate());
+		datetemp =  lib.getDate();
 		return "update-librarian";
 	}
 
 	// Update Librarian
 	@RequestMapping(value = "/updateLibrarian", method = RequestMethod.POST)
-	public String updateLibrarian(@ModelAttribute Librarian lib, Model m) {
+	public String updateLibrarian(@ModelAttribute Librarian lib, Model m) throws ParseException {
+		lib.setDate(datetemp);
 		librarianDao.addLibrarian(lib);
 		m.addAttribute("lib", lib);
 		m.addAttribute("title", "Librarian DashBoard");

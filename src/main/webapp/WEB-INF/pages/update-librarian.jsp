@@ -13,10 +13,10 @@
 			<h3 class="text-center">
 				<b>Librarian Update Form</b>
 			</h3>
-			<form action="${pageContext.request.contextPath }/updateLibrarian"
+			<form
+				action="${pageContext.request.contextPath }/updateLibrarian/${date }"
 				method="post">
 				<input type="text" name="id" value="${librarian.id }" hidden>
-				<%-- <input type="datetime-local" name="date" value="${librarian.date }" hidden> --%>
 				<div class="form-row">
 					<!-- Librarian Name -->
 					<div class="form-group col-md-6">

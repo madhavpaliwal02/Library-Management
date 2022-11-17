@@ -1,5 +1,6 @@
 package com.library.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,7 +32,7 @@ public class StudentCtrl {
 	private ReturnBookDao rbDao;
 	@Autowired
 	private BookDao bDao;
-
+	private Date datetemp;
 	private List<Student> student = null;
 
 	private List<Book> book = null;
@@ -149,17 +150,36 @@ public class StudentCtrl {
 		m.addAttribute("iBook", getIssuedBooksBySid(sid));
 		return "student-dashboard";
 	}
-	
+
 	// Delete Student Generic
 	public void deleteStudent(int sid) {
 		// Deleting All IssuedBook
 		ibDao.deleteIssuedBookBySid(sid);
-				
+
 		// Deleting All ReturnBook
 		rbDao.deleteReturnBookBySid(sid);
-		
+
 		// Deleting Student
 		studentDao.deleteStudent(sid);
+	}
+
+	// Student Update Form
+	@RequestMapping("/updateStudentForm/{sid}")
+	public String updateStudentForm(@PathVariable int sid, Model m) {
+		Student stu = studentDao.getStudent(sid);
+		m.addAttribute("stu", stu);
+		datetemp = stu.getDate();
+		return "update-student";
+	}
+
+	// Update Student
+	@RequestMapping(value = "/updateStudent", method = RequestMethod.POST)
+	public String updateStudent(@ModelAttribute Student stu, Model m) throws ParseException {
+		stu.setDate(datetemp);
+		studentDao.addStudent(stu);
+		m.addAttribute("stu", stu);
+		m.addAttribute("title", "Student DashBoard");
+		return "student-dashboard";
 	}
 
 	// Student Delete Admin

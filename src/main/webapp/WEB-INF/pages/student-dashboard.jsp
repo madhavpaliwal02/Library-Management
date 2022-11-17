@@ -53,7 +53,9 @@
 
 				<!-- Navigation Button -->
 				<div class="text-center mt-2">
-					<a class="btn btn-primary"
+					<a href="${pageContext.request.contextPath }/updateStudentForm/${stu.id }"
+						class="btn btn-outline-Warning">Update</a> <a
+						class="btn btn-primary"
 						href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>'
 						role="button">View Books</a>
 				</div>

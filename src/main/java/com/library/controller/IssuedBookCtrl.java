@@ -38,16 +38,16 @@ public class IssuedBookCtrl {
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
 	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
-		IssuedBook ib = new IssuedBook();
+		// Creating a new IssuedBook Entry
+		IssuedBook ib = new IssuedBook(sid, bid, new Date());
 
-		ib = new IssuedBook(sid, bid, new Date());
-
-		int count = bookDao.getBook(bid).getCount() - 1;
-		System.out.println(bookDao.getBook(bid));
-		System.out.println(bookDao.getBook(bid).getCount());
-		bookDao.getBook(bid).setCount(count);
-		System.out.println(count);
-		System.out.println(bookDao.getBook(bid).getCount());
+		/*
+		 * int count = bookDao.getBook(bid).getCount() - 1;
+		 * System.out.println(bookDao.getBook(bid));
+		 * System.out.println(bookDao.getBook(bid).getCount());
+		 * bookDao.getBook(bid).setCount(count); System.out.println(count);
+		 * System.out.println(bookDao.getBook(bid).getCount());
+		 */
 
 		this.issuedBookDao.addIssuedBook(ib);
 
@@ -104,6 +104,7 @@ public class IssuedBookCtrl {
 	@RequestMapping("/viewIssuedBooksAdmin")
 	public String viewIssuedBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
+		m.addAttribute("title","Admin : View IssuedBooks");
 		return viewBooks(m);
 	}
 
@@ -112,6 +113,7 @@ public class IssuedBookCtrl {
 	public String viewIssuedBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("lid", lid);
 		m.addAttribute("user", "librarian");
+		m.addAttribute("title","Librarian : View IssuedBooks");
 		return viewBooks(m);
 	}
 
@@ -121,6 +123,5 @@ public class IssuedBookCtrl {
 		issuedBookDao.deleteIssuedBook(bid);
 		return viewIssuedBooksAdmin(m);
 	}
-
 
 }

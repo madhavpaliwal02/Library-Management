@@ -111,6 +111,7 @@ public class ReturnBookCtrl {
 	@RequestMapping("/viewReturnBooksAdmin")
 	public String viewReturnBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
+		m.addAttribute("title","Admin : View ReturnBooks");
 		return viewBooks(m);
 	}
 
@@ -119,6 +120,7 @@ public class ReturnBookCtrl {
 	public String viewReturnBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("lid", lid);
 		m.addAttribute("user", "librarian");
+		m.addAttribute("title","Librarian : View ReturnBooks");
 		return viewBooks(m);
 	}
 

@@ -129,6 +129,7 @@ public class StudentCtrl {
 	@RequestMapping("/viewStudentsAdmin")
 	public String viewStudentsAdmin(Model m) {
 		m.addAttribute("user", "admin");
+		m.addAttribute("title","Admin : View Students");
 		return viewStudents(m);
 	}
 
@@ -138,6 +139,7 @@ public class StudentCtrl {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("value", "librarianDashboardBack");
 		m.addAttribute("lid", lid);
+		m.addAttribute("title","Librarian : View Students");
 		return viewStudents(m);
 	}
 

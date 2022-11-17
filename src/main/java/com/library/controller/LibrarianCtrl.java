@@ -102,7 +102,7 @@ public class LibrarianCtrl {
 	public String viewLibrarians(Model m) {
 		librarian = this.librarianDao.getAllLibrarians();
 		m.addAttribute("librarian", librarian);
-
+		m.addAttribute("title","Admin : View Librarians");
 		return "view-librarians";
 	}
 

@@ -1,6 +1,5 @@
 package com.library.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +13,13 @@ public class AdminCtrl {
 
 	/** Admin - Controller */
 
+	// Common Model Attribute
+	@ModelAttribute
+	public void commonModel(Model m) {
+		m.addAttribute("title", "Admin : DashBoard");
+	}
+	
+
 	// Admin Home Page
 	@RequestMapping("/adminLogin")
 	public String adminLogin(Model m) {
@@ -25,7 +31,7 @@ public class AdminCtrl {
 	// Admin DashBoard
 	@RequestMapping(value = "/adminDashboard", method = RequestMethod.POST)
 	public String adminDashboard(@ModelAttribute User u, Model m) {
-		// Verification 
+		// Verification
 //		if(! (u.getEmail().equals("admin@gmail.com") && u.getPassword().equals("admin@123"))) {
 //			m.addAttribute("msg", "Invalid Credentials");
 //			return "admin-login";
@@ -33,11 +39,10 @@ public class AdminCtrl {
 		m.addAttribute("title", "Admin : DashBoard");
 		return "admin-dashboard";
 	}
-	
+
 	@RequestMapping("/adminDashboardBack")
 	public String adminDashboardBack() {
 		return "admin-dashboard";
 	}
-	
-	
+
 }

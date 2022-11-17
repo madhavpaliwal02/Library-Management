@@ -78,6 +78,7 @@ public class BookCtrl {
 	@RequestMapping("/viewBooksAdmin")
 	public String viewBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
+		m.addAttribute("title","Admin : View Books");
 		return viewBooks(m);
 	}
 
@@ -86,6 +87,7 @@ public class BookCtrl {
 	public String viewBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("lid", lid);
+		m.addAttribute("title","Librarian : View Books");
 		return viewBooks(m);
 	}
 
@@ -94,6 +96,7 @@ public class BookCtrl {
 	public String viewBooksStudent(@PathVariable int sid, Model m) {
 		m.addAttribute("user", "student");
 		m.addAttribute("sid", sid);
+		m.addAttribute("title","Student : View Books");
 		return viewBooks(m);
 	}
 

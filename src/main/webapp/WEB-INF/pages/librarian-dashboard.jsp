@@ -7,14 +7,15 @@
 </head>
 <body>
 
-	<div class="container">
+	<div class="container mt-3">
+
 		<h1 class="text-center">
 			Welcome To The <b>Librarian DashBoard</b>
 		</h1>
 
 
 		<!-- Navigation Button -->
-		<div class="text-center mt-3">
+		<div class="text-center mt-4">
 			<a class="btn btn-primary"
 				href='<c:url value='/viewStudentsLibrarian/${lib.id }'></c:url>'
 				role="button">View All Students</a> <a class="btn btn-primary"
@@ -76,12 +77,13 @@
 					</tr>
 				</table>
 				<div class="container text-center mt-3">
-					<a href="${pageContext.request.contextPath }/updateLibrarianForm/${lib.id }"
+					<a
+						href="${pageContext.request.contextPath }/updateLibrarianForm/${lib.id }"
 						class="btn btn-outline-Warning">Update</a> <a
 						href="${pageContext.request.contextPath }/librarianLogin"
 						class="btn btn-outline-Warning">Log-Out</a> <a
 						href="${pageContext.request.contextPath }/home"
-						class="btn btn-outline-Danger">HOME</a>
+						class="btn btn-outline-Danger">Home</a>
 				</div>
 			</div>
 
@@ -91,7 +93,8 @@
 				<h3 class="text-center">
 					<b>Add Book Form</b>
 				</h3>
-				<form action="${pageContext.request.contextPath }/addBook/${lib.id }"
+				<form
+					action="${pageContext.request.contextPath }/addBook/${lib.id }"
 					method="post">
 
 					<div class="form-row">

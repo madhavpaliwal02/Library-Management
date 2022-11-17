@@ -8,7 +8,7 @@
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center">Books Issued by Students</h1>
+		<h1 class="text-center"><b>Books Issued by Students Details</b></h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">

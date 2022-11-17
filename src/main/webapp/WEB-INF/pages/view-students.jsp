@@ -8,7 +8,7 @@
 <body>
 	<!-- View Students -->
 	<div class="container">
-		<h1 class="text-center">Students List</h1>
+		<h1 class="text-center"><b>Registered Students Details</b></h1>
 
 		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">

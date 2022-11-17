@@ -105,7 +105,7 @@ public class StudentCtrl {
 			if (u.getEmail().equals(s.getEmail()) && u.getPassword().equals(s.getPassword())) {
 				// Adding Student as attribute
 				m.addAttribute("stu", s); // name has been set in Dashboard
-				m.addAttribute("title", "Student DashBoard");
+				m.addAttribute("title", "Student : DashBoard");
 				// Adding IssuedBook
 				book = getIssuedBooksBySid(s.getId());
 				m.addAttribute("iBook", book);

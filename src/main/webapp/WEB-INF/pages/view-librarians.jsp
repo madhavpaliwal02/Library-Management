@@ -8,7 +8,7 @@
 <body>
 	<!-- View Librarian -->
 	<div class="container">
-		<h1 class="text-center">Librarians List</h1>
+		<h1 class="text-center"><b>Registered Librarians Details</b></h1>
 
 		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">

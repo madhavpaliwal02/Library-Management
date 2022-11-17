@@ -79,11 +79,9 @@
 				<div class="container text-center mt-3">
 					<a
 						href="${pageContext.request.contextPath }/updateLibrarianForm/${lib.id }"
-						class="btn btn-outline-Warning">Update</a> <a
+						class="btn btn-Primary">Update</a> <a
 						href="${pageContext.request.contextPath }/librarianLogin"
-						class="btn btn-outline-Warning">Log-Out</a> <a
-						href="${pageContext.request.contextPath }/home"
-						class="btn btn-outline-Danger">Home</a>
+						class="btn btn-Warning">Log-Out</a>
 				</div>
 			</div>
 
@@ -131,11 +129,13 @@
 					<div class="form-group">
 						<label for="description">Description</label>
 						<textarea class="form-control" id="description"
-							placeholder="Enter Description" name="description" rows="5"></textarea>
+							placeholder="Enter Description" name="description" rows="2"></textarea>
 					</div>
 
 					<div class="container text-center">
-						<button class="btn btn-outline-success">Add-Book</button>
+						<button class="btn btn-success">Add-Book</button>
+						<a href="${pageContext.request.contextPath }/home"
+							class="btn btn-Danger">Home</a>
 					</div>
 				</form>
 			</div>

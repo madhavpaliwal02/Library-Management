@@ -80,13 +80,14 @@ public class LibrarianCtrl {
 			if (u.getEmail().equals(l.getEmail()) && u.getPassword().equals(l.getPassword())) {
 				// Adding Librarian as Attribute
 				m.addAttribute("lib", l);
-				m.addAttribute("title", "Librarian DashBoard");
+				m.addAttribute("title", "Librarian : DashBoard");
 				return "librarian-dashboard";
 			}
 		}
 		// If librarian not exist
 		m.addAttribute("msg", "failed");
 		m.addAttribute("message", "Invalid Credentials ! Please Try Again");
+//		m.addAttribute("title", "Librarian : ");
 		return librarianLogin(m);
 	}
 

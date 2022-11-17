@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.library.dao.BookDao;
 import com.library.dao.IssuedBookDao;
@@ -25,7 +24,7 @@ import com.library.entities.Student;
 public class IssuedBookCtrl {
 
 	@Autowired
-	private IssuedBookDao issuedBookDao;
+	private IssuedBookDao ibDao;
 	@Autowired
 	private BookDao bookDao;
 	@Autowired
@@ -35,30 +34,50 @@ public class IssuedBookCtrl {
 
 	private List<DisplayBook> dBook;
 
+	// Get Issued Book for a student
+	// Issued Book by Sid
+	public List<Book> getIssuedBooksBySid(int sid) {
+		// Getting all BookId from IssuedBook for a Student
+		List<IssuedBook> temp = ibDao.getIssuedBookBySid(sid);
+
+		List<Book> book = new ArrayList<Book>();
+
+		// Filtering Records for a student
+		for (IssuedBook i : temp)
+			book.add(bookDao.getBook(i.getBid()));
+
+		return book;
+	}
+
 	// Issue Book by Student
 	@RequestMapping("/issuedBook/{sid}/{bid}")
-	public RedirectView issuedBook(@PathVariable int sid, @PathVariable int bid, HttpServletRequest request) {
+	public String issuedBook(@PathVariable int sid, @PathVariable int bid, Model m, HttpServletRequest request) {
+		// Check for existing issued records
+		List<IssuedBook> ibs = ibDao.getIssuedBookBySid(sid);
+		m.addAttribute("stu", studentDao.getStudent(sid));
+
+		for (IssuedBook i : ibs) {
+			if (i.getBid() == bid) {
+				m.addAttribute("msg", "failed");
+				m.addAttribute("message", "Book Already Issued By You !");
+				m.addAttribute("iBook", getIssuedBooksBySid(sid));
+				return "student-dashboard";
+			}
+		}
+
 		// Creating a new IssuedBook Entry
-		IssuedBook ib = new IssuedBook(sid, bid, new Date());
+		this.ibDao.addIssuedBook(new IssuedBook(sid, bid, new Date()));
 
-		/*
-		 * int count = bookDao.getBook(bid).getCount() - 1;
-		 * System.out.println(bookDao.getBook(bid));
-		 * System.out.println(bookDao.getBook(bid).getCount());
-		 * bookDao.getBook(bid).setCount(count); System.out.println(count);
-		 * System.out.println(bookDao.getBook(bid).getCount());
-		 */
+		m.addAttribute("msg", "Book Issued Successfully");
+		m.addAttribute("iBook", getIssuedBooksBySid(sid));
 
-		this.issuedBookDao.addIssuedBook(ib);
-
-		RedirectView rd = new RedirectView(request.getContextPath() + "/studentDashboardBack/{sid}");
-		return rd;
+		return "student-dashboard";
 	}
 
 	// Display IssuedBooks - Generic
 	public String viewBooks(Model m) {
 		// Fetching Issued Book Records
-		ibook = this.issuedBookDao.getAllIssuedBook();
+		ibook = this.ibDao.getAllIssuedBook();
 		dBook = new ArrayList<DisplayBook>();
 //		System.out.println(ibook);
 		Student s = null;
@@ -104,7 +123,7 @@ public class IssuedBookCtrl {
 	@RequestMapping("/viewIssuedBooksAdmin")
 	public String viewIssuedBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
-		m.addAttribute("title","Admin : View IssuedBooks");
+		m.addAttribute("title", "Admin : View IssuedBooks");
 		return viewBooks(m);
 	}
 
@@ -113,14 +132,14 @@ public class IssuedBookCtrl {
 	public String viewIssuedBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("lid", lid);
 		m.addAttribute("user", "librarian");
-		m.addAttribute("title","Librarian : View IssuedBooks");
+		m.addAttribute("title", "Librarian : View IssuedBooks");
 		return viewBooks(m);
 	}
 
 	// Delete Issued Book Admin
 	@RequestMapping("/issuedBookDeleteAdmin/{bid}")
 	public String deleteIssuedBookAdmin(@PathVariable int bid, Model m) {
-		issuedBookDao.deleteIssuedBook(bid);
+		ibDao.deleteIssuedBook(bid);
 		return viewIssuedBooksAdmin(m);
 	}
 

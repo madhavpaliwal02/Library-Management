@@ -17,6 +17,7 @@ import com.library.dao.IssuedBookDao;
 import com.library.dao.ReturnBookDao;
 import com.library.dao.StudentDao;
 import com.library.entities.Book;
+import com.library.entities.IssuedBook;
 import com.library.entities.Student;
 import com.library.entities.User;
 
@@ -84,11 +85,13 @@ public class StudentCtrl {
 	// Issued Book by Sid
 	public List<Book> getIssuedBooksBySid(int sid) {
 		// Getting all BookId from IssuedBook for a Student
-		List<Integer> temp = ibDao.getIssuedBookBySid(sid);
+		List<IssuedBook> temp = ibDao.getIssuedBookBySid(sid);
+
 		book = new ArrayList<Book>();
+
 		// Filtering Records for a student
-		for (int i : temp)
-			book.add(bDao.getBook(i));
+		for (IssuedBook i : temp)
+			book.add(bDao.getBook(i.getBid()));
 
 		return book;
 	}
@@ -129,7 +132,7 @@ public class StudentCtrl {
 	@RequestMapping("/viewStudentsAdmin")
 	public String viewStudentsAdmin(Model m) {
 		m.addAttribute("user", "admin");
-		m.addAttribute("title","Admin : View Students");
+		m.addAttribute("title", "Admin : View Students");
 		return viewStudents(m);
 	}
 
@@ -139,7 +142,7 @@ public class StudentCtrl {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("value", "librarianDashboardBack");
 		m.addAttribute("lid", lid);
-		m.addAttribute("title","Librarian : View Students");
+		m.addAttribute("title", "Librarian : View Students");
 		return viewStudents(m);
 	}
 

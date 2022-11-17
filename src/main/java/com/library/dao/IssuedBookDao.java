@@ -36,15 +36,15 @@ public class IssuedBookDao {
 	}
 
 	// Get Issued Book By Sid
-	public List<Integer> getIssuedBookBySid(int sid) {
+	public List<IssuedBook> getIssuedBookBySid(int sid) {
 		// Fetching all Issued Book
 		ibook = getAllIssuedBook();
-		List<Integer> ib2 = new ArrayList<Integer>();
+		List<IssuedBook> ib2 = new ArrayList<IssuedBook>();
 
 		// Filtering for a Student
 		for (IssuedBook ib : ibook)
 			if (ib.getSid() == sid) // Verifying the sid
-				ib2.add(ib.getBid()); // Adding only Book Ids
+				ib2.add(ib); // Adding only Book Ids
 
 		return ib2;
 	}

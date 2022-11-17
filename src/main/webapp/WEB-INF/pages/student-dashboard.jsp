@@ -14,6 +14,22 @@
 		</h1>
 
 
+		<!-- Condition - success -->
+		<div class="container mt-2">
+			<c:if test="${not empty msg }">
+				<c:if test="${msg == 'failed' }">
+					<div class="alert alert-danger text-center">
+						<c:out value="${message }" />
+					</div>
+				</c:if>
+				<c:if test="${msg != 'failed' }">
+					<div class="alert alert-success text-center">
+						<c:out value="${msg }" />
+					</div>
+				</c:if>
+			</c:if>
+		</div>
+
 
 		<div class="row text-center mt-4">
 			<!-- Personal Details -->
@@ -85,8 +101,8 @@
 									<td>${book.edition }</td>
 									<td><a
 										href="${pageContext.request.contextPath }/returnBook/${stu.id }/${book.id }">
-											<i class="fas fa-trash-can text-danger"
-											style="font-size: 25px"> </i>
+											<i class="fas fa-book text-danger" style="font-size: 25px">
+										</i>
 									</a></td>
 								</tr>
 							</c:forEach>
@@ -100,7 +116,7 @@
 		<!-- Buttons -->
 		<div class="container text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='viewBooksStudent/${stu.id }'> </c:url>'
+				href='${pageContext.request.contextPath }/viewBooksStudent/${stu.id }'
 				role="button">View Books</a> <a
 				href="${pageContext.request.contextPath }/home"
 				class="btn btn-Danger">Home</a>

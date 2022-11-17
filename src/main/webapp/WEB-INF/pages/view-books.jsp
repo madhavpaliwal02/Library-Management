@@ -8,7 +8,9 @@
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center"><b>Registered Books Availability Details</b></h1>
+		<h1 class="text-center">
+			<b>Registered Books Availability Details</b>
+		</h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
@@ -40,41 +42,48 @@
 						<td>${book.description }</td>
 						<td>${book.count }</td>
 						<td>${book.date }</td>
-							<c:if test="${user=='admin' }">
-								<td><a href="${pageContext.request.contextPath }/bookDeleteAdmin/${book.id }"> <i
-										class="fas fa-trash-can text-danger" style="font-size: 25px">
-									</i>
-								</a></td>
-							</c:if>
-							<c:if test="${user=='librarian' }">
-								<td><a href="${pageContext.request.contextPath }/bookDeleteLibrarian/${lid }/${book.id }"> <i
-										class="fas fa-trash-can text-danger" style="font-size: 25px">
-									</i>
-								</a></td>
-							</c:if>
-							<c:if test="${user=='student' }">
-								<td><a
-									href="${pageContext.request.contextPath }/issuedBook/${sid }/${book.id }">
-										<i class="fas fa-book" style="font-size: 25px"> </i>
-								</a></td>
-							</c:if>
+						<c:if test="${user=='admin' }">
+							<td><a
+								href="${pageContext.request.contextPath }/bookDeleteAdmin/${book.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+						<c:if test="${user=='librarian' }">
+							<td><a
+								href="${pageContext.request.contextPath }/bookDeleteLibrarian/${lid }/${book.id }">
+									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
+								</i>
+							</a></td>
+						</c:if>
+						<c:if test="${user=='student' }">
+							<td><a
+								href="${pageContext.request.contextPath }/issuedBook/${sid }/${book.id }">
+									<i class="fas fa-book" style="font-size: 25px"> </i>
+							</a></td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<div class="container text-center">
 			<c:if test="${user=='admin' }">
-				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/adminDashboardBack"
+					class="btn btn-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian' }">
-				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-outline-warning">Back</a>
+				<a
+					href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }"
+					class="btn btn-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='student' }">
-				<a href="${pageContext.request.contextPath }/studentDashboardBack/${sid }"
-					class="btn btn-outline-warning">Back</a>
+				<a
+					href="${pageContext.request.contextPath }/studentDashboardBack/${sid }"
+					class="btn btn-warning">Back</a>
 			</c:if>
 
-			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home"
+				class="btn btn-Danger">Home</a>
 		</div>
 	</div>
 </body>

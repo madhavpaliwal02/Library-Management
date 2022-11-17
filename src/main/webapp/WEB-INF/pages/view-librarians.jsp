@@ -8,7 +8,9 @@
 <body>
 	<!-- View Librarian -->
 	<div class="container">
-		<h1 class="text-center"><b>Registered Librarians Details</b></h1>
+		<h1 class="text-center">
+			<b>Registered Librarians Details</b>
+		</h1>
 
 		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">
@@ -31,8 +33,9 @@
 						<td>${lib.department }</td>
 						<td>${lib.gender }</td>
 						<td>${lib.date }</td>
-						<td><a href="deleteLibrarian/${lib.id }"> <i
-								class="fas fa-trash-can text-danger" style="font-size: 25px">
+						<td><a
+							href="${pageContext.request.contextPath }/deleteLibrarian/${lib.id }">
+								<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 							</i>
 						</a></td>
 					</tr>

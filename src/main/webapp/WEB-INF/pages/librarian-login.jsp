@@ -1,8 +1,7 @@
 <html>
 <head>
 
-<%@include file="./base.jsp"%><%-- 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@include file="./base.jsp"%>
 
 <title><c:out value="${title }"></c:out></title>
 </head>

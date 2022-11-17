@@ -57,14 +57,14 @@
 
 			<c:if test="${user=='admin' }">
 				<a href="${pageContext.request.contextPath }/adminDashboardBack"
-					class="btn btn-outline-warning">Back</a>
+					class="btn btn-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian' }">
 				<a href="${pageContext.request.contextPath }/${value }/${lid }"
-					class="btn btn-outline-warning">Back</a>
+					class="btn btn-warning">Back</a>
 			</c:if>
 			<a href="${pageContext.request.contextPath }/home"
-				class="btn btn-outline-Danger">Home</a>
+				class="btn btn-Danger">Home</a>
 		</div>
 	</div>
 </body>

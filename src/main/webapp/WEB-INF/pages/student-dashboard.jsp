@@ -54,10 +54,9 @@
 				<div class="text-center mt-2">
 					<a
 						href="${pageContext.request.contextPath }/updateStudentForm/${stu.id }"
-						class="btn btn-outline-Warning">Update</a> <a
-						class="btn btn-primary"
-						href='<c:url value='${pageContext.request.contextPath }/viewBooksStudent/${stu.id }'> </c:url>'
-						role="button">View Books</a>
+						class="btn btn-primary">Update</a> <a
+						href="${pageContext.request.contextPath }/studentLogin"
+						class="btn btn-Warning">Log-Out</a>
 				</div>
 
 
@@ -98,11 +97,13 @@
 		</div>
 
 
+		<!-- Buttons -->
 		<div class="container text-center mt-3">
-			<a href="${pageContext.request.contextPath }/studentLogin"
-				class="btn btn-outline-Warning">Log-Out</a> <a
+			<a class="btn btn-primary"
+				href='<c:url value='viewBooksStudent/${stu.id }'> </c:url>'
+				role="button">View Books</a> <a
 				href="${pageContext.request.contextPath }/home"
-				class="btn btn-outline-Danger">Home</a>
+				class="btn btn-Danger">Home</a>
 		</div>
 
 	</div>

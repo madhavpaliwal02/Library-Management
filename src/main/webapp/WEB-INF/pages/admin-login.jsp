@@ -39,8 +39,8 @@
 			</div>
 			<div class="container text-center">
 				<a href="${pageContext.request.contextPath }/home"
-					class="btn btn-outline-Warning">Back</a>
-				<button class="btn btn-outline-success">Login</button>
+					class="btn btn-Warning">Back</a>
+				<button class="btn btn-success">Login</button>
 			</div>
 		</form>
 	</div>

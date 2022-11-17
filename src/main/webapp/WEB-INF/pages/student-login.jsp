@@ -61,8 +61,8 @@
 					</div>
 					<div class="container text-center">
 						<a href="${pageContext.request.contextPath }/home"
-							class="btn btn-outline-Warning">Back</a>
-						<button class="btn btn-outline-success">Log-In</button>
+							class="btn btn-Warning">Back</a>
+						<button class="btn btn-success">Log-In</button>
 					</div>
 				</form>
 			</div>
@@ -129,8 +129,8 @@
 
 					<div class="container text-center">
 						<a href="${pageContext.request.contextPath }/home"
-							class="btn btn-outline-Warning">Back</a>
-						<button class="btn btn-outline-success">Sign-Up</button>
+							class="btn btn-Warning">Back</a>
+						<button class="btn btn-success">Sign-Up</button>
 					</div>
 				</form>
 			</div>

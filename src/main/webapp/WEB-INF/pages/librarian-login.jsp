@@ -18,10 +18,10 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='/librarianLogin'></c:url>' role="button">Login
-				Librarian</a> <a class="btn btn-primary"
-				href='<c:url value='/librarianSignupForm'></c:url>' role="button">SignUp
-				Librarian</a>
+				href='<c:url value='/librarianLogin'></c:url>' role="button">Librarian
+				Login </a> <a class="btn btn-primary"
+				href='<c:url value='/librarianSignupForm'></c:url>' role="button">Librarian
+				SignUp </a>
 		</div>
 
 		<!-- Condition - success -->
@@ -60,8 +60,8 @@
 							placeholder="Password" name="password" required>
 					</div>
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Warning">Back</a>
-						<button class="btn btn-outline-success">Log-In</button>
+						<a href="home" class="btn btn-Warning">Back</a>
+						<button class="btn btn-success">Log-In</button>
 					</div>
 				</form>
 			</div>
@@ -121,8 +121,8 @@
 					</div>
 
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Warning">Back</a>
-						<button class="btn btn-outline-success">Sign-Up</button>
+						<a href="home" class="btn btn-Warning">Back</a>
+						<button class="btn btn-success">Sign-Up</button>
 					</div>
 				</form>
 			</div>

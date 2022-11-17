@@ -7,10 +7,11 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<h3 class="text-center">
+		<h2 class="text-center">
 			<b>Student Update Form</b>
-		</h3>
-		<form action="${pageContext.request.contextPath }/updateStudent" method="post">
+		</h2>
+		<form action="${pageContext.request.contextPath }/updateStudent"
+			method="post">
 
 			<input type="text" name="id" value="${stu.id }" hidden>
 			<div class="form-row">
@@ -65,9 +66,12 @@
 			</div>
 
 			<div class="container text-center">
-				<a href="${pageContext.request.contextPath }/studentDashboardBack/${stu.id }" class="btn btn-outline-Warning">Back</a>
-				<button class="btn btn-outline-success">Update</button>
-				<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Warning">Home</a>
+				<a
+					href="${pageContext.request.contextPath }/studentDashboardBack/${stu.id }"
+					class="btn btn-Warning">Back</a> <a
+					href="${pageContext.request.contextPath }/home"
+					class="btn btn-Danger">Home</a>
+				<button class="btn btn-success">Update</button>
 			</div>
 		</form>
 	</div>

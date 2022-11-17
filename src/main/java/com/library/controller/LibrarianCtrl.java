@@ -111,6 +111,7 @@ public class LibrarianCtrl {
 	public String updateLibrarianForm(@PathVariable int lid, Model m) {
 		Librarian lib = librarianDao.getLibrarian(lid);
 		m.addAttribute("librarian", lib);
+		m.addAttribute("title", "Librarian Update");
 		datetemp =  lib.getDate();
 		return "update-librarian";
 	}

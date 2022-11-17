@@ -14,7 +14,7 @@
 				<b>Librarian Update Form</b>
 			</h3>
 			<form
-				action="${pageContext.request.contextPath }/updateLibrarian/${date }"
+				action="${pageContext.request.contextPath }/updateLibrarian"
 				method="post">
 				<input type="text" name="id" value="${librarian.id }" hidden>
 				<div class="form-row">
@@ -67,6 +67,8 @@
 						href="${pageContext.request.contextPath }/librarianDashboardBack/${librarian.id }"
 						class="btn btn-outline-Warning">Back</a>
 					<button class="btn btn-outline-success">Update</button>
+					<a href="${pageContext.request.contextPath }/home"
+						class="btn btn-outline-Warning">Home</a>
 				</div>
 			</form>
 		</div>

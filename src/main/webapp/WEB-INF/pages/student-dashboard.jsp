@@ -2,7 +2,6 @@
 <head>
 
 <%@include file="./base.jsp"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 
 <title><c:out value="${title }"></c:out></title>
 </head>
@@ -53,10 +52,11 @@
 
 				<!-- Navigation Button -->
 				<div class="text-center mt-2">
-					<a href="${pageContext.request.contextPath }/updateStudentForm/${stu.id }"
+					<a
+						href="${pageContext.request.contextPath }/updateStudentForm/${stu.id }"
 						class="btn btn-outline-Warning">Update</a> <a
 						class="btn btn-primary"
-						href='<c:url value='/viewBooksStudent/${stu.id }'> </c:url>'
+						href='<c:url value='${pageContext.request.contextPath }/viewBooksStudent/${stu.id }'> </c:url>'
 						role="button">View Books</a>
 				</div>
 

@@ -10,7 +10,7 @@
 		<h3 class="text-center">
 			<b>Student Update Form</b>
 		</h3>
-		<form action="studentSignup" method="post">
+		<form action="${pageContext.request.contextPath }/updateStudent" method="post">
 
 			<div class="form-row">
 				<!-- Student Name -->
@@ -33,9 +33,9 @@
 				<div class="form-group col-md-6">
 					<label for="student-email">Email address</label> <input
 						type="email" class="form-control" id="student-email"
-						placeholder="Enter email" name="email" value="${stu.email }"> <small
-						id="emailHelp" class="form-text text-muted">We'll never
-						share your email with anyone else.</small>
+						placeholder="Enter email" name="email" value="${stu.email }">
+					<small id="emailHelp" class="form-text text-muted">We'll
+						never share your email with anyone else.</small>
 				</div>
 				<!-- Password -->
 				<div class="form-group col-md-6">
@@ -64,8 +64,9 @@
 			</div>
 
 			<div class="container text-center">
-				<a href="home" class="btn btn-outline-Warning">Back</a>
-				<button class="btn btn-outline-success">Sign-Up</button>
+				<a href="${pageContext.request.contextPath }/studentDashboardBack/${stu.id }" class="btn btn-outline-Warning">Back</a>
+				<button class="btn btn-outline-success">Update</button>
+				<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Warning">Home</a>
 			</div>
 		</form>
 	</div>

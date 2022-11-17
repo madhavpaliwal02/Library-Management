@@ -2,7 +2,6 @@
 <head>
 
 <%@include file="./base.jsp"%>
-<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
 
 <title><c:out value="${title }"></c:out></title>
 </head>
@@ -18,9 +17,10 @@
 		<!-- Navigation Button -->
 		<div class="text-center mt-2">
 			<a class="btn btn-primary"
-				href='<c:url value='/studentLogin'></c:url>' role="button">Student LogIn</a>
-			<a class="btn btn-primary"
-				href='<c:url value='/studentSignupForm'></c:url>' role="button">Student SignUp</a>
+				href='<c:url value='${pageContext.request.contextPath }/studentLogin'></c:url>'
+				role="button">Student LogIn</a> <a class="btn btn-primary"
+				href='<c:url value='${pageContext.request.contextPath }/studentSignupForm'></c:url>'
+				role="button">Student SignUp</a>
 		</div>
 
 		<!-- Condition - success -->
@@ -45,7 +45,8 @@
 				<h3 class="text-center">
 					<b>Student Login Form</b>
 				</h3>
-				<form action="studentDashboard" method="post">
+				<form action="${pageContext.request.contextPath }/studentDashboard"
+					method="post">
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label> <input
 							type="email" class="form-control" id="exampleInputEmail1"
@@ -59,7 +60,8 @@
 							placeholder="Password" name="password" required>
 					</div>
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Danger">Back</a>
+						<a href="${pageContext.request.contextPath }/home"
+							class="btn btn-outline-Danger">Back</a>
 						<button class="btn btn-outline-success">Log-In</button>
 					</div>
 				</form>
@@ -72,7 +74,8 @@
 				<h3 class="text-center">
 					<b>Student Signup Form</b>
 				</h3>
-				<form action="studentSignup" method="post">
+				<form action="${pageContext.request.contextPath }/studentSignup"
+					method="post">
 
 					<div class="form-row">
 						<!-- Student Name -->
@@ -125,7 +128,8 @@
 					</div>
 
 					<div class="container text-center">
-						<a href="home" class="btn btn-outline-Warning">Back</a>
+						<a href="${pageContext.request.contextPath }/home"
+							class="btn btn-outline-Warning">Back</a>
 						<button class="btn btn-outline-success">Sign-Up</button>
 					</div>
 				</form>

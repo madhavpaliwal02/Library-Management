@@ -19,7 +19,7 @@ public class StudentDao {
 	// Add Student
 	@Transactional
 	public void addStudent(Student stu) {
-		this.hibernateTemplate.save(stu);
+		this.hibernateTemplate.saveOrUpdate(stu);
 	}
 	
 	// Get a student

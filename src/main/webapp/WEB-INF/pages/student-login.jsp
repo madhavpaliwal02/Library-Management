@@ -15,12 +15,12 @@
 		</h1>
 
 		<!-- Navigation Button -->
-		<div class="text-center mt-2">
+		<div class="text-center mt-3">
 			<a class="btn btn-primary"
-				href='<c:url value='${pageContext.request.contextPath }/studentLogin'></c:url>'
-				role="button">Student LogIn</a> <a class="btn btn-primary"
-				href='<c:url value='${pageContext.request.contextPath }/studentSignupForm'></c:url>'
-				role="button">Student SignUp</a>
+				href='<c:url value='/studentLogin'></c:url>' role="button">Student
+				LogIn</a> <a class="btn btn-primary"
+				href='<c:url value='/studentSignupForm'></c:url>' role="button">Student
+				SignUp</a>
 		</div>
 
 		<!-- Condition - success -->
@@ -61,7 +61,7 @@
 					</div>
 					<div class="container text-center">
 						<a href="${pageContext.request.contextPath }/home"
-							class="btn btn-outline-Danger">Back</a>
+							class="btn btn-outline-Warning">Back</a>
 						<button class="btn btn-outline-success">Log-In</button>
 					</div>
 				</form>

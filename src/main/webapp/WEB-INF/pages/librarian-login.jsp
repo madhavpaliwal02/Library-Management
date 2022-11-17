@@ -8,8 +8,12 @@
 </head>
 <body>
 
-	<div class="container">
-		<h1 class="text-center">Welcome Librarian</h1>
+	<div class="container mt-3">
+
+		<!-- Heading -->
+		<h1 class="text-center">
+			Welcome To The <b>Librarian Page</b>
+		</h1>
 
 		<!-- Navigation Button -->
 		<div class="text-center mt-3">
@@ -56,6 +60,7 @@
 							placeholder="Password" name="password" required>
 					</div>
 					<div class="container text-center">
+						<a href="home" class="btn btn-outline-Warning">Back</a>
 						<button class="btn btn-outline-success">Log-In</button>
 					</div>
 				</form>
@@ -116,15 +121,13 @@
 					</div>
 
 					<div class="container text-center">
+						<a href="home" class="btn btn-outline-Warning">Back</a>
 						<button class="btn btn-outline-success">Sign-Up</button>
 					</div>
 				</form>
 			</div>
 		</c:if>
 
-		<div class="container text-center mt-3">
-			<a href="home" class="btn btn-outline-Warning">Back</a>
-		</div>
 	</div>
 </body>
 </html>

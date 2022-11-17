@@ -8,13 +8,23 @@
 </head>
 <body>
 
-	<div class="container mt-5">
-		<h1 class="text-center">Welcome Admin</h1>
-		<h3 class="text-center">
+	<div class="container mt-3">
+
+		<!-- Heading -->
+		<h1 class="text-center">
+			Welcome To The <b>Admin Page</b>
+		</h1>
+		<!-- SubHeading -->
+		<h3 class="text-center mt-5">
 			<b>Admin Login Form</b>
 		</h3>
-		<form action="adminDashboard" method="post">
-		<c:if test="${msg!='' }"><p class="text-center alert alert-danger">${msg }</p></c:if>
+
+		<!-- Log In Page -->
+		<form action="${pageContext.request.contextPath }/adminDashboard"
+			method="post">
+			<c:if test="${msg!='' }">
+				<p class="text-center alert alert-danger">${msg }</p>
+			</c:if>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label> <input
 					type="email" class="form-control" id="exampleInputEmail1"
@@ -28,7 +38,8 @@
 					placeholder="Password" name="password" required>
 			</div>
 			<div class="container text-center">
-				<a href="home" class="btn btn-outline-Warning">Back</a>
+				<a href="${pageContext.request.contextPath }/home"
+					class="btn btn-outline-Warning">Back</a>
 				<button class="btn btn-outline-success">Login</button>
 			</div>
 		</form>

@@ -93,7 +93,7 @@ public class IssuedBookCtrl {
 			// Creating a new object
 			DisplayBook db = new DisplayBook();
 
-			// Setting id
+			// Setting S.No
 			db.setId(i++);
 
 			// Assigning Student Data

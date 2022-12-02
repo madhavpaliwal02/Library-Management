@@ -57,10 +57,23 @@ public class ReturnBookDao {
 
 	// Delete Issued Book by Bid
 	@Transactional
-	public void deleteReturnBookByBid(int bid) {
+	public void deleteReturnBook(int bid, int sid) {
 		// Fetching all Issued Book
 		rbook = getAllReturnBook();
 
+		// Filtering for a Student
+		for (ReturnBook ib : rbook)
+			if (ib.getBid() == bid && ib.getSid() == sid) { // Verifying the sid
+				deleteReturnBook(ib.getId()); // Deleting the record
+			}
+	}
+	
+	// Delete Issued Book by Bid
+	@Transactional
+	public void deleteReturnBookByBid(int bid) {
+		// Fetching all Issued Book
+		rbook = getAllReturnBook();
+		
 		// Filtering for a Student
 		for (ReturnBook ib : rbook)
 			if (ib.getBid() == bid) { // Verifying the sid

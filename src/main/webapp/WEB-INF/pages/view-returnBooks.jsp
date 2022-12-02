@@ -8,7 +8,9 @@
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center"><b>Books Returned by Students Details</b></h1>
+		<h1 class="text-center">
+			<b>Books Returned by Students Details</b>
+		</h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
@@ -20,7 +22,7 @@
 		<table class="table table-hover text-center mt-3">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">Id</th>
+					<th scope="col">S.No</th>
 					<th scope="col">Book's Name</th>
 					<th scope="col">Author's Name</th>
 					<th scope="col">Book's Edition</th>
@@ -46,7 +48,7 @@
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
 							<td><a
-								href="${pageContext.request.contextPath }/returnBookDeleteAdmin/${book.id }">
+								href="${pageContext.request.contextPath }/returnBookDeleteAdmin/${book.bid }/${book.sid }">
 									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>

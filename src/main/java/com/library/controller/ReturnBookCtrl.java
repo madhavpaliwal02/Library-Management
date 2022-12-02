@@ -70,6 +70,7 @@ public class ReturnBookCtrl {
 		dBook = new ArrayList<DisplayBook>();
 		Student s = null;
 		Book b = null;
+		int i = 1;
 
 		// Assigning to DisplayBook
 		for (ReturnBook rb : rbook) {
@@ -78,17 +79,19 @@ public class ReturnBookCtrl {
 			b = bookDao.getBook(rb.getBid());
 
 			DisplayBook db = new DisplayBook();
-			
-			// Assigning id
-			db.setId(b.getId());
+
+			// Assigning S.No
+			db.setId(i++);
 
 			// Assigning Student Data
+			db.setSid(s.getId());
 			db.setsName(s.getName());
 			db.setRollNo(s.getRollno());
 			db.setCourse(s.getCourse());
 			db.setGender(s.getGender());
 
-			// Assigning Student Data
+			// Assigning Book Data
+			db.setBid(b.getId());
 			db.setbName(b.getName());
 			db.setAuthor(b.getAuthorName());
 			db.setEdition(b.getEdition());
@@ -110,7 +113,7 @@ public class ReturnBookCtrl {
 	@RequestMapping("/viewReturnBooksAdmin")
 	public String viewReturnBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
-		m.addAttribute("title","Admin : View ReturnBooks");
+		m.addAttribute("title", "Admin : View ReturnBooks");
 		return viewBooks(m);
 	}
 
@@ -119,16 +122,15 @@ public class ReturnBookCtrl {
 	public String viewReturnBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("lid", lid);
 		m.addAttribute("user", "librarian");
-		m.addAttribute("title","Librarian : View ReturnBooks");
+		m.addAttribute("title", "Librarian : View ReturnBooks");
 		return viewBooks(m);
 	}
 
 	// Delete Return Book Admin
-	@RequestMapping("/returnBookDeleteAdmin/{bid}")
-	public String deleteReturnBookAdmin(@PathVariable int bid, Model m) {
-		returnBookDao.deleteReturnBookByBid(bid);
+	@RequestMapping("/returnBookDeleteAdmin/{bid}/{sid}")
+	public String deleteReturnBookAdmin(@PathVariable int bid, @PathVariable int sid, Model m) {
+		returnBookDao.deleteReturnBook(bid, sid);
 		return viewReturnBooksAdmin(m);
 	}
-
 
 }

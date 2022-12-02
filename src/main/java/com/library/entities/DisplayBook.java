@@ -8,12 +8,14 @@ public class DisplayBook {
 	private Date date;
 
 	// Student Data
+	private int sid;
 	private String sName;
 	private String rollNo;
 	private String course;
 	private String gender;
 
 	// Book Data
+	private int bid;
 	private String bName;
 	private String author;
 	private String edition;
@@ -109,11 +111,27 @@ public class DisplayBook {
 		this.edition = edition;
 	}
 
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+
+	public int getBid() {
+		return bid;
+	}
+
+	public void setBid(int bid) {
+		this.bid = bid;
+	}
+
 	@Override
 	public String toString() {
-		return "DisplayBook [id=" + id + ", date=" + date + ", sName=" + sName + ", rollNo=" + rollNo + ", course="
-				+ course + ", gender=" + gender + ", bName=" + bName + ", author=" + author + ", edition=" + edition
-				+ "]";
+		return "DisplayBook [id=" + id + ", date=" + date + ", sid=" + sid + ", sName=" + sName + ", rollNo=" + rollNo
+				+ ", course=" + course + ", gender=" + gender + ", bid=" + bid + ", bName=" + bName + ", author="
+				+ author + ", edition=" + edition + "]";
 	}
 
 }

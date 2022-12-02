@@ -45,7 +45,7 @@
 						<td>${book.gender }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
-							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.id }"> <i
+							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.bid }/${book.sid }"> <i
 									class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
 							</a></td>
@@ -57,13 +57,13 @@
 		</table>
 		<div class="container text-center">
 			<c:if test="${user=='admin'  }">
-				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian'  }">
-				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-outline-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-warning">Back</a>
 			</c:if>
 
-			<a href="${pageContext.request.contextPath }/home" class="btn btn-outline-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home" class="btn btn-Danger">Home</a>
 		</div>
 	</div>
 </body>

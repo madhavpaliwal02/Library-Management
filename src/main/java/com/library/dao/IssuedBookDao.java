@@ -55,12 +55,26 @@ public class IssuedBookDao {
 		this.hibernateTemplate.delete(getIssuedBook(id));
 	}
 
+	// Delete Issued Book by Bid and Sid
+	@Transactional
+	public void deleteIssuedBook(int bid, int sid) {
+		// Fetching all Issued Book
+		ibook = getAllIssuedBook();
+
+		// Filtering for a Student
+		for (IssuedBook ib : ibook)
+			if (ib.getBid() == bid && ib.getSid() == sid) { // Verifying the sid
+				deleteIssuedBook(ib.getId()); // Deleting the record
+				break;
+			}
+	}
+	
 	// Delete Issued Book by Bid
 	@Transactional
 	public void deleteIssuedBookByBid(int bid) {
 		// Fetching all Issued Book
 		ibook = getAllIssuedBook();
-
+		
 		// Filtering for a Student
 		for (IssuedBook ib : ibook)
 			if (ib.getBid() == bid) { // Verifying the sid

@@ -59,7 +59,7 @@ public class ReturnBookCtrl {
 		b.setCount(count);
 
 		// Delete record from returned book by student id
-		issuedBookDao.deleteIssuedBookByBid(bid);
+		issuedBookDao.deleteIssuedBook(bid, sid);
 		return rd;
 	}
 
@@ -70,7 +70,6 @@ public class ReturnBookCtrl {
 		dBook = new ArrayList<DisplayBook>();
 		Student s = null;
 		Book b = null;
-		int i = 0;
 
 		// Assigning to DisplayBook
 		for (ReturnBook rb : rbook) {
@@ -81,7 +80,7 @@ public class ReturnBookCtrl {
 			DisplayBook db = new DisplayBook();
 			
 			// Assigning id
-			db.setId(++i);
+			db.setId(b.getId());
 
 			// Assigning Student Data
 			db.setsName(s.getName());
@@ -127,7 +126,7 @@ public class ReturnBookCtrl {
 	// Delete Return Book Admin
 	@RequestMapping("/returnBookDeleteAdmin/{bid}")
 	public String deleteReturnBookAdmin(@PathVariable int bid, Model m) {
-		returnBookDao.deleteReturnBook(bid);
+		returnBookDao.deleteReturnBookByBid(bid);
 		return viewReturnBooksAdmin(m);
 	}
 

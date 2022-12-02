@@ -82,7 +82,7 @@ public class IssuedBookCtrl {
 //		System.out.println(ibook);
 		Student s = null;
 		Book b = null;
-		int i = 1;
+		int i=1;
 
 		// Assigning to DisplayBook
 		for (IssuedBook ib : ibook) {
@@ -97,12 +97,14 @@ public class IssuedBookCtrl {
 			db.setId(i++);
 
 			// Assigning Student Data
+			db.setSid(s.getId());
 			db.setsName(s.getName());
 			db.setRollNo(s.getRollno());
 			db.setCourse(s.getCourse());
 			db.setGender(s.getGender());
 
-			// Assigning Student Data
+			// Assigning Book Data
+			db.setBid(b.getId());
 			db.setbName(b.getName());
 			db.setAuthor(b.getAuthorName());
 			db.setEdition(b.getEdition());
@@ -137,9 +139,9 @@ public class IssuedBookCtrl {
 	}
 
 	// Delete Issued Book Admin
-	@RequestMapping("/issuedBookDeleteAdmin/{bid}")
-	public String deleteIssuedBookAdmin(@PathVariable int bid, Model m) {
-		ibDao.deleteIssuedBook(bid);
+	@RequestMapping("/issuedBookDeleteAdmin/{bid}/{sid}")
+	public String deleteIssuedBookAdmin(@PathVariable int bid, @PathVariable int sid, Model m) {
+		ibDao.deleteIssuedBook(bid, sid);
 		return viewIssuedBooksAdmin(m);
 	}
 

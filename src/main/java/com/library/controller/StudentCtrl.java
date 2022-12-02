@@ -177,22 +177,38 @@ public class StudentCtrl {
 		return "student-dashboard";
 	}
 
+//	@RequestMapping("/checkDeleteStudent/${sid}")
+//	public boolean checkDeleteStudent(@PathVariable int sid) {
+//
+//	}
+
 	// Delete Student Generic
-	public void deleteStudent(int sid) {
-		// Deleting All IssuedBook
-		ibDao.deleteIssuedBookBySid(sid);
+	public boolean deleteStudent(int sid) {
+		if (ibDao.getIssuedBookBySid(sid).size() > 0) {
+			return false;
+		} else {
+			// Deleting All IssuedBook
+			ibDao.deleteIssuedBookBySid(sid);
 
-		// Deleting All ReturnBook
-		rbDao.deleteReturnBookBySid(sid);
+			// Deleting All ReturnBook
+			rbDao.deleteReturnBookBySid(sid);
 
-		// Deleting Student
-		studentDao.deleteStudent(sid);
+			// Deleting Student
+			studentDao.deleteStudent(sid);
+			return true;
+		}
 	}
 
 	// Student Delete Admin
 	@RequestMapping("/studentDeleteAdmin/{sid}")
 	public String deleteStudentAdmin(@PathVariable int sid, Model m) {
-		deleteStudent(sid);
+		if (deleteStudent(sid)) {
+			m.addAttribute("msg", "success");
+			m.addAttribute("cause", "The Record is Deleted Successfully");
+		} else {
+			m.addAttribute("msg", "failed");
+			m.addAttribute("cause", "The Record can't be deleted as they have IssuedBooks to be return");
+		}
 		return viewStudentsAdmin(m);
 	}
 

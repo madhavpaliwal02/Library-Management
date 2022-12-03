@@ -7,18 +7,16 @@
 
 <script type="text/javascript">
 	function checkDelete(id) {
+		/* Confirmation Message to be displayed */
 		let ans = confirm("Are you sure you want to delete !!!");
 		if (ans == true) {
-
-			// fetch(URL,GET) - AXIOS
-
 			let ac = document.createElement("a")
-			let stringUrl = `${pageContext.request.contextPath }/deleteLibrarian/`
+			/* let stringUrl = `${pageContext.request.contextPath }/deleteLibrarian/`
+					+ id; */
+			ac.href = `${pageContext.request.contextPath }/deleteLibrarian/`
 					+ id;
-			ac.href = stringUrl;
 			ac.click();
-			console.log(id, stringUrl, `${pageContext.request.contextPath }`);
-			console.log(ac);
+			console.log('deleted')
 		} else {
 			console.log('no deleted')
 		}

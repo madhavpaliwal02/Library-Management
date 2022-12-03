@@ -4,6 +4,38 @@
 <%@include file="./base.jsp"%>
 
 <title><c:out value="${title }"></c:out></title>
+
+<script type="text/javascript">
+	function studentDeleteAdmin(sid) {
+		/* Confirmation Message to be displayed */
+		let ans = confirm("Are you sure you want to delete !!!");
+		if (ans == true) {
+			let ac = document.createElement("a");
+			let stringUrl = `${pageContext.request.contextPath }/studentDeleteAdmin/`
+					+ sid;
+			ac.href = stringUrl;
+			ac.click();
+			console.log('deleted')
+		} else {
+			console.log('no deleted')
+		}
+	}
+
+	function studentDeleteLibrarian(lid, sid) {
+		/* Confirmation Message to be displayed */
+		let ans = confirm("Are you sure you want to delete !!!");
+		if (ans == true) {
+			let ac = document.createElement("a");
+			ac.href = `${pageContext.request.contextPath }/studentDeleteLibrarian/`
+					+ lid + `/` + sid;
+			ac.click();
+			console.log('deleted')
+		} else {
+			console.log('no deleted')
+		}
+	}
+</script>
+
 </head>
 <body>
 	<!-- View Students -->
@@ -54,87 +86,27 @@
 
 						<c:if test="${user=='admin' }">
 
-							<td><a data-toggle="modal" data-target="#exampleModal">
-									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
-								</i>
-							</a></td>
-
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<!-- Header -->
-										<div class="modal-header">
-											<h2 class="modal-title text-center" id="exampleModalLabel">Delete</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<!-- Body -->
-										<div class="modal-body">
-											<h5>Are you sure that you want to Delete the Record !!!</h5>
-										</div>
-										<!-- Footer -->
-										<div class="modal-footer">
-											<a class="btn btn-outline-Danger"
-												href="${pageContext.request.contextPath }/studentDeleteAdmin/${stu.id }">
-												Delete</a>
-											<button type="button" data-dismiss="modal"
-												class="btn btn-outline-Warning">Cancel</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							<!-- Using JS -->
+							<td><span onclick='return studentDeleteAdmin(`${stu.id }`)'
+								href=""> <i class="fas fa-trash-can text-danger"
+									style="font-size: 25px"> </i>
+							</span></td>
 						</c:if>
 						<c:if test="${user=='librarian' }">
-							<td><a data-toggle="modal" data-target="#exampleModal">
+							<!-- Using JS -->
+							<td><span
+								onclick='studentDeleteLibrarian(`${lid }`,`${stu.id }`)'>
 									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
 								</i>
-							</a></td>
-
-							<!-- Modal -->
-							<div class="modal fade" id="exampleModal" tabindex="-1"
-								role="dialog" aria-labelledby="exampleModalLabel"
-								aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<!-- Header -->
-										<div class="modal-header">
-											<h2 class="modal-title text-center" id="exampleModalLabel">Delete</h2>
-											<button type="button" class="close" data-dismiss="modal"
-												aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<!-- Body -->
-										<div class="modal-body">
-											<h5>Are you sure that you want to Delete the Record !!!</h5>
-										</div>
-										<!-- Footer -->
-										<div class="modal-footer">
-											<a class="btn btn-outline-Danger"
-												href="${pageContext.request.contextPath }/studentDeleteLibrarian/${lid }/${stu.id }">
-												Delete</a>
-											<button type="button" data-dismiss="modal"
-												class="btn btn-outline-Warning">Cancel</button>
-										</div>
-									</div>
-								</div>
-							</div>
+							</span></td>
 						</c:if>
-
-
-
-
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="container text-center">
 
+		<!-- Navigation Button -->
+		<div class="container text-center">
 			<c:if test="${user=='admin' }">
 				<a href="${pageContext.request.contextPath }/adminDashboardBack"
 					class="btn btn-warning">Back</a>

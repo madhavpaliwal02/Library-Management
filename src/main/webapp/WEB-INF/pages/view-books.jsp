@@ -51,7 +51,6 @@
 						<td>${book.description }</td>
 						<td>${book.count }</td>
 						<td>${book.date }</td>
-						<td>${book.id }</td>
 
 						<c:if test="${user=='admin' }">
 
@@ -126,14 +125,14 @@
 									</div>
 								</div>
 							</div>
-						</c:if>
+						</c:if> --%>
 
 						<c:if test="${user=='student' }">
 							<td><a
 								href="${pageContext.request.contextPath }/issuedBook/${sid }/${book.id }">
 									<i class="fas fa-book" style="font-size: 25px"> </i>
 							</a></td>
-						</c:if> --%>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -4,6 +4,23 @@
 <%@include file="./base.jsp"%>
 
 <title><c:out value="${title }"></c:out></title>
+<script type="text/javascript">
+	function checkDelete(bid, sid) {
+		/* Confirmation Message to be displayed */
+		let ans = confirm("Are you sure you want to delete !!!");
+		if (ans == true) {
+			let ac = document.createElement("a")
+			/* let stringUrl = `${pageContext.request.contextPath }/deleteLibrarian/`
+					+ id; */
+			ac.href = `${pageContext.request.contextPath }/returnBookDeleteAdmin/`
+					+ bid + `/` + sid;
+			ac.click();
+			console.log('deleted')
+		} else {
+			console.log('no deleted')
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- View Books -->
@@ -47,11 +64,12 @@
 						<td>${book.gender }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
-							<td><a
-								href="${pageContext.request.contextPath }/returnBookDeleteAdmin/${book.bid }/${book.sid }">
-									<i class="fas fa-trash-can text-danger" style="font-size: 25px">
-								</i>
-							</a></td>
+							<!-- Using JS -->
+							<td><span
+								onclick='return checkDelete(`${book.bid }`,`${book.sid }`)'
+								href=""> <i class="fas fa-trash-can text-danger"
+									style="font-size: 25px"> </i>
+							</span></td>
 						</c:if>
 
 					</tr>

@@ -82,7 +82,7 @@ public class IssuedBookCtrl {
 //		System.out.println(ibook);
 		Student s = null;
 		Book b = null;
-		int i=1;
+		int i = 1;
 
 		// Assigning to DisplayBook
 		for (IssuedBook ib : ibook) {
@@ -142,6 +142,7 @@ public class IssuedBookCtrl {
 	@RequestMapping("/issuedBookDeleteAdmin/{bid}/{sid}")
 	public String deleteIssuedBookAdmin(@PathVariable int bid, @PathVariable int sid, Model m) {
 		ibDao.deleteIssuedBook(bid, sid);
+		m.addAttribute("msg", "The record is Successfully Deleted !!!");
 		return viewIssuedBooksAdmin(m);
 	}
 

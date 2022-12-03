@@ -4,16 +4,35 @@
 <%@include file="./base.jsp"%>
 
 <title><c:out value="${title }"></c:out></title>
+<script type="text/javascript">
+	function checkDelete(bid, sid) {
+		/* Confirmation Message to be displayed */
+		let ans = confirm("Are you sure you want to delete !!!");
+		if (ans == true) {
+			let ac = document.createElement("a")
+			/* let stringUrl = `${pageContext.request.contextPath }/deleteLibrarian/`
+					+ id; */
+			ac.href = `${pageContext.request.contextPath }/issuedBookDeleteAdmin/`
+					+ bid + `/` + sid;
+			ac.click();
+			console.log('deleted')
+		} else {
+			console.log('no deleted')
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- View Books -->
 	<div class="container">
-		<h1 class="text-center"><b>Books Issued by Students Details</b></h1>
+		<h1 class="text-center">
+			<b>Books Issued by Students Details</b>
+		</h1>
 
 		<!-- Condition - success -->
 		<c:if test="${not empty msg }">
 			<div class="alert alert-success text-center">
-				<c:out value="${msg }"></c:out>
+				<c:out value="${msg }" />
 			</div>
 		</c:if>
 
@@ -45,10 +64,12 @@
 						<td>${book.gender }</td>
 						<td>${book.date }</td>
 						<c:if test="${user=='admin' }">
-							<td><a href="${pageContext.request.contextPath }/issuedBookDeleteAdmin/${book.bid }/${book.sid }"> <i
-									class="fas fa-trash-can text-danger" style="font-size: 25px">
-								</i>
-							</a></td>
+							<!-- Using JS -->
+							<td><span
+								onclick='return checkDelete(`${book.bid }`,`${book.sid }`)'
+								href=""> <i class="fas fa-trash-can text-danger"
+									style="font-size: 25px"> </i>
+							</span></td>
 						</c:if>
 
 					</tr>
@@ -57,13 +78,17 @@
 		</table>
 		<div class="container text-center">
 			<c:if test="${user=='admin'  }">
-				<a href="${pageContext.request.contextPath }/adminDashboardBack" class="btn btn-warning">Back</a>
+				<a href="${pageContext.request.contextPath }/adminDashboardBack"
+					class="btn btn-warning">Back</a>
 			</c:if>
 			<c:if test="${user=='librarian'  }">
-				<a href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }" class="btn btn-warning">Back</a>
+				<a
+					href="${pageContext.request.contextPath }/librarianDashboardBack/${lid }"
+					class="btn btn-warning">Back</a>
 			</c:if>
 
-			<a href="${pageContext.request.contextPath }/home" class="btn btn-Danger">Home</a>
+			<a href="${pageContext.request.contextPath }/home"
+				class="btn btn-Danger">Home</a>
 		</div>
 	</div>
 </body>

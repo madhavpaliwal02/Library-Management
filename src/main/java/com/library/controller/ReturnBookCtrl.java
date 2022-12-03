@@ -130,6 +130,7 @@ public class ReturnBookCtrl {
 	@RequestMapping("/returnBookDeleteAdmin/{bid}/{sid}")
 	public String deleteReturnBookAdmin(@PathVariable int bid, @PathVariable int sid, Model m) {
 		returnBookDao.deleteReturnBook(bid, sid);
+		m.addAttribute("msg", "The record is Successfully Deleted !!!");
 		return viewReturnBooksAdmin(m);
 	}
 

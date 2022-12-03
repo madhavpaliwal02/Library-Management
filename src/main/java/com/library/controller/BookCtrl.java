@@ -78,7 +78,7 @@ public class BookCtrl {
 	@RequestMapping("/viewBooksAdmin")
 	public String viewBooksAdmin(Model m) {
 		m.addAttribute("user", "admin");
-		m.addAttribute("title","Admin : View Books");
+		m.addAttribute("title", "Admin : View Books");
 		return viewBooks(m);
 	}
 
@@ -87,7 +87,7 @@ public class BookCtrl {
 	public String viewBooksLibrarian(@PathVariable int lid, Model m) {
 		m.addAttribute("user", "librarian");
 		m.addAttribute("lid", lid);
-		m.addAttribute("title","Librarian : View Books");
+		m.addAttribute("title", "Librarian : View Books");
 		return viewBooks(m);
 	}
 
@@ -96,34 +96,46 @@ public class BookCtrl {
 	public String viewBooksStudent(@PathVariable int sid, Model m) {
 		m.addAttribute("user", "student");
 		m.addAttribute("sid", sid);
-		m.addAttribute("title","Student : View Books");
+		m.addAttribute("title", "Student : View Books");
 		return viewBooks(m);
 	}
 
 	// Update Book - Only Librarian
 
-	
 	// Delete Book Librarian
-	public void deleteBook(int bid) {
-		// Deleting Issued Book 
-		ibDao.deleteIssuedBookByBid(bid);
-		// Deleting Return Book
-		rbDao.deleteReturnBookByBid(bid);
-		// Deleting Book
-		bookDao.deleteBook(bid);
+	public boolean deleteBook(int bid, Model m) {
+		System.out.println(ibDao.getIssuedBookByBid(bid).size());
+		if (ibDao.getIssuedBookByBid(bid).size() > 0) {
+			m.addAttribute("msg", "failed");
+			m.addAttribute("cause", "The Record can't be deleted as the Book has been Issued by some Students");
+			return false;
+		} else {
+			// Deleting Issued Book
+			// ibDao.deleteIssuedBookByBid(bid);
+
+			// Deleting Return Book
+			rbDao.deleteReturnBookByBid(bid);
+
+			// Deleting Book
+			bookDao.deleteBook(bid);
+
+			m.addAttribute("msg", "success");
+			m.addAttribute("cause", "The Record is Deleted Successfully");
+			return true;
+		}
 	}
-	
+
 	// Delete Book Admin
 	@RequestMapping("/bookDeleteAdmin/{bid}")
 	public String deleteBookAdmin(@PathVariable int bid, Model m) {
-		deleteBook(bid);
+		deleteBook(bid, m);
 		return viewBooksAdmin(m);
 	}
 
 	// Delete Book Librarian
 	@RequestMapping("/bookDeleteLibrarian/{lid}/{bid}")
 	public String deleteBookLibrarian(@PathVariable int lid, @PathVariable int bid, Model m) {
-		deleteBook(bid);
+		deleteBook(bid, m);
 		return viewBooksLibrarian(lid, m);
 	}
 

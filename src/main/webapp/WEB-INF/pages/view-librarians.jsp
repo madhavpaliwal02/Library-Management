@@ -5,9 +5,8 @@
 
 <title><c:out value="${title }"></c:out></title>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	function checkDelete(id) {
-		console.log("check delete");
 		let ans = confirm("Are you sure you want to delete !!!");
 		if (ans == true) {
 
@@ -15,8 +14,8 @@
 
 			let ac = document.createElement("a")
 			let stringUrl = `${pageContext.request.contextPath }/deleteLibrarian/`
-					+ id
-			ac.href = stringUrl
+					+ id;
+			ac.href = stringUrl;
 			ac.click();
 			console.log(id, stringUrl, `${pageContext.request.contextPath }`);
 			console.log(ac);
@@ -24,7 +23,7 @@
 			console.log('no deleted')
 		}
 	}
-</script> -->
+</script>
 
 </head>
 <body>
@@ -57,13 +56,13 @@
 						<td>${lib.date }</td>
 
 						<!-- Using JS -->
-						<%-- <td><span onclick='return checkDelete(`${lib.id }`)' href="">
+						<td><span onclick='return checkDelete(`${lib.id }`)' href="">
 								<i class="fas fa-trash-can text-danger" style="font-size: 25px">
-							</i>;
-						</span></td> --%>
+							</i>
+						</span></td>
 
 						<!-- Using BootStrap -->
-						<td><a data-toggle="modal" data-target="#exampleModal"> <i
+						<%-- <td><a data-toggle="modal" data-target="#exampleModal"> <i
 								class="fas fa-trash-can text-danger" style="font-size: 25px">
 							</i>
 						</a></td>
@@ -96,7 +95,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</tr>
 				</c:forEach>
 			</tbody>

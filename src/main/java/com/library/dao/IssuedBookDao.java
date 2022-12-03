@@ -48,6 +48,20 @@ public class IssuedBookDao {
 
 		return ib2;
 	}
+	
+	// Get Issued Book By Bid
+	public List<IssuedBook> getIssuedBookByBid(int bid) {
+		// Fetching all Issued Book
+		ibook = getAllIssuedBook();
+		List<IssuedBook> ib2 = new ArrayList<IssuedBook>();
+		
+		// Filtering for a Student
+		for (IssuedBook ib : ibook)
+			if (ib.getBid() == bid) // Verifying the bid
+				ib2.add(ib); // Adding only Book Ids
+		
+		return ib2;
+	}
 
 	// Delete Issued Book
 	@Transactional

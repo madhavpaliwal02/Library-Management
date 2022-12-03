@@ -116,7 +116,7 @@
 										<!-- Footer -->
 										<div class="modal-footer">
 											<a class="btn btn-outline-Danger"
-												href="${pageContext.request.contextPath }/deleteLibrarian/${lib.id }">
+												href="${pageContext.request.contextPath }/studentDeleteLibrarian/${lid }/${stu.id }">
 												Delete</a>
 											<button type="button" data-dismiss="modal"
 												class="btn btn-outline-Warning">Cancel</button>
@@ -124,11 +124,6 @@
 									</div>
 								</div>
 							</div>
-
-							<td><a
-								href="${pageContext.request.contextPath }/studentDeleteLibrarian/${lid }/${stu.id }">
-
-							</a></td>
 						</c:if>
 
 

@@ -177,24 +177,24 @@ public class StudentCtrl {
 		return "student-dashboard";
 	}
 
-//	@RequestMapping("/checkDeleteStudent/${sid}")
-//	public boolean checkDeleteStudent(@PathVariable int sid) {
-//
-//	}
-
 	// Delete Student Generic
-	public boolean deleteStudent(int sid) {
+	public boolean deleteStudent(int sid, Model m) {
 		if (ibDao.getIssuedBookBySid(sid).size() > 0) {
+			m.addAttribute("msg", "failed");
+			m.addAttribute("cause", "The Record can't be deleted as they have IssuedBooks to be return");
 			return false;
 		} else {
 			// Deleting All IssuedBook
-			ibDao.deleteIssuedBookBySid(sid);
+			// ibDao.deleteIssuedBookBySid(sid);
 
 			// Deleting All ReturnBook
 			rbDao.deleteReturnBookBySid(sid);
 
 			// Deleting Student
 			studentDao.deleteStudent(sid);
+
+			m.addAttribute("msg", "success");
+			m.addAttribute("cause", "The Record is Deleted Successfully");
 			return true;
 		}
 	}
@@ -202,20 +202,14 @@ public class StudentCtrl {
 	// Student Delete Admin
 	@RequestMapping("/studentDeleteAdmin/{sid}")
 	public String deleteStudentAdmin(@PathVariable int sid, Model m) {
-		if (deleteStudent(sid)) {
-			m.addAttribute("msg", "success");
-			m.addAttribute("cause", "The Record is Deleted Successfully");
-		} else {
-			m.addAttribute("msg", "failed");
-			m.addAttribute("cause", "The Record can't be deleted as they have IssuedBooks to be return");
-		}
+		deleteStudent(sid, m);
 		return viewStudentsAdmin(m);
 	}
 
 	// Student Delete Librarian
 	@RequestMapping("/studentDeleteLibrarian/{lid}/{sid}")
 	public String deleteStudentLibrarian(@PathVariable int lid, @PathVariable int sid, Model m) {
-		deleteStudent(sid);
+		deleteStudent(sid, m);
 		return viewStudentsLibrarian(lid, m);
 	}
 

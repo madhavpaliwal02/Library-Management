@@ -19,29 +19,33 @@
 		</h3>
 
 		<!-- Log In Page -->
-		<form action="${pageContext.request.contextPath }/adminDashboard"
-			method="post">
-			<c:if test="${msg!='' }">
-				<p class="text-center alert alert-danger">${msg }</p>
-			</c:if>
-			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label> <input
-					type="email" class="form-control" id="exampleInputEmail1"
-					placeholder="Enter email" name="email" required> <small
-					id="emailHelp" class="form-text text-muted">We'll never
-					share your email with anyone else.</small>
+		<div class="row">
+			<div class="col-md-6 m-auto">
+				<form action="${pageContext.request.contextPath }/adminDashboard"
+					method="post">
+					<c:if test="${msg!='' }">
+						<p class="text-center alert alert-danger">${msg }</p>
+					</c:if>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Email address</label> <input
+							type="email" class="form-control" id="exampleInputEmail1"
+							placeholder="Enter email" name="email" required> <small
+							id="emailHelp" class="form-text text-muted">We'll never
+							share your email with anyone else.</small>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">Password</label> <input
+							type="password" class="form-control" id="exampleInputPassword1"
+							placeholder="Password" name="password" required>
+					</div>
+					<div class="container text-center">
+						<a href="${pageContext.request.contextPath }/home"
+							class="btn btn-Warning">Back</a>
+						<button class="btn btn-success">Login</button>
+					</div>
+				</form>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label> <input
-					type="password" class="form-control" id="exampleInputPassword1"
-					placeholder="Password" name="password" required>
-			</div>
-			<div class="container text-center">
-				<a href="${pageContext.request.contextPath }/home"
-					class="btn btn-Warning">Back</a>
-				<button class="btn btn-success">Login</button>
-			</div>
-		</form>
+		</div>
 	</div>
 </body>
 </html>

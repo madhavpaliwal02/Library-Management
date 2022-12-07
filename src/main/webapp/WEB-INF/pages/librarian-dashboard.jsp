@@ -79,9 +79,7 @@
 				<div class="container text-center mt-3">
 					<a
 						href="${pageContext.request.contextPath }/updateLibrarianForm/${lib.id }"
-						class="btn btn-Primary">Update</a> <a
-						href="${pageContext.request.contextPath }/librarianLogin"
-						class="btn btn-Warning">Log-Out</a>
+						class="btn btn-Primary">Update</a>
 				</div>
 			</div>
 
@@ -134,10 +132,15 @@
 
 					<div class="container text-center">
 						<button class="btn btn-success">Add-Book</button>
-						<a href="${pageContext.request.contextPath }/home"
-							class="btn btn-Danger">Home</a>
 					</div>
 				</form>
+			</div>
+
+			<div class="container text-center mt-3">
+				<a href="${pageContext.request.contextPath }/librarianLogin"
+					class="btn btn-Warning">Log-Out</a> <a
+					href="${pageContext.request.contextPath }/home"
+					class="btn btn-Danger">Home</a>
 			</div>
 
 		</div>

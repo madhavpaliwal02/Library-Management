@@ -8,16 +8,19 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
 	">
 
 	<tx:annotation-driven />
-	
+
 	<context:component-scan
 		base-package="com.library" />
+		
+	<mvc:annotation-driven />
+	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**" />
 
 	<!-- View Resolver -->
 	<bean
@@ -38,18 +41,13 @@
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 	</bean>
-	
+
 	<!-- Data source - server -->
-	<!-- <bean
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-		name="ds">
-		<property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://library-management.cbtgefyqr2wr.us-west-2.rds.amazonaws.com:3306/librarymanagement" />
-		<property name="username" value="admin" />
-		<property name="password" value="admin123" />
-	</bean> -->  
+	<!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" 
+		name="ds"> <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" 
+		/> <property name="url" value="jdbc:mysql://library-management.cbtgefyqr2wr.us-west-2.rds.amazonaws.com:3306/librarymanagement" 
+		/> <property name="username" value="admin" /> <property name="password" value="admin123" 
+		/> </bean> -->
 
 	<!-- LocalSessionFactoryBean -->
 	<bean
@@ -62,7 +60,7 @@
 				<!-- local -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
 				<!-- server -->
-				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop> --> 
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop> -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
 			</props>

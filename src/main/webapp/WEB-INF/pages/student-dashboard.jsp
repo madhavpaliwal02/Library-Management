@@ -70,11 +70,8 @@
 				<div class="text-center mt-2">
 					<a
 						href="${pageContext.request.contextPath }/updateStudentForm/${stu.id }"
-						class="btn btn-primary">Update</a> <a
-						href="${pageContext.request.contextPath }/studentLogin"
-						class="btn btn-Warning">Log-Out</a>
+						class="btn btn-primary">Update</a>
 				</div>
-
 
 			</div>
 
@@ -109,15 +106,22 @@
 						</tbody>
 					</table>
 				</div>
+				<!-- Buttons -->
+				<div class="container text-center mt-3">
+					<a class="btn btn-primary"
+						href='${pageContext.request.contextPath }/viewBooksStudent/${stu.id }'
+						role="button">View Books</a>
+				</div>
 			</div>
 		</div>
 
 
-		<!-- Buttons -->
-		<div class="container text-center mt-3">
-			<a class="btn btn-primary"
-				href='${pageContext.request.contextPath }/viewBooksStudent/${stu.id }'
-				role="button">View Books</a> <a
+
+
+		<!-- Navigation Button -->
+		<div class="text-center mt-2">
+			<a href="${pageContext.request.contextPath }/studentLogin"
+				class="btn btn-Warning">Log-Out</a> <a
 				href="${pageContext.request.contextPath }/home"
 				class="btn btn-Danger">Home</a>
 		</div>

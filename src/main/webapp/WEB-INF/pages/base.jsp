@@ -9,6 +9,18 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
+<style>
+body {
+	/* background-image: linear-gradient(to top, #1a0edd, #006bfd, #009ffc, #73cbef, #e9eff0); */
+	background-image: linear-gradient(to top, #3aa4e2, #68b9e3, #93cce4, #bedee8, #e9eff0);
+	/* background-image: linear-gradient(to top, #5b8dff, #6895f7, #759cef, #82a3e5, #90aadc,
+		#93acdc, #97afdb, #9ab1db, #95b0e4, #8faeed, #8badf6, #87abff); */
+	/* background-image: linear-gradient(to top, #434ae7, #4561e6, #5274e2, #6586db, #7b96d2,
+		#7e98d0, #8099ce, #839bcc, #7190d1, #6084d6, #4e78d9, #3b6cdc); */
+	font-family: cursive;
+}
+</style>
+
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
